@@ -21,6 +21,8 @@ $(eval $(call TMX2DATA, SET_FOLDER      , src/media      ))
 # Conversion 
 #$(eval $(call TMX2DATA, CONVERT, tmxfile, array )) 
 $(eval $(call TMX2DATA, CONVERT, src/tiles/sencillo.tmx, m_sencillo )) 
+#$(eval $(call TMX2DATA, CONVERT, src/tiles/tiles_16x8_M1.tmx, tilesmap )) 
+$(eval $(call TMX2DATA, CONVERT, src/tiles/m1.tmx, m1_sencillo )) 
 
 
 ##

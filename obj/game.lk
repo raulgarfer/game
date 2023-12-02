@@ -7,7 +7,9 @@
 -k /home/raul/cpctelera/cpctelera/tools/sdcc-3.6.8-r9946/share/sdcc/lib/z80
 -l /home/raul/cpctelera/cpctelera/cpctelera.lib
 -l z80
+obj/media/m1.rel
 obj/media/sencillo.rel
+obj/media/tiles_16x8_M1.rel
 obj/media/tileset_32x8.rel
 obj/mapas.rel
 obj/media/g_palette.rel

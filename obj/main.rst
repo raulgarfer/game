@@ -5039,7 +5039,7 @@ Hexadecimal [16-Bits]
                              28 .area _DATA
                              29 
                              30 ;; Define one Zero-terminated string to be used later on
-   44A3 43 50 43 74 65 6C    31 string: .asciz "CPCtelera up and running!";
+   46B3 43 50 43 74 65 6C    31 string: .asciz "CPCtelera up and running!";
         65 72 61 20 75 70
         20 61 6E 64 20 72
         75 6E 6E 69 6E 67
@@ -5067,22 +5067,22 @@ Hexadecimal [16-Bits]
                              52 ;; MAIN function. This is the entry point of the application.
                              53 ;;    _main:: global symbol is required for correctly compiling and linking
                              54 ;;
-   42AA                      55 _main::
+   44BA                      55 _main::
                              56    ;; Disable firmware to prevent it from interfering with string drawing
-   42AA CD F0 43      [17]   57    call cpct_disableFirmware_asm
+   44BA CD 00 46      [17]   57    call cpct_disableFirmware_asm
                              58    ;;(1B B) newval	New value to be set for the register
                              59    ;;(1B C) regnum	Number of the register to be set
-   42AD 06 28         [ 7]   60    ld b,#40
+   44BD 06 28         [ 7]   60    ld b,#40
                              61    
-   42AF 0E 01         [ 7]   62    ld c,#1
-   42B1 CD 94 44      [17]   63     call cpct_setCRTCReg_asm
-   42B4 06 2C         [ 7]   64     ld b,#44
-   42B6 0E 02         [ 7]   65     ld c,#2
+   44BF 0E 01         [ 7]   62    ld c,#1
+   44C1 CD A4 46      [17]   63     call cpct_setCRTCReg_asm
+   44C4 06 2C         [ 7]   64     ld b,#44
+   44C6 0E 02         [ 7]   65     ld c,#2
                              66    ;call cpct_setCRTCReg_asm
                              67 
                              68 
                              69   
-   42B8 CD 74 42      [17]   70    call _pinta_mapa
+   44C8 CD 84 44      [17]   70    call _pinta_mapa
                              71 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 97.
 Hexadecimal [16-Bits]
@@ -5090,5 +5090,5 @@ Hexadecimal [16-Bits]
 
 
                              72    ;; Loop forever
-   42BB                      73 loop:
-   42BB 18 FE         [12]   74    jr    loop
+   44CB                      73 loop:
+   44CB 18 FE         [12]   74    jr    loop

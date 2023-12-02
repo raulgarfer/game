@@ -18,60 +18,66 @@ Area                                    Addr        Size        Decimal Bytes (A
      00000000  s__CABS                         
      00000000  s__DABS                         
      0000001A  l__DATA                         
-     000004A3  l__CODE                         
+     000006B3  l__CODE                         
      00004000  s__CODE                         
-     000044A3  s__DATA                         
-     000044BD  s__GSFINAL                      
-     000044BD  s__GSINIT                       
-     000044BD  s__HOME                         
-     000044BD  s__INITIALIZED                  
-     000044BD  s__INITIALIZER                  
+     000046B3  s__DATA                         
+     000046CD  s__GSFINAL                      
+     000046CD  s__GSINIT                       
+     000046CD  s__HOME                         
+     000046CD  s__INITIALIZED                  
+     000046CD  s__INITIALIZER                  
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00004000    000004A3 =        1187. bytes (REL,CON)
+_CODE                               00004000    000006B3 =        1715. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00004000  _m_sencillo                        sencillo
-     000041F4  _tileset_32x8_0                    tileset_32x8
-     00004214  _tileset_32x8_1                    tileset_32x8
-     00004234  _tileset_32x8_2                    tileset_32x8
-     00004254  _tileset_32x8_3                    tileset_32x8
-     00004274  _pinta_mapa                        mapas
-     0000429A  _g_palette                         g_palette
-     000042AA  _main                              cpct_keyboard
-     000042BD  _cpct_setPALColour                 cpct_video
-     000042C9  cpct_drawStringM1_asm              cpct_strings
-     000042ED  cpct_drawCharM1_inner_asm          cpct_strings
-     0000432D  cpct_char2pxM1                     cpct_strings
-     0000433D  _cpct_etm_drawTilemap4x8_ag        cpct_easytilemaps
-     00004347  cpct_etm_dtm4x8_ag_c_widthHeight   cpct_easytilemaps
-     0000435D  cpct_etm_dtm4x8_ag_c_tilesetPtr    cpct_easytilemaps
-     000043C8  cpct_etm_dtm4x8_ag_c_restoreI      cpct_easytilemaps
-     000043CE  cpct_etm_dtm4x8_ag_c_incrementHL   cpct_easytilemaps
-     000043D3  cpct_etm_dtm4x8_ag_c_restoreWidt   cpct_easytilemaps
-     000043D6  cpct_etm_dtm4x8_ag_c_updateWidth   cpct_easytilemaps
-     000043E2  _cpct_setVideoMode                 cpct_video
-     000043F0  _cpct_disableFirmware              cpct_firmware
-     000043F0  _cpct_removeInterruptHandler       cpct_firmware
-     000043F0  cpct_disableFirmware_asm           cpct_firmware
-     000043F0  cpct_removeInterruptHandler_asm    cpct_firmware
-     00004400  _cpct_mode_rom_status              cpct_firmware
-     00004401  _cpct_etm_setDrawTilemap4x8_ag     cpct_easytilemaps
-     00004431  cpct_getScreenPtr_asm              cpct_video
-     00004443  cpct_setDrawCharM1_asm             cpct_strings
-     00004494  cpct_setCRTCReg_asm                cpct_video
-     0000449F  dc_mode1_ct                        
+     00004000  _m1_sencillo                       m1
+     00004190  _m_sencillo                        sencillo
+     00004384  _tiles_16x8_0                      tiles_16x8_M1
+     000043A4  _tiles_16x8_1                      tiles_16x8_M1
+     000043C4  _tiles_16x8_2                      tiles_16x8_M1
+     000043E4  _tiles_16x8_3                      tiles_16x8_M1
+     00004404  _tileset_32x8_0                    tileset_32x8
+     00004424  _tileset_32x8_1                    tileset_32x8
+     00004444  _tileset_32x8_2                    tileset_32x8
+     00004464  _tileset_32x8_3                    tileset_32x8
+     00004484  _pinta_mapa                        mapas
+     000044AA  _g_palette                         g_palette
+     000044BA  _main                              cpct_keyboard
+     000044CD  _cpct_setPALColour                 cpct_video
+     000044D9  cpct_drawStringM1_asm              cpct_strings
+     000044FD  cpct_drawCharM1_inner_asm          cpct_strings
+     0000453D  cpct_char2pxM1                     cpct_strings
+     0000454D  _cpct_etm_drawTilemap4x8_ag        cpct_easytilemaps
+     00004557  cpct_etm_dtm4x8_ag_c_widthHeight   cpct_easytilemaps
+     0000456D  cpct_etm_dtm4x8_ag_c_tilesetPtr    cpct_easytilemaps
+     000045D8  cpct_etm_dtm4x8_ag_c_restoreI      cpct_easytilemaps
+     000045DE  cpct_etm_dtm4x8_ag_c_incrementHL   cpct_easytilemaps
+     000045E3  cpct_etm_dtm4x8_ag_c_restoreWidt   cpct_easytilemaps
+     000045E6  cpct_etm_dtm4x8_ag_c_updateWidth   cpct_easytilemaps
+     000045F2  _cpct_setVideoMode                 cpct_video
+     00004600  _cpct_disableFirmware              cpct_firmware
+     00004600  _cpct_removeInterruptHandler       cpct_firmware
+     00004600  cpct_disableFirmware_asm           cpct_firmware
+     00004600  cpct_removeInterruptHandler_asm    cpct_firmware
+     00004610  _cpct_mode_rom_status              cpct_firmware
+     00004611  _cpct_etm_setDrawTilemap4x8_ag     cpct_easytilemaps
+     00004641  cpct_getScreenPtr_asm              cpct_video
+     00004653  cpct_setDrawCharM1_asm             cpct_strings
+     000046A4  cpct_setCRTCReg_asm                cpct_video
+     000046AF  dc_mode1_ct                        
+
 ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_DATA                               000044A3    0000001A =          26. bytes (REL,CON)
+_DATA                               000046B3    0000001A =          26. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -79,7 +85,9 @@ _DATA                               000044A3    0000001A =          26. bytes (R
 
 Files Linked                              [ module(s) ]
 
+obj/media/m1.rel                          [ m1 ]
 obj/media/sencillo.rel                    [ sencillo ]
+obj/media/tiles_16x8_M1.rel               [ tiles_16x8_M1 ]
 obj/media/tileset_32x8.rel                [ tileset_32x8 ]
 obj/mapas.rel                             [ mapas ]
 obj/media/g_palette.rel                   [ g_palette ]

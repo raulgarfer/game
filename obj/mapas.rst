@@ -44,33 +44,33 @@
                              44 ; code
                              45 ;--------------------------------------------------------
                              46 	.area _CODE
-                             47 ;src/mapas.c:4: void pinta_mapa(){
+                             47 ;src/mapas.c:6: void pinta_mapa(){
                              48 ;	---------------------------------
                              49 ; Function pinta_mapa
                              50 ; ---------------------------------
-   4274                      51 _pinta_mapa::
-                             52 ;src/mapas.c:5: cpct_setVideoMode(0);
-   4274 2E 00         [ 7]   53 	ld	l, #0x00
-   4276 CD E2 43      [17]   54 	call	_cpct_setVideoMode
-                             55 ;src/mapas.c:6: cpct_setBorder(HW_BLACK);
-   4279 21 10 14      [10]   56 	ld	hl, #0x1410
-   427C E5            [11]   57 	push	hl
-   427D CD BD 42      [17]   58 	call	_cpct_setPALColour
-                             59 ;src/mapas.c:7: cpct_etm_setDrawTilemap4x8_ag(m_sencillo_W,m_sencillo_H,m_sencillo_W,tileset_32x8_0);
-   4280 21 F4 41      [10]   60 	ld	hl, #_tileset_32x8_0
-   4283 E5            [11]   61 	push	hl
-   4284 21 14 00      [10]   62 	ld	hl, #0x0014
-   4287 E5            [11]   63 	push	hl
-   4288 26 19         [ 7]   64 	ld	h, #0x19
-   428A E5            [11]   65 	push	hl
-   428B CD 01 44      [17]   66 	call	_cpct_etm_setDrawTilemap4x8_ag
-                             67 ;src/mapas.c:8: cpct_etm_drawTilemap4x8_ag(CPCT_VMEM_START,m_sencillo);
-   428E 21 00 40      [10]   68 	ld	hl, #_m_sencillo
-   4291 E5            [11]   69 	push	hl
-   4292 21 00 C0      [10]   70 	ld	hl, #0xc000
-   4295 E5            [11]   71 	push	hl
-   4296 CD 3D 43      [17]   72 	call	_cpct_etm_drawTilemap4x8_ag
-   4299 C9            [10]   73 	ret
+   4484                      51 _pinta_mapa::
+                             52 ;src/mapas.c:7: cpct_setVideoMode(1);
+   4484 2E 01         [ 7]   53 	ld	l, #0x01
+   4486 CD F2 45      [17]   54 	call	_cpct_setVideoMode
+                             55 ;src/mapas.c:8: cpct_setBorder(HW_BLACK);
+   4489 21 10 14      [10]   56 	ld	hl, #0x1410
+   448C E5            [11]   57 	push	hl
+   448D CD CD 44      [17]   58 	call	_cpct_setPALColour
+                             59 ;src/mapas.c:9: cpct_etm_setDrawTilemap4x8_ag(m1_sencillo_W,m1_sencillo_H,m1_sencillo_W,tiles_16x8_0);
+   4490 21 84 43      [10]   60 	ld	hl, #_tiles_16x8_0
+   4493 E5            [11]   61 	push	hl
+   4494 21 10 00      [10]   62 	ld	hl, #0x0010
+   4497 E5            [11]   63 	push	hl
+   4498 26 19         [ 7]   64 	ld	h, #0x19
+   449A E5            [11]   65 	push	hl
+   449B CD 11 46      [17]   66 	call	_cpct_etm_setDrawTilemap4x8_ag
+                             67 ;src/mapas.c:10: cpct_etm_drawTilemap4x8_ag(CPCT_VMEM_START,m1_sencillo);
+   449E 21 00 40      [10]   68 	ld	hl, #_m1_sencillo
+   44A1 E5            [11]   69 	push	hl
+   44A2 21 00 C0      [10]   70 	ld	hl, #0xc000
+   44A5 E5            [11]   71 	push	hl
+   44A6 CD 4D 45      [17]   72 	call	_cpct_etm_drawTilemap4x8_ag
+   44A9 C9            [10]   73 	ret
                              74 	.area _CODE
                              75 	.area _INITIALIZER
                              76 	.area _CABS (ABS)
