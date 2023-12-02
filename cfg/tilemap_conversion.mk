@@ -1,20 +1,3 @@
-##-----------------------------LICENSE NOTICE------------------------------------
-##  This file is part of CPCtelera: An Amstrad CPC Game Engine 
-##  Copyright (C) 2018 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
-##
-##  This program is free software: you can redistribute it and/or modify
-##  it under the terms of the GNU Lesser General Public License as published by
-##  the Free Software Foundation, either version 3 of the License, or
-##  (at your option) any later version.
-##
-##  This program is distributed in the hope that it will be useful,
-##  but WITHOUT ANY WARRANTY; without even the implied warranty of
-##  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-##  GNU Lesser General Public License for more details.
-##
-##  You should have received a copy of the GNU Lesser General Public License
-##  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-##------------------------------------------------------------------------------
 ############################################################################
 ##                        CPCTELERA ENGINE                                ##
 ##                 Automatic image conversion file                        ##
@@ -33,10 +16,11 @@
 #$(eval $(call TMX2DATA, SET_OUTPUTS     , h c       ))   { bin hs h s c }
 #$(eval $(call TMX2DATA, SET_BASE        , dec       ))   { dec hex bin }
 #$(eval $(call TMX2DATA, SET_BITSPERITEM , 8         ))   { 1, 2, 4, 6, 8 }
-#$(eval $(call TMX2DATA, SET_FOLDER      , src/      )) 
+$(eval $(call TMX2DATA, SET_FOLDER      , src/media      )) 
 #$(eval $(call TMX2DATA, SET_EXTRAPAR    ,           ))	
 # Conversion 
 #$(eval $(call TMX2DATA, CONVERT, tmxfile, array )) 
+$(eval $(call TMX2DATA, CONVERT, src/tiles/sencillo.tmx, m_sencillo )) 
 
 
 ##

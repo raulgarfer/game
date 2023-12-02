@@ -45,6 +45,8 @@ string: .asciz "CPCtelera up and running!";
 .globl cpct_getScreenPtr_asm
 .globl cpct_setDrawCharM1_asm
 .globl cpct_drawStringM1_asm
+.globl _pinta_mapa
+.globl cpct_setCRTCReg_asm
 
 ;;
 ;; MAIN function. This is the entry point of the application.
@@ -53,26 +55,19 @@ string: .asciz "CPCtelera up and running!";
 _main::
    ;; Disable firmware to prevent it from interfering with string drawing
    call cpct_disableFirmware_asm
+   ;;(1B B) newval	New value to be set for the register
+   ;;(1B C) regnum	Number of the register to be set
+   ld b,#40
+   
+   ld c,#1
+    call cpct_setCRTCReg_asm
+    ld b,#44
+    ld c,#2
+   ;call cpct_setCRTCReg_asm
 
-   ;; Set up draw char colours before calling draw string
-   ld    d, #0         ;; D = Background PEN (0)
-   ld    e, #3         ;; E = Foreground PEN (3)
 
-   call cpct_setDrawCharM1_asm   ;; Set draw char colours
-
-   ;; Calculate a video-memory location for printing a string
-   ld   de, #CPCT_VMEM_START_ASM ;; DE = Pointer to start of the screen
-   ld    b, #24                  ;; B = y coordinate (24 = 0x18)
-   ld    c, #16                  ;; C = x coordinate (16 = 0x10)
-
-   call cpct_getScreenPtr_asm    ;; Calculate video memory location and return it in HL
-
-   ;; Print the string in video memory
-   ;; HL already points to video memory, as it is the return
-   ;; value from cpct_getScreenPtr_asm
-   ld   iy, #string    ;; IY = Pointer to the string 
-
-   call cpct_drawStringM1_asm  ;; Draw the string
+  
+   call _pinta_mapa
 
    ;; Loop forever
 loop:
