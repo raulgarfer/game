@@ -47,28 +47,31 @@ string: .asciz "CPCtelera up and running!";
 .globl cpct_drawStringM1_asm
 .globl _pinta_mapa
 .globl cpct_setCRTCReg_asm
-
+.globl cpct_setVideoMemoryOffset_asm
+.globl cpct_waitVSYNC_asm
+.globl set_tilemap
+.globl my_draw_sprite
+.globl _uno
+.globl setreg
 ;;
 ;; MAIN function. This is the entry point of the application.
 ;;    _main:: global symbol is required for correctly compiling and linking
 ;;
 _main::
    ;; Disable firmware to prevent it from interfering with string drawing
-   call cpct_disableFirmware_asm
-   ;;(1B B) newval	New value to be set for the register
-   ;;(1B C) regnum	Number of the register to be set
-   ld b,#40
-   
-   ld c,#1
-    call cpct_setCRTCReg_asm
-    ld b,#44
-    ld c,#2
-   ;call cpct_setCRTCReg_asm
+  call cpct_disableFirmware_asm
+  ;;call set_tilemap
+  call _pinta_mapa
+  call setreg
 
+   ld hl,#_uno
+   ld c,#4
+   ld b,#16
+   ld de,#0xc000
 
-  
-   call _pinta_mapa
-
+  call my_draw_sprite
+ ;;  call scroll
    ;; Loop forever
 loop:
    jr    loop
+

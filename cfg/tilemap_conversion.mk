@@ -16,13 +16,16 @@
 #$(eval $(call TMX2DATA, SET_OUTPUTS     , h c       ))   { bin hs h s c }
 #$(eval $(call TMX2DATA, SET_BASE        , dec       ))   { dec hex bin }
 #$(eval $(call TMX2DATA, SET_BITSPERITEM , 8         ))   { 1, 2, 4, 6, 8 }
-$(eval $(call TMX2DATA, SET_FOLDER      , src/media      )) 
+$(eval $(call TMX2DATA, SET_FOLDER      , src/mapas      )) 
 #$(eval $(call TMX2DATA, SET_EXTRAPAR    ,           ))	
 # Conversion 
 #$(eval $(call TMX2DATA, CONVERT, tmxfile, array )) 
-$(eval $(call TMX2DATA, CONVERT, src/tiles/sencillo.tmx, m_sencillo )) 
+#$(eval $(call TMX2DATA, CONVERT, src/tiles/sencillo.tmx, m_sencillo )) 
 #$(eval $(call TMX2DATA, CONVERT, src/tiles/tiles_16x8_M1.tmx, tilesmap )) 
-$(eval $(call TMX2DATA, CONVERT, src/tiles/m1.tmx, m1_sencillo )) 
+$(eval $(call TMX2DATA, CONVERT, src/tiles/16x25.tmx, m1_sencillo )) 
+$(eval $(call TMX2DATA, CONVERT, src/tiles/32x25.tmx, m1_32x25 )) 
+$(eval $(call TMX2DATA, CONVERT, src/tiles/20x25.tmx, m0_20x25 )) 
+$(eval $(call TMX2DATA, CONVERT, src/tiles/max.tmx, max )) 
 
 
 ##

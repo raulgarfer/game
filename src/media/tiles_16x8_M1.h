@@ -15,5 +15,17 @@ extern const u8 tiles_16x8_2[4 * 8];
 #define TILES_16X8_3_W 4
 #define TILES_16X8_3_H 8
 extern const u8 tiles_16x8_3[4 * 8];
+#define TILES_16X8_4_W 4
+#define TILES_16X8_4_H 8
+extern const u8 tiles_16x8_4[4 * 8];
+#define TILES_16X8_5_W 4
+#define TILES_16X8_5_H 8
+extern const u8 tiles_16x8_5[4 * 8];
+#define TILES_16X8_6_W 4
+#define TILES_16X8_6_H 8
+extern const u8 tiles_16x8_6[4 * 8];
+#define TILES_16X8_7_W 4
+#define TILES_16X8_7_H 8
+extern const u8 tiles_16x8_7[4 * 8];
 
 #endif
