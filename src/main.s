@@ -63,7 +63,7 @@ _main::
   ;;call set_tilemap
   call _pinta_mapa
   call setreg
-
+;;
    ld hl,#_uno
    ld c,#4
    ld b,#16
