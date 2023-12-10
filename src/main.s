@@ -1,40 +1,7 @@
-;;-----------------------------LICENSE NOTICE------------------------------------
-;;  This file is part of CPCtelera: An Amstrad CPC Game Engine 
-;;  Copyright (C) 2018 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
-;;
-;;  This program is free software: you can redistribute it and/or modify
-;;  it under the terms of the GNU Lesser General Public License as published by
-;;  the Free Software Foundation, either version 3 of the License, or
-;;  (at your option) any later version.
-;;
-;;  This program is distributed in the hope that it will be useful,
-;;  but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;  GNU Lesser General Public License for more details.
-;;
-;;  You should have received a copy of the GNU Lesser General Public License
-;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-;;-------------------------------------------------------------------------------
-
 ;; Include all CPCtelera constant definitions, macros and variables
 .include "cpctelera.h.s"
-
-;;
-;; Start of _DATA area 
-;;  SDCC requires at least _DATA and _CODE areas to be declared, but you may use
-;;  any one of them for any purpose. Usually, compiler puts _DATA area contents
-;;  right after _CODE area contents.
-;;
 .area _DATA
-
-;; Define one Zero-terminated string to be used later on
-string: .asciz "CPCtelera up and running!";
-
-;;
-;; Start of _CODE area
-;; 
 .area _CODE
-
 ;; 
 ;; Declare all function entry points as global symbols for the compiler.
 ;; (The linker will know what to do with them)
@@ -43,9 +10,7 @@ string: .asciz "CPCtelera up and running!";
 ;;
 .globl cpct_disableFirmware_asm
 .globl cpct_getScreenPtr_asm
-.globl cpct_setDrawCharM1_asm
-.globl cpct_drawStringM1_asm
-.globl _pinta_mapa
+;;.globl _pinta_mapa
 .globl cpct_setCRTCReg_asm
 .globl cpct_setVideoMemoryOffset_asm
 .globl cpct_waitVSYNC_asm
@@ -53,6 +18,10 @@ string: .asciz "CPCtelera up and running!";
 .globl my_draw_sprite
 .globl _uno
 .globl setreg
+.globl cls
+.globl cpct_setVideoMode_asm
+.globl cpct_setVideoMemoryPage_asm
+.globl pintar_sprites
 ;;
 ;; MAIN function. This is the entry point of the application.
 ;;    _main:: global symbol is required for correctly compiling and linking
@@ -60,17 +29,21 @@ string: .asciz "CPCtelera up and running!";
 _main::
    ;; Disable firmware to prevent it from interfering with string drawing
   call cpct_disableFirmware_asm
+  ;;cambia la pila,salvando la memoria
+  pop bc
+  pop de
+  pop hl
+  ld sp,#0x8000
+  push hl
+  push de
+  push bc
   ;;call set_tilemap
-  call _pinta_mapa
   call setreg
+  ld l,#0x20
+   ld c,#0
+    call cpct_setVideoMode_asm
 ;;
-   ld hl,#_uno
-   ld c,#4
-   ld b,#16
-   ld de,#0xc000
-
-  call my_draw_sprite
- ;;  call scroll
+  call pintar_sprites
    ;; Loop forever
 loop:
    jr    loop

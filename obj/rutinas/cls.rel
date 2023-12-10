@@ -1,0 +1,10 @@
+XL2
+H 1 areas 2 global symbols
+M cls
+S .__.ABS. Def0000
+A _CODE size C flags 0 addr 0
+S cls Def0000
+T 00 00
+R 00 00 00 00
+T 00 00 3E 00 62 6B 77 13 01 FF 3F ED B0 C9
+R 00 00 00 00

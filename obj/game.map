@@ -1,0 +1,160 @@
+ASxxxx Linker V03.00 + NoICE + sdld,  page 1.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000000  .__.ABS.                           cpct_easytilemaps
+     00000000  l__CABS                         
+     00000000  l__DABS                         
+     00000000  l__GSFINAL                      
+     00000000  l__GSINIT                       
+     00000000  l__HOME                         
+     00000000  l__INITIALIZED                  
+     00000000  l__INITIALIZER                  
+     00000000  s__CABS                         
+     00000000  s__DABS                         
+     0000001A  l__DATA                         
+     000013A5  l__CODE                         
+     00004000  s__CODE                         
+     000053A5  s__DATA                         
+     000053BF  s__GSFINAL                      
+     000053BF  s__GSINIT                       
+     000053BF  s__HOME                         
+     000053BF  s__INITIALIZED                  
+     000053BF  s__INITIALIZER                  
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00004000    000013A5 =        5029. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00004000  _max                               max
+     00004320  _m0_20x25                          20x25
+     00004514  _m1_32x25                          32x25
+     00004708  _m1_sencillo                       16x25
+     00004898  _uno                               uno
+     000048D8  _fuego                             fuego
+     000048F8  _tiles_8x8_0                       tiles_8x8_M0
+     00004918  _tiles_8x8_1                       tiles_8x8_M0
+     00004938  _tiles_8x8_2                       tiles_8x8_M0
+     00004958  _tiles_8x8_3                       tiles_8x8_M0
+     00004978  _tiles_8x8_4                       tiles_8x8_M0
+     00004998  _tiles_8x8_5                       tiles_8x8_M0
+     000049B8  _tiles_8x8_6                       tiles_8x8_M0
+     000049D8  _tiles_8x8_7                       tiles_8x8_M0
+     000049F8  _tiles_16x8_0                      tiles_16x8_M1
+     00004A18  _tiles_16x8_1                      tiles_16x8_M1
+     00004A38  _tiles_16x8_2                      tiles_16x8_M1
+     00004A58  _tiles_16x8_3                      tiles_16x8_M1
+     00004A78  _tiles_16x8_4                      tiles_16x8_M1
+     00004A98  _tiles_16x8_5                      tiles_16x8_M1
+     00004AB8  _tiles_16x8_6                      tiles_16x8_M1
+     00004AD8  _tiles_16x8_7                      tiles_16x8_M1
+     00004AF8  _m0_60x25                          60x25
+     000050D4  set_tilemap                        set_draw_tilemap_4x8.s
+     000050E2  _main                              cpct_keyboard
+     000051A2  pintar_sprites                     pinta_sprites
+     000051C9  setreg                             setreg
+     000051DF  cls                                cls
+     000051EB  my_draw_sprite                     my_cpct_sprites
+     0000528B  _cpct_setVideoMemoryOffset         cpct_video
+     0000528B  cpct_setVideoMemoryOffset_asm      cpct_video
+     00005294  _cpct_setVideoMemoryPage           cpct_video
+     00005294  cpct_setVideoMemoryPage_asm        cpct_video
+     0000529D  _cpct_waitVSYNC                    cpct_video
+     0000529D  cpct_waitVSYNC_asm                 cpct_video
+     000052A5  cpct_setVideoMode_asm              cpct_video
+     000052B2  _cpct_disableFirmware              cpct_firmware
+     000052B2  _cpct_removeInterruptHandler       cpct_firmware
+     000052B2  cpct_disableFirmware_asm           cpct_firmware
+     000052B2  cpct_removeInterruptHandler_asm    cpct_firmware
+     000052C2  _cpct_mode_rom_status              cpct_firmware
+     000052C3  cpct_getScreenPtr_asm              cpct_video
+     000052D5  cpct_setCRTCReg_asm                cpct_video
+     000052E0  cpct_etm_setDrawTilemap4x8_ag_as   cpct_easytilemaps
+     0000530C  cpct_etm_drawTilemap4x8_ag_asm     cpct_easytilemaps
+     0000530E  cpct_etm_dtm4x8_ag_asm_widthHeig   cpct_easytilemaps
+     00005324  cpct_etm_dtm4x8_ag_asm_tilesetPt   cpct_easytilemaps
+     0000538F  cpct_etm_dtm4x8_ag_asm_restoreI    cpct_easytilemaps
+     00005395  cpct_etm_dtm4x8_ag_asm_increment   cpct_easytilemaps
+     0000539A  cpct_etm_dtm4x8_ag_asm_restoreWi   cpct_easytilemaps
+ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00004000    000013A5 =        5029. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     0000539D  cpct_etm_dtm4x8_ag_asm_updateWid   cpct_easytilemaps
+ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_DATA                               000053A5    0000001A =          26. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 5.
+
+Files Linked                              [ module(s) ]
+
+obj/mapas/max.rel                         [ max ]
+obj/mapas/20x25.rel                       [ 20x25 ]
+obj/mapas/32x25.rel                       [ 32x25 ]
+obj/mapas/16x25.rel                       [ 16x25 ]
+obj/media/uno.rel                         [ uno ]
+obj/media/fuego.rel                       [ fuego ]
+obj/media/tiles_8x8_M0.rel                [ tiles_8x8_M0 ]
+obj/media/tiles_16x8_M1.rel               [ tiles_16x8_M1 ]
+obj/mapas/60x25.rel                       [ 60x25 ]
+obj/draw_tilemap.rel                      [ set_draw_tilemap_4x8.s ]
+obj/main.rel                              [ cpct_keyboard ]
+obj/sistemas/my_draw_sprite.rel           [ cpct_sprites ]
+obj/sistemas/pinta_sprites.rel            [ pinta_sprites ]
+obj/sistemas/setreg.rel                   [ setreg ]
+obj/rutinas/cls.rel                       [ cls ]
+obj/cpct_func/my_draw_sprite.rel          [ my_cpct_sprites ]
+
+
+Libraries Linked                          [ object file ]
+
+/home/raul/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_setVideoMemoryOffset.rel ]
+/home/raul/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_setVideoMemoryPage.rel ]
+/home/raul/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_waitVSYNC.rel ]
+/home/raul/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_setVideoMode_asmbindings.re ]
+/home/raul/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_removeInterruptHandler.rel ]
+/home/raul/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpc_mode_rom_status.rel ]
+/home/raul/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_getScreenPtr_asmbindings.re ]
+/home/raul/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_setCRTCReg_asmbindings.rel ]
+/home/raul/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_etm_setDrawTilemap4x8_ag_as ]
+/home/raul/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_etm_drawTilemap4x8_ag_asmbi ]
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 6.
+
+User Base Address Definitions
+
+_CODE = 0x4000
+_DATA = 0x0000
+
+
