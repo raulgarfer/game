@@ -15,4 +15,13 @@ setreg::
     ld b,#0xbd
     ld c,#0x32
         out (c),c
+    ld bc,#0xbc06       ;;pone al alto de chars en 34
+        out (c),c
+    ld b,#0xbd
+    ld c,#0x22
+        out (c),c
+    ld bc,#0xbc07       ;;centra el scan vertical
+        out (c),c
+    ld bc,#0xbd23
+        out (c),c
  ret

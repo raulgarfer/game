@@ -5039,7 +5039,7 @@ Hexadecimal [16-Bits]
                              28 ;;
    50E2                      29 _main::
                              30    ;; Disable firmware to prevent it from interfering with string drawing
-   50E2 CD CD 52      [17]   31   call cpct_disableFirmware_asm
+   50E2 CD E2 52      [17]   31   call cpct_disableFirmware_asm
                              32   ;;cambia la pila,salvando la memoria
    50E5 C1            [10]   33   pop bc
    50E6 D1            [10]   34   pop de
@@ -5053,13 +5053,13 @@ Hexadecimal [16-Bits]
    000C                       2    cpctm_setBorder_raw_asm \0 ;; [28] Macro that does the job, but requires a number value to be passed
                               1    .globl cpct_setPALColour_asm
    50EE 21 10 00      [10]    2    ld   hl, #0x010         ;; [3]  H=Hardware value of desired colour, L=Border INK (16)
-   50F1 CD 9C 52      [17]    3    call cpct_setPALColour_asm  ;; [25] Set Palette colour of the border
+   50F1 CD B1 52      [17]    3    call cpct_setPALColour_asm  ;; [25] Set Palette colour of the border
                               3    .radix d
                              41   ;;call set_tilemap
    50F4 CD CF 51      [17]   42   call setreg
    50F7 2E 20         [ 7]   43   ld l,#0x20
    50F9 0E 00         [ 7]   44    ld c,#0
-   50FB CD C0 52      [17]   45     call cpct_setVideoMode_asm
+   50FB CD D5 52      [17]   45     call cpct_setVideoMode_asm
                              46 ;;
    50FE CD A8 51      [17]   47   call pintar_sprites
                              48    ;; Loop forever

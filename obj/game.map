@@ -18,21 +18,21 @@ Area                                    Addr        Size        Decimal Bytes (A
      00000000  l__INITIALIZER                  
      00000000  s__CABS                         
      00000000  s__DABS                         
-     000013C0  l__CODE                         
+     000013D5  l__CODE                         
      00004000  s__CODE                         
-     000053C0  s__DATA                         
-     000053C0  s__GSFINAL                      
-     000053C0  s__GSINIT                       
-     000053C0  s__HOME                         
-     000053C0  s__INITIALIZED                  
-     000053C0  s__INITIALIZER                  
+     000053D5  s__DATA                         
+     000053D5  s__GSFINAL                      
+     000053D5  s__GSINIT                       
+     000053D5  s__HOME                         
+     000053D5  s__INITIALIZED                  
+     000053D5  s__INITIALIZER                  
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00004000    000013C0 =        5056. bytes (REL,CON)
+_CODE                               00004000    000013D5 =        5077. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -63,40 +63,40 @@ _CODE                               00004000    000013C0 =        5056. bytes (R
      000050E2  _main                              cpct_keyboard
      000051A8  pintar_sprites                     pinta_sprites
      000051CF  setreg                             setreg
-     000051F0  cls                                cls
-     000051FC  my_draw_sprite                     my_cpct_sprites
-     0000529C  cpct_setPALColour_asm              cpct_video
-     000052A6  _cpct_setVideoMemoryOffset         cpct_video
-     000052A6  cpct_setVideoMemoryOffset_asm      cpct_video
-     000052AF  _cpct_setVideoMemoryPage           cpct_video
-     000052AF  cpct_setVideoMemoryPage_asm        cpct_video
-     000052B8  _cpct_waitVSYNC                    cpct_video
-     000052B8  cpct_waitVSYNC_asm                 cpct_video
-     000052C0  cpct_setVideoMode_asm              cpct_video
-     000052CD  _cpct_disableFirmware              cpct_firmware
-     000052CD  _cpct_removeInterruptHandler       cpct_firmware
-     000052CD  cpct_disableFirmware_asm           cpct_firmware
-     000052CD  cpct_removeInterruptHandler_asm    cpct_firmware
-     000052DD  _cpct_mode_rom_status              cpct_firmware
-     000052DE  cpct_getScreenPtr_asm              cpct_video
-     000052F0  cpct_setCRTCReg_asm                cpct_video
-     000052FB  cpct_etm_setDrawTilemap4x8_ag_as   cpct_easytilemaps
-     00005327  cpct_etm_drawTilemap4x8_ag_asm     cpct_easytilemaps
-     00005329  cpct_etm_dtm4x8_ag_asm_widthHeig   cpct_easytilemaps
-     0000533F  cpct_etm_dtm4x8_ag_asm_tilesetPt   cpct_easytilemaps
-     000053AA  cpct_etm_dtm4x8_ag_asm_restoreI    cpct_easytilemaps
-     000053B0  cpct_etm_dtm4x8_ag_asm_increment   cpct_easytilemaps
+     00005205  cls                                cls
+     00005211  my_draw_sprite                     my_cpct_sprites
+     000052B1  cpct_setPALColour_asm              cpct_video
+     000052BB  _cpct_setVideoMemoryOffset         cpct_video
+     000052BB  cpct_setVideoMemoryOffset_asm      cpct_video
+     000052C4  _cpct_setVideoMemoryPage           cpct_video
+     000052C4  cpct_setVideoMemoryPage_asm        cpct_video
+     000052CD  _cpct_waitVSYNC                    cpct_video
+     000052CD  cpct_waitVSYNC_asm                 cpct_video
+     000052D5  cpct_setVideoMode_asm              cpct_video
+     000052E2  _cpct_disableFirmware              cpct_firmware
+     000052E2  _cpct_removeInterruptHandler       cpct_firmware
+     000052E2  cpct_disableFirmware_asm           cpct_firmware
+     000052E2  cpct_removeInterruptHandler_asm    cpct_firmware
+     000052F2  _cpct_mode_rom_status              cpct_firmware
+     000052F3  cpct_getScreenPtr_asm              cpct_video
+     00005305  cpct_setCRTCReg_asm                cpct_video
+     00005310  cpct_etm_setDrawTilemap4x8_ag_as   cpct_easytilemaps
+     0000533C  cpct_etm_drawTilemap4x8_ag_asm     cpct_easytilemaps
+     0000533E  cpct_etm_dtm4x8_ag_asm_widthHeig   cpct_easytilemaps
+     00005354  cpct_etm_dtm4x8_ag_asm_tilesetPt   cpct_easytilemaps
+     000053BF  cpct_etm_dtm4x8_ag_asm_restoreI    cpct_easytilemaps
+     000053C5  cpct_etm_dtm4x8_ag_asm_increment   cpct_easytilemaps
 ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00004000    000013C0 =        5056. bytes (REL,CON)
+_CODE                               00004000    000013D5 =        5077. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     000053B5  cpct_etm_dtm4x8_ag_asm_restoreWi   cpct_easytilemaps
-     000053B8  cpct_etm_dtm4x8_ag_asm_updateWid   cpct_easytilemaps
+     000053CA  cpct_etm_dtm4x8_ag_asm_restoreWi   cpct_easytilemaps
+     000053CD  cpct_etm_dtm4x8_ag_asm_updateWid   cpct_easytilemaps
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
 
