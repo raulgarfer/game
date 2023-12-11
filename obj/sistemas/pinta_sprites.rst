@@ -5014,19 +5014,19 @@ Hexadecimal [16-Bits]
                               3 .globl my_draw_sprite
                               4 .globl cls
                               5 .globl _uno
-   51A2                       6 pintar_sprites::
-   51A2 11 00 80      [10]    7  ld de,#0x8000
-   51A5 CD DF 51      [17]    8       call cls 
-   51A8 11 00 C0      [10]    9    ld de,#0xc000
-   51AB CD DF 51      [17]   10       call cls
-   51AE 21 98 48      [10]   11    ld hl,#_uno
-   51B1 0E 04         [ 7]   12    ld c,#4
-   51B3 06 10         [ 7]   13    ld b,#16
-   51B5 11 00 C0      [10]   14    ld de,#0xc000
-   51B8 CD EB 51      [17]   15       call my_draw_sprite
-   51BB 21 98 48      [10]   16       ld hl,#_uno
-   51BE 0E 04         [ 7]   17    ld c,#4
-   51C0 06 10         [ 7]   18    ld b,#16
-   51C2 11 00 80      [10]   19    ld de,#0x8000
-   51C5 CD EB 51      [17]   20       call my_draw_sprite
-   51C8 C9            [10]   21 ret
+   51A8                       6 pintar_sprites::
+   51A8 11 00 80      [10]    7  ld de,#0x8000
+   51AB CD F0 51      [17]    8       call cls 
+   51AE 11 00 C0      [10]    9    ld de,#0xc000
+   51B1 CD F0 51      [17]   10       call cls
+   51B4 21 98 48      [10]   11    ld hl,#_uno
+   51B7 0E 04         [ 7]   12    ld c,#4
+   51B9 06 10         [ 7]   13    ld b,#16
+   51BB 11 00 C0      [10]   14    ld de,#0xc000
+   51BE CD FC 51      [17]   15       call my_draw_sprite
+   51C1 21 98 48      [10]   16       ld hl,#_uno
+   51C4 0E 04         [ 7]   17    ld c,#4
+   51C6 06 10         [ 7]   18    ld b,#16
+   51C8 11 00 80      [10]   19    ld de,#0x8000
+   51CB CD FC 51      [17]   20       call my_draw_sprite
+   51CE C9            [10]   21 ret

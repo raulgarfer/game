@@ -37,6 +37,7 @@ _main::
   push hl
   push de
   push bc
+  cpctm_setBorder_asm 0
   ;;call set_tilemap
   call setreg
   ld l,#0x20

@@ -5025,5 +5025,5 @@ Hexadecimal [16-Bits]
    50D6 06 19         [ 7]   14     ld b,#25
    50D8 11 14 00      [10]   15     ld de,#20
    50DB 21 F8 48      [10]   16     ld hl,#_tiles_8x8_0
-   50DE CD E0 52      [17]   17         call cpct_etm_setDrawTilemap4x8_ag_asm
+   50DE CD FB 52      [17]   17         call cpct_etm_setDrawTilemap4x8_ag_asm
    50E1 C9            [10]   18 ret

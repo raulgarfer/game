@@ -63,17 +63,17 @@ Hexadecimal [16-Bits]
 
 Symbol Table
 
-    cpct_set   **** GX  |     cpct_wai   **** GX  |     firmware=  0038 
-  0 loop       0019 R   |     my_draw_   **** GX  |     opc_DI  =  00F3 
-    opc_EI  =  00FB     |     opc_JR  =  0018     |     opc_LD_D=  0016 
-    pintar_s   **** GX  |     set_tile   **** GX  |     setreg     **** GX
-  1 string     0000 R
+    cpct_set   **** GX  |     cpct_set   **** GX  |     cpct_wai   **** GX
+    firmware=  0038     |   0 loop       001F R   |     my_draw_   **** GX
+    opc_DI  =  00F3     |     opc_EI  =  00FB     |     opc_JR  =  0018 
+    opc_LD_D=  0016     |     pintar_s   **** GX  |     set_tile   **** GX
+    setreg     **** GX
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
 Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE      size   1B   flags    0
-   1 _DATA      size   1A   flags    0
+   0 _CODE      size   21   flags    0
+   1 _DATA      size    0   flags    0
 

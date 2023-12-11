@@ -3,31 +3,13 @@ Hexadecimal [16-Bits]
 
 
 
-                              1 ;;-----------------------------LICENSE NOTICE------------------------------------
-                              2 ;;  This file is part of CPCtelera: An Amstrad CPC Game Engine 
-                              3 ;;  Copyright (C) 2018 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
-                              4 ;;
-                              5 ;;  This program is free software: you can redistribute it and/or modify
-                              6 ;;  it under the terms of the GNU Lesser General Public License as published by
-                              7 ;;  the Free Software Foundation, either version 3 of the License, or
-                              8 ;;  (at your option) any later version.
-                              9 ;;
-                             10 ;;  This program is distributed in the hope that it will be useful,
-                             11 ;;  but WITHOUT ANY WARRANTY; without even the implied warranty of
-                             12 ;;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-                             13 ;;  GNU Lesser General Public License for more details.
-                             14 ;;
-                             15 ;;  You should have received a copy of the GNU Lesser General Public License
-                             16 ;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-                             17 ;;-------------------------------------------------------------------------------
-                             18 
-                             19 ;; Include all CPCtelera constant definitions, macros and variables
+                              1 ;; Include all CPCtelera constant definitions, macros and variables
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]
 
 
 
-                             20 .include "cpctelera.h.s"
+                              2 .include "cpctelera.h.s"
                               1 ;;-----------------------------LICENSE NOTICE------------------------------------
                               2 ;;  This file is part of CPCtelera: An Amstrad CPC Game Engine
                               3 ;;  Copyright (C) 2017 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
@@ -5029,75 +5011,58 @@ Hexadecimal [16-Bits]
 
 
 
-                             21 
-                             22 ;;
-                             23 ;; Start of _DATA area 
-                             24 ;;  SDCC requires at least _DATA and _CODE areas to be declared, but you may use
-                             25 ;;  any one of them for any purpose. Usually, compiler puts _DATA area contents
-                             26 ;;  right after _CODE area contents.
-                             27 ;;
-                             28 .area _DATA
-                             29 
-                             30 ;; Define one Zero-terminated string to be used later on
-   53A5 43 50 43 74 65 6C    31 string: .asciz "CPCtelera up and running!";
-        65 72 61 20 75 70
-        20 61 6E 64 20 72
-        75 6E 6E 69 6E 67
-        21 00
-                             32 
-                             33 ;;
-                             34 ;; Start of _CODE area
-                             35 ;; 
-                             36 .area _CODE
-                             37 
-                             38 ;; 
-                             39 ;; Declare all function entry points as global symbols for the compiler.
-                             40 ;; (The linker will know what to do with them)
-                             41 ;; WARNING: Every global symbol declared will be linked, so DO NOT declare 
-                             42 ;; symbols for functions you do not use.
-                             43 ;;
-                             44 .globl cpct_disableFirmware_asm
-                             45 .globl cpct_getScreenPtr_asm
-                             46 ;;.globl _pinta_mapa
-                             47 .globl cpct_setCRTCReg_asm
-                             48 .globl cpct_setVideoMemoryOffset_asm
-                             49 .globl cpct_waitVSYNC_asm
-                             50 .globl set_tilemap
-                             51 .globl my_draw_sprite
-                             52 .globl _uno
-                             53 .globl setreg
-                             54 .globl cls
-                             55 .globl cpct_setVideoMode_asm
-                             56 .globl cpct_setVideoMemoryPage_asm
-                             57 .globl pintar_sprites
-                             58 ;;
-                             59 ;; MAIN function. This is the entry point of the application.
-                             60 ;;    _main:: global symbol is required for correctly compiling and linking
-                             61 ;;
-   50E2                      62 _main::
-                             63    ;; Disable firmware to prevent it from interfering with string drawing
-   50E2 CD B2 52      [17]   64   call cpct_disableFirmware_asm
-                             65   ;;cambia la pila,salvando la memoria
-   50E5 C1            [10]   66   pop bc
-   50E6 D1            [10]   67   pop de
-   50E7 E1            [10]   68   pop hl
-   50E8 31 00 80      [10]   69   ld sp,#0x8000
-   50EB E5            [11]   70   push hl
-   50EC D5            [11]   71   push de
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 97.
-Hexadecimal [16-Bits]
-
-
-
-   50ED C5            [11]   72   push bc
-                             73   ;;call set_tilemap
-   50EE CD C9 51      [17]   74   call setreg
-   50F1 2E 20         [ 7]   75   ld l,#0x20
-   50F3 0E 00         [ 7]   76    ld c,#0
-   50F5 CD A5 52      [17]   77     call cpct_setVideoMode_asm
-                             78 ;;
-   50F8 CD A2 51      [17]   79   call pintar_sprites
-                             80    ;; Loop forever
-   50FB                      81 loop:
-   50FB 18 FE         [12]   82    jr    loop
-                             83 
+                              3 .area _DATA
+                              4 .area _CODE
+                              5 ;; 
+                              6 ;; Declare all function entry points as global symbols for the compiler.
+                              7 ;; (The linker will know what to do with them)
+                              8 ;; WARNING: Every global symbol declared will be linked, so DO NOT declare 
+                              9 ;; symbols for functions you do not use.
+                             10 ;;
+                             11 .globl cpct_disableFirmware_asm
+                             12 .globl cpct_getScreenPtr_asm
+                             13 ;;.globl _pinta_mapa
+                             14 .globl cpct_setCRTCReg_asm
+                             15 .globl cpct_setVideoMemoryOffset_asm
+                             16 .globl cpct_waitVSYNC_asm
+                             17 .globl set_tilemap
+                             18 .globl my_draw_sprite
+                             19 .globl _uno
+                             20 .globl setreg
+                             21 .globl cls
+                             22 .globl cpct_setVideoMode_asm
+                             23 .globl cpct_setVideoMemoryPage_asm
+                             24 .globl pintar_sprites
+                             25 ;;
+                             26 ;; MAIN function. This is the entry point of the application.
+                             27 ;;    _main:: global symbol is required for correctly compiling and linking
+                             28 ;;
+   50E2                      29 _main::
+                             30    ;; Disable firmware to prevent it from interfering with string drawing
+   50E2 CD CD 52      [17]   31   call cpct_disableFirmware_asm
+                             32   ;;cambia la pila,salvando la memoria
+   50E5 C1            [10]   33   pop bc
+   50E6 D1            [10]   34   pop de
+   50E7 E1            [10]   35   pop hl
+   50E8 31 00 80      [10]   36   ld sp,#0x8000
+   50EB E5            [11]   37   push hl
+   50EC D5            [11]   38   push de
+   50ED C5            [11]   39   push bc
+   000C                      40   cpctm_setBorder_asm 0
+                              1    .radix h
+   000C                       2    cpctm_setBorder_raw_asm \0 ;; [28] Macro that does the job, but requires a number value to be passed
+                              1    .globl cpct_setPALColour_asm
+   50EE 21 10 00      [10]    2    ld   hl, #0x010         ;; [3]  H=Hardware value of desired colour, L=Border INK (16)
+   50F1 CD 9C 52      [17]    3    call cpct_setPALColour_asm  ;; [25] Set Palette colour of the border
+                              3    .radix d
+                             41   ;;call set_tilemap
+   50F4 CD CF 51      [17]   42   call setreg
+   50F7 2E 20         [ 7]   43   ld l,#0x20
+   50F9 0E 00         [ 7]   44    ld c,#0
+   50FB CD C0 52      [17]   45     call cpct_setVideoMode_asm
+                             46 ;;
+   50FE CD A8 51      [17]   47   call pintar_sprites
+                             48    ;; Loop forever
+   5101                      49 loop:
+   5101 18 FE         [12]   50    jr    loop
+                             51 

@@ -2,11 +2,13 @@ XL2
 H 1 areas 2 global symbols
 M setreg
 S .__.ABS. Def0000
-A _CODE size 16 flags 0 addr 0
+A _CODE size 21 flags 0 addr 0
 S setreg Def0000
 T 00 00
 R 00 00 00 00
 T 00 00 01 01 BC ED 49 01 30 BD ED 49 06 BC 0E 0C
 R 00 00 00 00
-T 0E 00 ED 49 01 2C BD ED 49 C9
+T 0E 00 ED 49 01 2C BD ED 49 01 02 BC ED 49 06 BD
+R 00 00 00 00
+T 1C 00 0E 32 ED 49 C9
 R 00 00 00 00
