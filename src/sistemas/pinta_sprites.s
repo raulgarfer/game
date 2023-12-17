@@ -5,9 +5,9 @@
 .globl _uno
 pintar_sprites::
  ld de,#0x8000
-      call cls 
+   ;;   call cls 
    ld de,#0xc000
-      call cls
+  ;;    call cls
    ld hl,#_uno
    ld c,#4
    ld b,#16
@@ -17,5 +17,5 @@ pintar_sprites::
    ld c,#4
    ld b,#16
    ld de,#0x8000
-      call my_draw_sprite
+    ;;  call my_draw_sprite
 ret

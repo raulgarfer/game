@@ -1,0 +1,18 @@
+XL2
+H 1 areas 4 global symbols
+M rutinas_espera_tecla.s
+S cpct_scanKeyboard_f_asm Ref0000
+S .__.ABS. Def0000
+S cpct_isAnyKeyPressed_f_asm Ref0000
+A _CODE size 11 flags 0 addr 0
+S _espera_pulsacion_alguna_tecla Def0000
+T 00 00
+R 00 00 00 00
+T 00 00
+R 00 00 00 00
+T 00 00 CD 00 00 CD 00 00 20 F8
+R 00 00 00 00 02 03 00 00 02 06 02 00
+T 08 00
+R 00 00 00 00
+T 08 00 CD 00 00 CD 00 00 28 F8 C9
+R 00 00 00 00 02 03 00 00 02 06 02 00

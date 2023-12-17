@@ -282,6 +282,10 @@ ds_drawSpriteWidth:
    ;;aqui hay quew cambiar el bc para adpatarlo al ancho de pantalla
    ;;
    ;;ld   bc, #0xC050           ;; [3] We advance destination pointer to next line
-   ld bc,#0xc060
+   ld b,#0xc0
+   ;;cuatro tiles menos, son ahora 16 en vez de 20
+   ;;le restamos 16,4 por cada tile de menos
+   ;;imagino que al ensancharlo sera al contrario
+   ld c,#0x50;;-16
    add  hl, bc                ;; [3]  HL += 0xC050
    jp ds_drawSpriteWidth_next ;; [3] Continue copying

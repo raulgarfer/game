@@ -1,0 +1,1712 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 1.
+Hexadecimal [16-Bits]
+
+
+
+                              1 ;;-----------------------------LICENSE NOTICE------------------------------------
+                              2 ;;  This file is part of CPCtelera: An Amstrad CPC Game Engine 
+                              3 ;;  Copyright (C) 2018 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
+                              4 ;;
+                              5 ;;  This program is free software: you can redistribute it and/or modify
+                              6 ;;  it under the terms of the GNU Lesser General Public License as published by
+                              7 ;;  the Free Software Foundation, either version 3 of the License, or
+                              8 ;;  (at your option) any later version.
+                              9 ;;
+                             10 ;;  This program is distributed in the hope that it will be useful,
+                             11 ;;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             12 ;;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                             13 ;;  GNU Lesser General Public License for more details.
+                             14 ;;
+                             15 ;;  You should have received a copy of the GNU Lesser General Public License
+                             16 ;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+                             17 ;;-------------------------------------------------------------------------------
+                             18 .module cpct_easytilemaps
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
+Hexadecimal [16-Bits]
+
+
+
+                             19 .include "macros/cpct_undocumentedOpcodes.h.s"
+                              1 ;;-----------------------------LICENSE NOTICE------------------------------------
+                              2 ;;  This file is part of CPCtelera: An Amstrad CPC Game Engine 
+                              3 ;;  Copyright (C) 2021 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
+                              4 ;;
+                              5 ;;  This program is free software: you can redistribute it and/or modify
+                              6 ;;  it under the terms of the GNU Lesser General Public License as published by
+                              7 ;;  the Free Software Foundation, either version 3 of the License, or
+                              8 ;;  (at your option) any later version.
+                              9 ;;
+                             10 ;;  This program is distributed in the hope that it will be useful,
+                             11 ;;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             12 ;;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                             13 ;;  GNU Lesser General Public License for more details.
+                             14 ;;
+                             15 ;;  You should have received a copy of the GNU Lesser General Public License
+                             16 ;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+                             17 ;;-------------------------------------------------------------------------------
+                             18 
+                             19 ;;
+                             20 ;; File: Undocumented Opcodes
+                             21 ;;
+                             22 ;;    Macros to clarify source code when using undocumented opcodes. Only
+                             23 ;; valid to be used from assembly language (not from C).
+                             24 ;;
+                             25 
+                             26 ;; Macro: jr__0
+                             27 ;;    Opcode for "JR #0" instruction
+                             28 ;; 
+                             29 .mdelete jr__0
+                             30 .macro jr__0
+                             31    .DW #0x0018  ;; JR #00 (Normally used as a modifiable jump, as jr 0 is an infinite loop)
+                             32 .endm
+                             33 
+                             34 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             35 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             36 ;; SLL Instructions
+                             37 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             38 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             39 
+                             40 ;; Macro: sll__b
+                             41 ;;    Opcode for "SLL b" instruction
+                             42 ;; 
+                             43 .mdelete sll__b
+                             44 .macro sll__b
+                             45    .db #0xCB, #0x30  ;; Opcode for sll b
+                             46 .endm
+                             47 
+                             48 ;; Macro: sll__c
+                             49 ;;    Opcode for "SLL c" instruction
+                             50 ;; 
+                             51 .mdelete sll__c
+                             52 .macro sll__c
+                             53    .db #0xCB, #0x31  ;; Opcode for sll c
+                             54 .endm
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
+Hexadecimal [16-Bits]
+
+
+
+                             55 
+                             56 ;; Macro: sll__d
+                             57 ;;    Opcode for "SLL d" instruction
+                             58 ;; 
+                             59 .mdelete sll__d
+                             60 .macro sll__d
+                             61    .db #0xCB, #0x32  ;; Opcode for sll d
+                             62 .endm
+                             63 
+                             64 ;; Macro: sll__e
+                             65 ;;    Opcode for "SLL e" instruction
+                             66 ;; 
+                             67 .mdelete sll__e
+                             68 .macro sll__e
+                             69    .db #0xCB, #0x33  ;; Opcode for sll e
+                             70 .endm
+                             71 
+                             72 ;; Macro: sll__h
+                             73 ;;    Opcode for "SLL h" instruction
+                             74 ;; 
+                             75 .mdelete sll__h
+                             76 .macro sll__h
+                             77    .db #0xCB, #0x34  ;; Opcode for sll h
+                             78 .endm
+                             79 
+                             80 ;; Macro: sll__l
+                             81 ;;    Opcode for "SLL l" instruction
+                             82 ;; 
+                             83 .mdelete sll__l
+                             84 .macro sll__l
+                             85    .db #0xCB, #0x35  ;; Opcode for sll l
+                             86 .endm
+                             87 
+                             88 ;; Macro: sll___hl_
+                             89 ;;    Opcode for "SLL (hl)" instruction
+                             90 ;; 
+                             91 .mdelete sll___hl_
+                             92 .macro sll___hl_
+                             93    .db #0xCB, #0x36  ;; Opcode for sll (hl)
+                             94 .endm
+                             95 
+                             96 ;; Macro: sll__a
+                             97 ;;    Opcode for "SLL a" instruction
+                             98 ;; 
+                             99 .mdelete sll__a
+                            100 .macro sll__a
+                            101    .db #0xCB, #0x37  ;; Opcode for sll a
+                            102 .endm
+                            103 
+                            104 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                            105 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                            106 ;; IXL Related Macros
+                            107 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                            108 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                            109 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 4.
+Hexadecimal [16-Bits]
+
+
+
+                            110 ;; Macro: ld__ixl    Value
+                            111 ;;    Opcode for "LD ixl, Value" instruction
+                            112 ;;  
+                            113 ;; Parameters:
+                            114 ;;    Value - An inmediate 8-bits value that will be loaded into ixl
+                            115 ;; 
+                            116 .mdelete ld__ixl
+                            117 .macro ld__ixl    Value 
+                            118    .db #0xDD, #0x2E, Value  ;; Opcode for ld ixl, Value
+                            119 .endm
+                            120 
+                            121 ;; Macro: ld__ixl_a
+                            122 ;;    Opcode for "LD ixl, a" instruction
+                            123 ;; 
+                            124 .mdelete ld__ixl_a
+                            125 .macro ld__ixl_a
+                            126    .dw #0x6FDD  ;; Opcode for ld ixl, a
+                            127 .endm
+                            128 
+                            129 ;; Macro: ld__ixl_b
+                            130 ;;    Opcode for "LD ixl, B" instruction
+                            131 ;; 
+                            132 .mdelete ld__ixl_b
+                            133 .macro ld__ixl_b
+                            134    .dw #0x68DD  ;; Opcode for ld ixl, b
+                            135 .endm
+                            136 
+                            137 ;; Macro: ld__ixl_c
+                            138 ;;    Opcode for "LD ixl, C" instruction
+                            139 ;; 
+                            140 .mdelete ld__ixl_c
+                            141 .macro ld__ixl_c
+                            142    .dw #0x69DD  ;; Opcode for ld ixl, c
+                            143 .endm
+                            144 
+                            145 ;; Macro: ld__ixl_d
+                            146 ;;    Opcode for "LD ixl, D" instruction
+                            147 ;; 
+                            148 .mdelete ld__ixl_d
+                            149 .macro ld__ixl_d
+                            150    .dw #0x6ADD  ;; Opcode for ld ixl, d
+                            151 .endm
+                            152 
+                            153 ;; Macro: ld__ixl_e
+                            154 ;;    Opcode for "LD ixl, E" instruction
+                            155 ;; 
+                            156 .mdelete ld__ixl_e
+                            157 .macro ld__ixl_e
+                            158    .dw #0x6BDD  ;; Opcode for ld ixl, e
+                            159 .endm
+                            160 
+                            161 ;; Macro: ld__ixl_ixh
+                            162 ;;    Opcode for "LD ixl, IXH" instruction
+                            163 ;; 
+                            164 .mdelete  ld__ixl_ixh
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 5.
+Hexadecimal [16-Bits]
+
+
+
+                            165 .macro ld__ixl_ixh
+                            166    .dw #0x6CDD  ;; Opcode for ld ixl, ixh
+                            167 .endm
+                            168 
+                            169 ;; Macro: ld__a_ixl
+                            170 ;;    Opcode for "LD A, ixl" instruction
+                            171 ;; 
+                            172 .mdelete ld__a_ixl
+                            173 .macro ld__a_ixl
+                            174    .dw #0x7DDD  ;; Opcode for ld a, ixl
+                            175 .endm
+                            176 
+                            177 ;; Macro: ld__b_ixl
+                            178 ;;    Opcode for "LD B, ixl" instruction
+                            179 ;; 
+                            180 .mdelete ld__b_ixl
+                            181 .macro ld__b_ixl
+                            182    .dw #0x45DD  ;; Opcode for ld b, ixl
+                            183 .endm
+                            184 
+                            185 ;; Macro: ld__c_ixl
+                            186 ;;    Opcode for "LD c, ixl" instruction
+                            187 ;; 
+                            188 .mdelete ld__c_ixl
+                            189 .macro ld__c_ixl
+                            190    .dw #0x4DDD  ;; Opcode for ld c, ixl
+                            191 .endm
+                            192 
+                            193 ;; Macro: ld__d_ixl
+                            194 ;;    Opcode for "LD D, ixl" instruction
+                            195 ;; 
+                            196 .mdelete ld__d_ixl
+                            197 .macro ld__d_ixl
+                            198    .dw #0x55DD  ;; Opcode for ld d, ixl
+                            199 .endm
+                            200 
+                            201 ;; Macro: ld__e_ixl
+                            202 ;;    Opcode for "LD e, ixl" instruction
+                            203 ;; 
+                            204 .mdelete ld__e_ixl
+                            205 .macro ld__e_ixl
+                            206    .dw #0x5DDD  ;; Opcode for ld e, ixl
+                            207 .endm
+                            208 
+                            209 ;; Macro: add__ixl
+                            210 ;;    Opcode for "Add ixl" instruction
+                            211 ;; 
+                            212 .mdelete add__ixl
+                            213 .macro add__ixl
+                            214    .dw #0x85DD  ;; Opcode for add ixl
+                            215 .endm
+                            216 
+                            217 ;; Macro: sub__ixl
+                            218 ;;    Opcode for "SUB ixl" instruction
+                            219 ;; 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 6.
+Hexadecimal [16-Bits]
+
+
+
+                            220 .mdelete sub__ixl
+                            221 .macro sub__ixl
+                            222    .dw #0x95DD  ;; Opcode for sub ixl
+                            223 .endm
+                            224 
+                            225 ;; Macro: adc__ixl
+                            226 ;;    Opcode for "ADC ixl" instruction
+                            227 ;; 
+                            228 .mdelete adc__ixl
+                            229 .macro adc__ixl
+                            230    .dw #0x8DDD  ;; Opcode for adc ixl
+                            231 .endm
+                            232 
+                            233 ;; Macro: sbc__ixl
+                            234 ;;    Opcode for "SBC ixl" instruction
+                            235 ;; 
+                            236 .mdelete sbc__ixl
+                            237 .macro sbc__ixl
+                            238    .dw #0x9DDD  ;; Opcode for sbc ixl
+                            239 .endm
+                            240 
+                            241 ;; Macro: and__ixl
+                            242 ;;    Opcode for "AND ixl" instruction
+                            243 ;; 
+                            244 .mdelete and__ixl
+                            245 .macro and__ixl
+                            246    .dw #0xA5DD  ;; Opcode for and ixl
+                            247 .endm
+                            248 
+                            249 ;; Macro: or__ixl
+                            250 ;;    Opcode for "OR ixl" instruction
+                            251 ;; 
+                            252 .mdelete or__ixl
+                            253 .macro or__ixl
+                            254    .dw #0xB5DD  ;; Opcode for or ixl
+                            255 .endm
+                            256 
+                            257 ;; Macro: xor__ixl
+                            258 ;;    Opcode for "XOR ixl" instruction
+                            259 ;; 
+                            260 .mdelete xor__ixl
+                            261 .macro xor__ixl
+                            262    .dw #0xADDD  ;; Opcode for xor ixl
+                            263 .endm
+                            264 
+                            265 ;; Macro: cp__ixl
+                            266 ;;    Opcode for "CP ixl" instruction
+                            267 ;; 
+                            268 .mdelete cp__ixl
+                            269 .macro cp__ixl
+                            270    .dw #0xBDDD  ;; Opcode for cp ixl
+                            271 .endm
+                            272 
+                            273 ;; Macro: dec__ixl
+                            274 ;;    Opcode for "DEC ixl" instruction
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 7.
+Hexadecimal [16-Bits]
+
+
+
+                            275 ;; 
+                            276 .mdelete dec__ixl
+                            277 .macro dec__ixl
+                            278    .dw #0x2DDD  ;; Opcode for dec ixl
+                            279 .endm
+                            280 
+                            281 ;; Macro: inc__ixl
+                            282 ;;    Opcode for "INC ixl" instruction
+                            283 ;; 
+                            284 .mdelete inc__ixl
+                            285 .macro inc__ixl
+                            286    .dw #0x2CDD  ;; Opcode for inc ixl
+                            287 .endm
+                            288 
+                            289 
+                            290 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                            291 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                            292 ;; IXH Related Macros
+                            293 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                            294 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                            295 
+                            296 ;; Macro: ld__ixh    Value
+                            297 ;;    Opcode for "LD IXH, Value" instruction
+                            298 ;;  
+                            299 ;; Parameters:
+                            300 ;;    Value - An inmediate 8-bits value that will be loaded into IXH
+                            301 ;; 
+                            302 .mdelete  ld__ixh
+                            303 .macro ld__ixh    Value 
+                            304    .db #0xDD, #0x26, Value  ;; Opcode for ld ixh, Value
+                            305 .endm
+                            306 
+                            307 ;; Macro: ld__ixh_a
+                            308 ;;    Opcode for "LD IXH, a" instruction
+                            309 ;; 
+                            310 .mdelete ld__ixh_a
+                            311 .macro ld__ixh_a
+                            312    .dw #0x67DD  ;; Opcode for ld ixh, a
+                            313 .endm
+                            314 
+                            315 ;; Macro: ld__ixh_b
+                            316 ;;    Opcode for "LD IXH, B" instruction
+                            317 ;; 
+                            318 .mdelete ld__ixh_b
+                            319 .macro ld__ixh_b
+                            320    .dw #0x60DD  ;; Opcode for ld ixh, b
+                            321 .endm
+                            322 
+                            323 ;; Macro: ld__ixh_c
+                            324 ;;    Opcode for "LD IXH, C" instruction
+                            325 ;; 
+                            326 .mdelete ld__ixh_c
+                            327 .macro ld__ixh_c
+                            328    .dw #0x61DD  ;; Opcode for ld ixh, c
+                            329 .endm
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 8.
+Hexadecimal [16-Bits]
+
+
+
+                            330 
+                            331 ;; Macro: ld__ixh_d
+                            332 ;;    Opcode for "LD IXH, D" instruction
+                            333 ;; 
+                            334 .mdelete ld__ixh_d
+                            335 .macro ld__ixh_d
+                            336    .dw #0x62DD  ;; Opcode for ld ixh, d
+                            337 .endm
+                            338 
+                            339 ;; Macro: ld__ixh_e
+                            340 ;;    Opcode for "LD IXH, E" instruction
+                            341 ;; 
+                            342 .mdelete ld__ixh_e
+                            343 .macro ld__ixh_e
+                            344    .dw #0x63DD  ;; Opcode for ld ixh, e
+                            345 .endm
+                            346 
+                            347 ;; Macro: ld__ixh_ixl
+                            348 ;;    Opcode for "LD IXH, IXL" instruction
+                            349 ;; 
+                            350 .mdelete ld__ixh_ixl
+                            351 .macro ld__ixh_ixl
+                            352    .dw #0x65DD  ;; Opcode for ld ixh, ixl
+                            353 .endm
+                            354 
+                            355 ;; Macro: ld__a_ixh
+                            356 ;;    Opcode for "LD A, IXH" instruction
+                            357 ;; 
+                            358 .mdelete ld__a_ixh
+                            359 .macro ld__a_ixh
+                            360    .dw #0x7CDD  ;; Opcode for ld a, ixh
+                            361 .endm
+                            362 
+                            363 ;; Macro: ld__b_ixh
+                            364 ;;    Opcode for "LD B, IXH" instruction
+                            365 ;; 
+                            366 .mdelete ld__b_ixh
+                            367 .macro ld__b_ixh
+                            368    .dw #0x44DD  ;; Opcode for ld b, ixh
+                            369 .endm
+                            370 
+                            371 ;; Macro: ld__c_ixh
+                            372 ;;    Opcode for "LD c, IXH" instruction
+                            373 ;; 
+                            374 .mdelete ld__c_ixh
+                            375 .macro ld__c_ixh
+                            376    .dw #0x4CDD  ;; Opcode for ld c, ixh
+                            377 .endm
+                            378 
+                            379 ;; Macro: ld__d_ixh
+                            380 ;;    Opcode for "LD D, IXH" instruction
+                            381 ;; 
+                            382 .mdelete ld__d_ixh
+                            383 .macro ld__d_ixh
+                            384    .dw #0x54DD  ;; Opcode for ld d, ixh
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 9.
+Hexadecimal [16-Bits]
+
+
+
+                            385 .endm
+                            386 
+                            387 ;; Macro: ld__e_ixh
+                            388 ;;    Opcode for "LD e, IXH" instruction
+                            389 ;; 
+                            390 .mdelete ld__e_ixh
+                            391 .macro ld__e_ixh
+                            392    .dw #0x5CDD  ;; Opcode for ld e, ixh
+                            393 .endm
+                            394 
+                            395 ;; Macro: add__ixh
+                            396 ;;    Opcode for "ADD IXH" instruction
+                            397 ;; 
+                            398 .mdelete add__ixh
+                            399 .macro add__ixh
+                            400    .dw #0x84DD  ;; Opcode for add ixh
+                            401 .endm
+                            402 
+                            403 ;; Macro: sub__ixh
+                            404 ;;    Opcode for "SUB IXH" instruction
+                            405 ;; 
+                            406 .mdelete sub__ixh
+                            407 .macro sub__ixh
+                            408    .dw #0x94DD  ;; Opcode for sub ixh
+                            409 .endm
+                            410 
+                            411 ;; Macro: adc__ixh
+                            412 ;;    Opcode for "ADC IXH" instruction
+                            413 ;; 
+                            414 .mdelete adc__ixh
+                            415 .macro adc__ixh
+                            416    .dw #0x8CDD  ;; Opcode for adc ixh
+                            417 .endm
+                            418 
+                            419 ;; Macro: sbc__ixh
+                            420 ;;    Opcode for "SBC IXH" instruction
+                            421 ;; 
+                            422 .mdelete sbc__ixh
+                            423 .macro sbc__ixh
+                            424    .dw #0x9CDD  ;; Opcode for sbc ixh
+                            425 .endm
+                            426 
+                            427 ;; Macro: and__ixh
+                            428 ;;    Opcode for "AND IXH" instruction
+                            429 ;; 
+                            430 .mdelete and__ixh
+                            431 .macro and__ixh
+                            432    .dw #0xA4DD  ;; Opcode for and ixh
+                            433 .endm
+                            434 
+                            435 ;; Macro: or__ixh
+                            436 ;;    Opcode for "OR IXH" instruction
+                            437 ;; 
+                            438 .mdelete or__ixh
+                            439 .macro or__ixh
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 10.
+Hexadecimal [16-Bits]
+
+
+
+                            440    .dw #0xB4DD  ;; Opcode for or ixh
+                            441 .endm
+                            442 
+                            443 ;; Macro: xor__ixh
+                            444 ;;    Opcode for "XOR IXH" instruction
+                            445 ;; 
+                            446 .mdelete xor__ixh
+                            447 .macro xor__ixh
+                            448    .dw #0xACDD  ;; Opcode for xor ixh
+                            449 .endm
+                            450 
+                            451 ;; Macro: cp__ixh
+                            452 ;;    Opcode for "CP IXH" instruction
+                            453 ;; 
+                            454 .mdelete cp__ixh
+                            455 .macro cp__ixh
+                            456    .dw #0xBCDD  ;; Opcode for cp ixh
+                            457 .endm
+                            458 
+                            459 ;; Macro: dec__ixh
+                            460 ;;    Opcode for "DEC IXH" instruction
+                            461 ;; 
+                            462 .mdelete dec__ixh
+                            463 .macro dec__ixh
+                            464    .dw #0x25DD  ;; Opcode for dec ixh
+                            465 .endm
+                            466 
+                            467 ;; Macro: inc__ixh
+                            468 ;;    Opcode for "INC IXH" instruction
+                            469 ;; 
+                            470 .mdelete inc__ixh
+                            471 .macro inc__ixh
+                            472    .dw #0x24DD  ;; Opcode for inc ixh
+                            473 .endm
+                            474 
+                            475 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                            476 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                            477 ;; IYL Related Macros
+                            478 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                            479 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                            480 
+                            481 ;; Macro: ld__iyl    Value
+                            482 ;;    Opcode for "LD iyl, Value" instruction
+                            483 ;;  
+                            484 ;; Parameters:
+                            485 ;;    Value - An inmediate 8-bits value that will be loaded into iyl
+                            486 ;; 
+                            487 .mdelete  ld__iyl
+                            488 .macro ld__iyl    Value 
+                            489    .db #0xFD, #0x2E, Value  ;; Opcode for ld iyl, Value
+                            490 .endm
+                            491 
+                            492 ;; Macro: ld__iyl_a
+                            493 ;;    Opcode for "LD iyl, a" instruction
+                            494 ;; 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 11.
+Hexadecimal [16-Bits]
+
+
+
+                            495 .mdelete ld__iyl_a
+                            496 .macro ld__iyl_a
+                            497    .dw #0x6FFD  ;; Opcode for ld iyl, a
+                            498 .endm
+                            499 
+                            500 ;; Macro: ld__iyl_b
+                            501 ;;    Opcode for "LD iyl, B" instruction
+                            502 ;; 
+                            503 .mdelete ld__iyl_b
+                            504 .macro ld__iyl_b
+                            505    .dw #0x68FD  ;; Opcode for ld iyl, b
+                            506 .endm
+                            507 
+                            508 ;; Macro: ld__iyl_c
+                            509 ;;    Opcode for "LD iyl, C" instruction
+                            510 ;; 
+                            511 .mdelete ld__iyl_c
+                            512 .macro ld__iyl_c
+                            513    .dw #0x69FD  ;; Opcode for ld iyl, c
+                            514 .endm
+                            515 
+                            516 ;; Macro: ld__iyl_d
+                            517 ;;    Opcode for "LD iyl, D" instruction
+                            518 ;; 
+                            519 .mdelete ld__iyl_d
+                            520 .macro ld__iyl_d
+                            521    .dw #0x6AFD  ;; Opcode for ld iyl, d
+                            522 .endm
+                            523 
+                            524 ;; Macro: ld__iyl_e
+                            525 ;;    Opcode for "LD iyl, E" instruction
+                            526 ;; 
+                            527 .mdelete ld__iyl_e
+                            528 .macro ld__iyl_e
+                            529    .dw #0x6BFD  ;; Opcode for ld iyl, e
+                            530 .endm
+                            531 
+                            532 ;; Macro: ld__iyl_iyh
+                            533 ;;    Opcode for "LD iyl, IXL" instruction
+                            534 ;; 
+                            535 .mdelete  ld__iyl_iyh
+                            536 .macro ld__iyl_iyh
+                            537    .dw #0x6CFD  ;; Opcode for ld iyl, ixl
+                            538 .endm
+                            539 
+                            540 ;; Macro: ld__a_iyl
+                            541 ;;    Opcode for "LD A, iyl" instruction
+                            542 ;; 
+                            543 .mdelete ld__a_iyl
+                            544 .macro ld__a_iyl
+                            545    .dw #0x7DFD  ;; Opcode for ld a, iyl
+                            546 .endm
+                            547 
+                            548 ;; Macro: ld__b_iyl
+                            549 ;;    Opcode for "LD B, iyl" instruction
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 12.
+Hexadecimal [16-Bits]
+
+
+
+                            550 ;; 
+                            551 .mdelete ld__b_iyl
+                            552 .macro ld__b_iyl
+                            553    .dw #0x45FD  ;; Opcode for ld b, iyl
+                            554 .endm
+                            555 
+                            556 ;; Macro: ld__c_iyl
+                            557 ;;    Opcode for "LD c, iyl" instruction
+                            558 ;; 
+                            559 .mdelete ld__c_iyl
+                            560 .macro ld__c_iyl
+                            561    .dw #0x4DFD  ;; Opcode for ld c, iyl
+                            562 .endm
+                            563 
+                            564 ;; Macro: ld__d_iyl
+                            565 ;;    Opcode for "LD D, iyl" instruction
+                            566 ;; 
+                            567 .mdelete ld__d_iyl
+                            568 .macro ld__d_iyl
+                            569    .dw #0x55FD  ;; Opcode for ld d, iyl
+                            570 .endm
+                            571 
+                            572 ;; Macro: ld__e_iyl
+                            573 ;;    Opcode for "LD e, iyl" instruction
+                            574 ;; 
+                            575 .mdelete ld__e_iyl
+                            576 .macro ld__e_iyl
+                            577    .dw #0x5DFD  ;; Opcode for ld e, iyl
+                            578 .endm
+                            579 
+                            580 ;; Macro: add__iyl
+                            581 ;;    Opcode for "Add iyl" instruction
+                            582 ;; 
+                            583 .mdelete add__iyl
+                            584 .macro add__iyl
+                            585    .dw #0x85FD  ;; Opcode for add iyl
+                            586 .endm
+                            587 
+                            588 ;; Macro: sub__iyl
+                            589 ;;    Opcode for "SUB iyl" instruction
+                            590 ;; 
+                            591 .mdelete sub__iyl
+                            592 .macro sub__iyl
+                            593    .dw #0x95FD  ;; Opcode for sub iyl
+                            594 .endm
+                            595 
+                            596 ;; Macro: adc__iyl
+                            597 ;;    Opcode for "ADC iyl" instruction
+                            598 ;; 
+                            599 .mdelete adc__iyl
+                            600 .macro adc__iyl
+                            601    .dw #0x8DFD  ;; Opcode for adc iyl
+                            602 .endm
+                            603 
+                            604 ;; Macro: sbc__iyl
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 13.
+Hexadecimal [16-Bits]
+
+
+
+                            605 ;;    Opcode for "SBC iyl" instruction
+                            606 ;; 
+                            607 .mdelete sbc__iyl
+                            608 .macro sbc__iyl
+                            609    .dw #0x9DFD  ;; Opcode for sbc iyl
+                            610 .endm
+                            611 
+                            612 ;; Macro: and__iyl
+                            613 ;;    Opcode for "AND iyl" instruction
+                            614 ;; 
+                            615 .mdelete and__iyl
+                            616 .macro and__iyl
+                            617    .dw #0xA5FD  ;; Opcode for and iyl
+                            618 .endm
+                            619 
+                            620 ;; Macro: or__iyl
+                            621 ;;    Opcode for "OR iyl" instruction
+                            622 ;; 
+                            623 .mdelete or__iyl
+                            624 .macro or__iyl
+                            625    .dw #0xB5FD  ;; Opcode for or iyl
+                            626 .endm
+                            627 
+                            628 ;; Macro: xor__iyl
+                            629 ;;    Opcode for "XOR iyl" instruction
+                            630 ;; 
+                            631 .mdelete xor__iyl
+                            632 .macro xor__iyl
+                            633    .dw #0xADFD  ;; Opcode for xor iyl
+                            634 .endm
+                            635 
+                            636 ;; Macro: cp__iyl
+                            637 ;;    Opcode for "CP iyl" instruction
+                            638 ;; 
+                            639 .mdelete cp__iyl
+                            640 .macro cp__iyl
+                            641    .dw #0xBDFD  ;; Opcode for cp iyl
+                            642 .endm
+                            643 
+                            644 ;; Macro: dec__iyl
+                            645 ;;    Opcode for "DEC iyl" instruction
+                            646 ;; 
+                            647 .mdelete dec__iyl
+                            648 .macro dec__iyl
+                            649    .dw #0x2DFD  ;; Opcode for dec iyl
+                            650 .endm
+                            651 
+                            652 ;; Macro: inc__iyl
+                            653 ;;    Opcode for "INC iyl" instruction
+                            654 ;; 
+                            655 .mdelete inc__iyl
+                            656 .macro inc__iyl
+                            657    .dw #0x2CFD  ;; Opcode for inc iyl
+                            658 .endm
+                            659 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 14.
+Hexadecimal [16-Bits]
+
+
+
+                            660 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                            661 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                            662 ;; IYH Related Macros
+                            663 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                            664 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                            665 
+                            666 ;; Macro: ld__iyh    Value
+                            667 ;;    Opcode for "LD iyh, Value" instruction
+                            668 ;;  
+                            669 ;; Parameters:
+                            670 ;;    Value - An inmediate 8-bits value that will be loaded into iyh
+                            671 ;; 
+                            672 .mdelete  ld__iyh
+                            673 .macro ld__iyh    Value 
+                            674    .db #0xFD, #0x26, Value  ;; Opcode for ld iyh, Value
+                            675 .endm
+                            676 
+                            677 ;; Macro: ld__iyh_a
+                            678 ;;    Opcode for "LD iyh, a" instruction
+                            679 ;; 
+                            680 .mdelete ld__iyh_a
+                            681 .macro ld__iyh_a
+                            682    .dw #0x67FD  ;; Opcode for ld iyh, a
+                            683 .endm
+                            684 
+                            685 ;; Macro: ld__iyh_b
+                            686 ;;    Opcode for "LD iyh, B" instruction
+                            687 ;; 
+                            688 .mdelete ld__iyh_b
+                            689 .macro ld__iyh_b
+                            690    .dw #0x60FD  ;; Opcode for ld iyh, b
+                            691 .endm
+                            692 
+                            693 ;; Macro: ld__iyh_c
+                            694 ;;    Opcode for "LD iyh, C" instruction
+                            695 ;; 
+                            696 .mdelete ld__iyh_c
+                            697 .macro ld__iyh_c
+                            698    .dw #0x61FD  ;; Opcode for ld iyh, c
+                            699 .endm
+                            700 
+                            701 ;; Macro: ld__iyh_d
+                            702 ;;    Opcode for "LD iyh, D" instruction
+                            703 ;; 
+                            704 .mdelete ld__iyh_d
+                            705 .macro ld__iyh_d
+                            706    .dw #0x62FD  ;; Opcode for ld iyh, d
+                            707 .endm
+                            708 
+                            709 ;; Macro: ld__iyh_e
+                            710 ;;    Opcode for "LD iyh, E" instruction
+                            711 ;; 
+                            712 .mdelete ld__iyh_e
+                            713 .macro ld__iyh_e
+                            714    .dw #0x63FD  ;; Opcode for ld iyh, e
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 15.
+Hexadecimal [16-Bits]
+
+
+
+                            715 .endm
+                            716 
+                            717 ;; Macro: ld__iyh_iyl
+                            718 ;;    Opcode for "LD iyh, IyL" instruction
+                            719 ;; 
+                            720 .mdelete  ld__iyh_iyl
+                            721 .macro ld__iyh_iyl
+                            722    .dw #0x65FD  ;; Opcode for ld iyh, iyl
+                            723 .endm
+                            724 
+                            725 ;; Macro: ld__a_iyh
+                            726 ;;    Opcode for "LD A, iyh" instruction
+                            727 ;; 
+                            728 .mdelete ld__a_iyh
+                            729 .macro ld__a_iyh
+                            730    .dw #0x7CFD  ;; Opcode for ld a, iyh
+                            731 .endm
+                            732 
+                            733 ;; Macro: ld__b_iyh
+                            734 ;;    Opcode for "LD B, iyh" instruction
+                            735 ;; 
+                            736 .mdelete ld__b_iyh
+                            737 .macro ld__b_iyh
+                            738    .dw #0x44FD  ;; Opcode for ld b, iyh
+                            739 .endm
+                            740 
+                            741 ;; Macro: ld__c_iyh
+                            742 ;;    Opcode for "LD c, iyh" instruction
+                            743 ;; 
+                            744 .mdelete ld__c_iyh
+                            745 .macro ld__c_iyh
+                            746    .dw #0x4CFD  ;; Opcode for ld c, iyh
+                            747 .endm
+                            748 
+                            749 ;; Macro: ld__d_iyh
+                            750 ;;    Opcode for "LD D, iyh" instruction
+                            751 ;; 
+                            752 .mdelete ld__d_iyh
+                            753 .macro ld__d_iyh
+                            754    .dw #0x54FD  ;; Opcode for ld d, iyh
+                            755 .endm
+                            756 
+                            757 ;; Macro: ld__e_iyh
+                            758 ;;    Opcode for "LD e, iyh" instruction
+                            759 ;; 
+                            760 .mdelete ld__e_iyh
+                            761 .macro ld__e_iyh
+                            762    .dw #0x5CFD  ;; Opcode for ld e, iyh
+                            763 .endm
+                            764 
+                            765 ;; Macro: add__iyh
+                            766 ;;    Opcode for "Add iyh" instruction
+                            767 ;; 
+                            768 .mdelete add__iyh
+                            769 .macro add__iyh
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 16.
+Hexadecimal [16-Bits]
+
+
+
+                            770    .dw #0x84FD  ;; Opcode for add iyh
+                            771 .endm
+                            772 
+                            773 ;; Macro: sub__iyh
+                            774 ;;    Opcode for "SUB iyh" instruction
+                            775 ;; 
+                            776 .mdelete sub__iyh
+                            777 .macro sub__iyh
+                            778    .dw #0x94FD  ;; Opcode for sub iyh
+                            779 .endm
+                            780 
+                            781 ;; Macro: adc__iyh
+                            782 ;;    Opcode for "ADC iyh" instruction
+                            783 ;; 
+                            784 .mdelete adc__iyh
+                            785 .macro adc__iyh
+                            786    .dw #0x8CFD  ;; Opcode for adc iyh
+                            787 .endm
+                            788 
+                            789 ;; Macro: sbc__iyh
+                            790 ;;    Opcode for "SBC iyh" instruction
+                            791 ;; 
+                            792 .mdelete sbc__iyh
+                            793 .macro sbc__iyh
+                            794    .dw #0x9CFD  ;; Opcode for sbc iyh
+                            795 .endm
+                            796 
+                            797 ;; Macro: and__iyh
+                            798 ;;    Opcode for "AND iyh" instruction
+                            799 ;; 
+                            800 .mdelete and__iyh
+                            801 .macro and__iyh
+                            802    .dw #0xA4FD  ;; Opcode for and iyh
+                            803 .endm
+                            804 
+                            805 ;; Macro: or__iyh
+                            806 ;;    Opcode for "OR iyh" instruction
+                            807 ;; 
+                            808 .mdelete or__iyh
+                            809 .macro or__iyh
+                            810    .dw #0xB4FD  ;; Opcode for or iyh
+                            811 .endm
+                            812 
+                            813 ;; Macro: xor__iyh
+                            814 ;;    Opcode for "XOR iyh" instruction
+                            815 ;; 
+                            816 .mdelete xor__iyh
+                            817 .macro xor__iyh
+                            818    .dw #0xACFD  ;; Opcode for xor iyh
+                            819 .endm
+                            820 
+                            821 ;; Macro: cp__iyh
+                            822 ;;    Opcode for "CP iyh" instruction
+                            823 ;; 
+                            824 .mdelete cp__iyh
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 17.
+Hexadecimal [16-Bits]
+
+
+
+                            825 .macro cp__iyh
+                            826    .dw #0xBCFD  ;; Opcode for cp iyh
+                            827 .endm
+                            828 
+                            829 ;; Macro: dec__iyh
+                            830 ;;    Opcode for "DEC iyh" instruction
+                            831 ;; 
+                            832 .mdelete dec__iyh
+                            833 .macro dec__iyh
+                            834    .dw #0x25FD  ;; Opcode for dec iyh
+                            835 .endm
+                            836 
+                            837 ;; Macro: inc__iyh
+                            838 ;;    Opcode for "INC iyh" instruction
+                            839 ;; 
+                            840 .mdelete inc__iyh
+                            841 .macro inc__iyh
+                            842    .dw #0x24FD  ;; Opcode for inc iyh
+                            843 .endm
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 18.
+Hexadecimal [16-Bits]
+
+
+
+                             20 
+                             21 ;;
+                             22 ;; ASM bindings for <cpct_etm_drawTilemap4x8_ag_asm>
+                             23 ;;
+                             24 ;; 3 microseconds, 1 byte
+                             25 ;;
+   4586                      26 cpct_etm_drawTilemap4x8_ag_asm::
+                             27 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 19.
+Hexadecimal [16-Bits]
+
+
+
+                             28 .include /cpct_etm_drawTilemap4x8_ag.asm/
+                              1 ;;-----------------------------LICENSE NOTICE------------------------------------
+                              2 ;;  This file is part of CPCtelera: An Amstrad CPC Game Engine 
+                              3 ;;  Copyright (C) 2018 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
+                              4 ;;
+                              5 ;;  This program is free software: you can redistribute it and/or modify
+                              6 ;;  it under the terms of the GNU Lesser General Public License as published by
+                              7 ;;  the Free Software Foundation, either version 3 of the License, or
+                              8 ;;  (at your option) any later version.
+                              9 ;;
+                             10 ;;  This program is distributed in the hope that it will be useful,
+                             11 ;;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             12 ;;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                             13 ;;  GNU Lesser General Public License for more details.
+                             14 ;;
+                             15 ;;  You should have received a copy of the GNU Lesser General Public License
+                             16 ;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+                             17 ;;-------------------------------------------------------------------------------
+                             18 .module cpct_easytilemaps
+                             19 
+                             20 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             21 ;;
+                             22 ;; Function: cpct_etm_drawTilemap4x8_ag
+                             23 ;;
+                             24 ;;    Draws an aligned view of a tilemap made of 4x8-bytes tiles. Tiles must be 
+                             25 ;; codified as zig-zagged rows (left-to-right, then right-to-left) and with 
+                             26 ;; scanlines in Gray-code order 0,1,3,2,6,7,5,4 (zgtiles format).
+                             27 ;;
+                             28 ;; C Definition:
+                             29 ;;    void <cpct_etm_drawTilemap4x8_ag> (void* *memory*, const void* *tilemap*) __z88dk_callee;
+                             30 ;;
+                             31 ;; Input Parameters (4 bytes):
+                             32 ;;    (2B HL) memory  - Video memory location where to draw the tilemap (character & 4-byte aligned)
+                             33 ;;    (2B DE) tilemap - Pointer to the upper-left tile of the view to be drawn of the tilemap
+                             34 ;;
+                             35 ;; Assembly call (Input parameters on registers):
+                             36 ;;    > call cpct_etm_drawTilemap4x8_ag_asm
+                             37 ;;
+                             38 ;; Parameter Restrictions:
+                             39 ;;    * *memory* must be the location in video memory or backbuffer where to draw
+                             40 ;; the tilemap. This location *must be* a *4-byte-aligned* location at a 
+                             41 ;; *character pixel line 0*. *4-byte-aligned* means this address must be divisible
+                             42 ;; by 4. Details about character pixel line 0 are explained in <cpct_drawSprite> documentation.
+                             43 ;;    * *tilemap* must be the memory address of the first tile to be drawn inside a Tilemap. 
+                             44 ;; A Tilemap is a 2D tile-index matrix at 1-byte-per-tile. You may point to any tile inside
+                             45 ;; a Tilemap and that one will be considered the upper-left corner of the view to be drawn.
+                             46 ;; Please, consult details section for a deeper explanation.
+                             47 ;;
+                             48 ;; Known limitations:
+                             49 ;;     * This function *SHALL NOT* be used without a previous call to 
+                             50 ;; <cpct_etm_setDrawTilemap4x8_ag>. This call is required to configure view 
+                             51 ;; sizes and the tileset to be used.
+                             52 ;;     * This function does not do any kind of checking over the tilemap, its
+                             53 ;; contents or size. If you give a wrong pointer, your tilemap has different
+                             54 ;; dimensions than required or has less / more tiles than will be used later,
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 20.
+Hexadecimal [16-Bits]
+
+
+
+                             55 ;; undefined behaviour may happen.
+                             56 ;;     * This function only draws 32-bytes tiles of size 4x8 (in bytes).
+                             57 ;;     * This function *will not work from ROM*, as it uses self-modifying code.
+                             58 ;;     * Under hardware scroll conditions, tile drawing might fail if asked to draw
+                             59 ;; near 0x?7FF or 0x?FFF addresses (at the end of each one of the 8 pixel lines), as 
+                             60 ;; next screen byte at that locations is -0x7FF and not +1 bytes away.
+                             61 ;;
+                             62 ;; Details:
+                             63 ;;    This function draws a view of a Tilemap on video memory. A Tilemap is a 2D tile-index
+                             64 ;; matrix in which each item (1-byte) represents a tile to be drawn. Each tile is a 32-byte
+                             65 ;; array containing a 2D sprite of 8x8 pixels in video screen format. Tiles must be 
+                             66 ;; codified as zig-zagged rows (left-to-right, then right-to-left) and with scanlines 
+                             67 ;; in Gray-code order 0,1,3,2,6,7,5,4. This format is known as 'zgtiles' format and can 
+                             68 ;; be obtained as output from IMG2SP macro, configuring SET_FORMAT as 'zgtiles'. 
+                             69 ;; A window of size (*width* x *height*) inside the Tilemap is named as a 'view'. Next 
+                             70 ;; figure sums up all involved concepts,
+                             71 ;; (start code)
+                             72 ;; ************************* FIGURE 1 *******************************
+                             73 ;;
+                             74 ;; |---------------------------------|----------|---------|---------|
+                             75 ;; |            MEMORY               | COMPLETE | TILEMAP | TILEMAP |
+                             76 ;; | address&contents in hexadecimal | TILEMAP  | VIEW 1  | VIEW 2  |
+                             77 ;; |---------------------------------|  [4000]  | (4012)  | <4019>  |
+                             78 ;; |ADDRESS|       CONTENTS          |  8 x 8   |  6 x 5  |  5 x 4  |
+                             79 ;; |-------|-------------------------|----------|---------|---------|         
+                             80 ;; |  4000 |[01]01 01 01 01 01 01 01 | ######## | |  **#  | /// 8   |
+                             81 ;; |  4008 | 01 00 00 00 00 09 09 01 | #    **# | // 8 #  | ===88   |
+                             82 ;; |  4010 | 01 00(06)00 00 09 09 01 | # |  **# | ==888#  | =o= |   |
+                             83 ;; |  4018 | 01<05>05 05 00 08 00 01 | #/// 8 # | o= | #  | =^=_|   |
+                             84 ;; |  4020 | 01 02 02 02 08 08 08 01 | #===888# | ^=_|_#  |         |
+                             85 ;; |  4028 | 01 02 03 02 00 06 00 01 | #=o= | # |         |         |
+                             86 ;; |  4030 | 01 02 04 02 07 06 07 01 | #=^=_|_# |         |         | 
+                             87 ;; |  4038 | 01 01 01 01 01 01 01 01 | ######## |         |         |
+                             88 ;; |-------|-------------------------|----------|---------|---------|
+                             89 ;;           ^
+                             90 ;;           \-- 64-bytes that define an 8x8 tilemap starting at [4000]. 
+                             91 ;;               Each byte represents a tile-index. A tileset defining each one of
+                             92 ;;               the tiles as a 32-bytes (4x8-byte) sprite is required for drawing the tiles.
+                             93 ;; (end code)
+                             94 ;;
+                             95 ;;    This function can draw any desired view, as shown in figure 1. The whole *tilemap*
+                             96 ;; takes 64 bytes from 0x4000 to 0x403F in memory, which is 8x8 bytes (width x height). 
+                             97 ;; So, the complete *tilemap* can be drawn as follows,
+                             98 ;; (start code)
+                             99 ;;    // Definition of tilemap and tileset (This is normally generated by tools.
+                            100 ;;    // You might create your tiles with Gimp or Aseprite, and your tilemap with tiled,
+                            101 ;;    // then use automatic conversion to generate these arrays)
+                            102 ;;    u8 tilemap[8*8] = { 1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,1,1,0,6 /*.....*/ ,1 };
+                            103 ;;    u8 tileset[8*8*4*8] = { /*....*/ }
+                            104 ;;
+                            105 ;;    //....
+                            106 ;;    
+                            107 ;;    // At some point in your code, you set up the tilemap drawing function.
+                            108 ;;    // This set up is for drawing the full tilemap (8x8).
+                            109 ;;    cpct_etm_setDrawTilemap4x8_ag (8, 8, 8, tileset);   // 8x8 view, fullwidth of 8, using tileset set of tiles
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 21.
+Hexadecimal [16-Bits]
+
+
+
+                            110 ;;    
+                            111 ;;    //....
+                            112 ;;
+                            113 ;;    // Then, when you wanted to draw the full tilemap, you only have to call this function.
+                            114 ;;    // This will draw the tilemap at the start of video memory
+                            115 ;;    cpct_etm_drawTilemap4x8_ag (CPCT_VMEM_START, tilemap);
+                            116 ;; (end code)
+                            117 ;;
+                            118 ;;    This code configures the function with <cpct_etm_setDrawTilemap4x8_ag>
+                            119 ;; for drawing a view of 8x8 tiles (the full tilemap). You also specify that the tilemap
+                            120 ;; is 8-tiles wide (independent of the view), and that you want to use the TileSet
+                            121 ;; at the address of the tileset array. That one contains the definitions of the tiles
+                            122 ;; to be drawn, 4x8-bytes each.
+                            123 ;;
+                            124 ;;    After configuration, to draw the view a single call to <cpct_etm_drawTilemap4x8_ag>
+                            125 ;; will do the job. This only requires the video memory location where to draw the
+                            126 ;; Tilemap (upper-left corner) and a pointer to the first tile to be drawn which, in 
+                            127 ;; this case is also the first tile of the tilemap, and hence its address is *tilemap*
+                            128 ;; (the address where the array starts).
+                            129 ;; 
+                            130 ;;    *Important!*: Video memory address *must be* 4-byte aligned and at a character 
+                            131 ;; pixel line 0. In standard video modes, character pixel line 0 goes from 0xC000 
+                            132 ;; (CPCT_VMEM_START) to 0xC7FF (0x8000-to-0x8FFF, 0x4000-0x4FFF. 0x0000-0x0FFF for 
+                            133 ;; hardware backbuffers). Inside this range, address used *must also be divisible*
+                            134 ;; *by 4* to be 4-bytes aligned (0xC000, 0xC004, 0xC008...). Be always sure that
+                            135 ;; you meet these requirements when drawing.
+                            136 ;;
+                            137 ;;    Following Figure 1, the Tilemap View 1 of (6x5) can be drawn as follows,
+                            138 ;; (start code)
+                            139 ;;    // We assume tileset and tilemap are defined as in previous example
+                            140 ;; 
+                            141 ;;    // Set up drawTilemap for drawing a view of 6x5 tiles. Full tilemap
+                            142 ;;    // width is always 8, and we will be using same tileset as before
+                            143 ;;    cpct_etm_setDrawTilemap4x8_ag (6, 5, 8, tileset);
+                            144 ;;    
+                            145 ;;    //....
+                            146 ;;
+                            147 ;;    // We draw the view of the tilemap at the start of video memory. As the first
+                            148 ;;    // tile we want to draw is 0x12 (18) bytes beyond the start of the tilemap
+                            149 ;;    // array, we only need to add this offset to the address where tilemap starts
+                            150 ;;    // to pass the address of that tile to the function, as the first tile that will be drawn
+                            151 ;;    cpct_etm_drawTilemap4x8_ag (CPCT_VMEM_START, tilemap + 0x12);
+                            152 ;; (end code)
+                            153 ;;    
+                            154 ;;    This second example sets up a view window of 6x5 tiles from the 8-tiles-wide *tilemap*. 
+                            155 ;; using the same *tileset* as on previous example. Then, starting tile address is changed 
+                            156 ;; on the call to <cpct_etm_drawTilemap4x8_ag>. That makes the function draw a window of 
+                            157 ;; 6x5 tiles that effectively starts at the tile *tilemap + 0x12* which is marked in Figure 1
+                            158 ;; with parentheses *()*. Using tilemap coordinates, that tile is (2,2) (2 rows = 8*2 = 16 (0x10)
+                            159 ;; plus 2 tiles, 0x10 + 2 = 0x12). Therefore, drawing starts at tile (2,2), and spans a view
+                            160 ;; window of 6x5 tiles, which expands view up to tile (8,7). Next figure clarifies this window,
+                            161 ;; (start code)
+                            162 ;; *************** FIGURE 2 ********************
+                            163 ;;
+                            164 ;; |------------------------------------------|---------|
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 22.
+Hexadecimal [16-Bits]
+
+
+
+                            165 ;; |               MEMORY                     | TILEMAP |
+                            166 ;; |    addresses & contents in hexadecimal   | VIEW 1  |
+                            167 ;; |------------------------------------------| (4012)  |
+                            168 ;; |ADDRESS|          CONTENTS                |  6 x 5  |
+                            169 ;; |-------|----------------------------------|---------|         
+                            170 ;; |  4000 |[01] 01   01  01  01  01  01  01  |         |
+                            171 ;; |  4008 | 01  00   00  00  00  09  09  01  |         |
+                            172 ;; |       |        /-----------------------\ |         | << Width = 6 \
+                            173 ;; |  4010 | 01  00 |(06) 00  00  09  09  01| | |  **#  | ^            | View
+                            174 ;; |  4018 | 01  05 | 05  05  00  08  00  01| | // 8 #  | |            | Window
+                            175 ;; |  4020 | 01  02 | 02  02  08  08  08  01| | ==888#  | | Height = 5 |
+                            176 ;; |  4028 | 01  02 | 03  02  00  06  00  01| | o= | #  | |            |
+                            177 ;; |  4030 | 01  02 | 04  02  07  06  07  01| | ^=_|_#  | v            |
+                            178 ;; |       |        \-----------------------/ |         |              /
+                            179 ;; |  4038 | 01  01   01  01  01  01  01  01  |         |
+                            180 ;; |-------|----------------------------------|---------|
+                            181 ;;           <------------------------------> Complete tilemapWidth = 8 tiles = 8 bytes
+                            182 ;;           ^        ^
+                            183 ;;           /        \- First tile to draw at location (4012) in memory: tile (2,2).
+                            184 ;;  tilemap at           Offset = 2 rows of 8 bytes plus 2 bytes = 14 bytes = 0x12 bytes
+                            185 ;;  location [4000]
+                            186 ;; (end code)
+                            187 ;;
+                            188 ;;    Figure 2 shows how view windows are drawn. Once *width*, *height* and *tilemapWidth* have
+                            189 ;; been configured using <cpct_etm_setDrawTilemap4x8_ag>, any view inside the tilemap can be
+                            190 ;; drawn just by selecting the first tile to be drawn. In Figure 2, tile (2,2) is selected and
+                            191 ;; that selects the complete 6x5 view window to be drawn. This could easily be used to 
+                            192 ;; perform software scrolling effects by moving this first tile and redrawing the view.
+                            193 ;; The only thing to take into account is that the tile is selected by its memory location. 
+                            194 ;; Therefore, we start from the address of the *tilemap* array (0x4000 in the example) and 
+                            195 ;; add an offset to select the concrete tile we want. Adding/Subtracting 1 byte is equivalent
+                            196 ;; to moving one tile to the right/left, while adding/subtracting *tilemapWidth* bytes is 
+                            197 ;; similar to moving one tile up/down in the *tilemap* space.
+                            198 ;;
+                            199 ;;    Similarly to previous example, the Tilemap View 2 from Figure 1 can be drawn using the
+                            200 ;; following code,
+                            201 ;; (start code)
+                            202 ;;    // We assume tileset and tilemap are defined as in previous examples
+                            203 ;; 
+                            204 ;;    // Set up drawTilemap for drawing a view of 5x4 tiles. Full tilemap
+                            205 ;;    // width is always 8, and we will be using same tileset as before
+                            206 ;;    cpct_etm_setDrawTilemap4x8_ag (5, 4, 8, tileset);
+                            207 ;;    
+                            208 ;;    //....
+                            209 ;;
+                            210 ;;    // We draw the view of the tilemap at the start of video memory. First tile we want
+                            211 ;;    // to draw is (1,3) (3 rows of 8 tiles + 1 tile = 8*3 + 1 = 24 + 1) = 0x19 bytes away
+                            212 ;;    // from tilemap start.
+                            213 ;;    cpct_etm_drawTilemap4x8_ag (CPCT_VMEM_START, tilemap + 0x19);
+                            214 ;; (end code)
+                            215 ;;
+                            216 ;;    Following explanations, previous code will produce a view of 5x4 tiles from the *tilemap*,
+                            217 ;; as detailed in next figure,
+                            218 ;;
+                            219 ;; (start code)
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 23.
+Hexadecimal [16-Bits]
+
+
+
+                            220 ;; *************** FIGURE 3 ********************
+                            221 ;;
+                            222 ;;
+                            223 ;; |----------------------------------------|---------|
+                            224 ;; |               MEMORY                   | TILEMAP |
+                            225 ;; |    addresses & contents in hexadecimal | VIEW 2  |
+                            226 ;; |----------------------------------------| <4019>  |
+                            227 ;; |ADDRESS|          CONTENTS              |  5 x 4  |
+                            228 ;; |-------|--------------------------------|---------|         
+                            229 ;; |  4000 |[01] 01  01  01  01  01  01  01 |         |
+                            230 ;; |  4008 | 01  00  00  00  00  09  09  01 |         | 
+                            231 ;; |  4010 | 01| 00  06  00  00  09  09  01 |         |
+                            232 ;; |       |   /-------------------\        |         | << Width = 5 \
+                            233 ;; |  4018 | 01|<05> 05  05  00  08| 00  01 | /// 8   | ^            | View
+                            234 ;; |  4020 | 01| 02  02  02  08  08| 08  01 | ===88   | | Height = 4 | Window
+                            235 ;; |  4028 | 01| 02  03  02  00  06| 00  01 | =o= |   | |            |
+                            236 ;; |  4030 | 01| 02  04  02  07  06| 07  01 | =^=_|   | v            |
+                            237 ;; |       |   \-------------------/        |         |              /
+                            238 ;; |  4038 | 01  01  01  01  01  01  01  01 |         |
+                            239 ;; |-------|--------------------------------|---------|
+                            240 ;;           <------------------------------> Complete tilemapWidth = 8 tiles = 8 bytes
+                            241 ;;           ^   ^
+                            242 ;;           /   \---- First tile to draw at location (4019) in memory: tile (1,3).
+                            243 ;;  tilemap at         Offset = 3 rows of 8 bytes plus 1 byte = 25 bytes = 0x19 bytes
+                            244 ;;  location [4000]
+                            245 ;; (end code)
+                            246 ;;
+                            247 ;; Destroyed Register values: 
+                            248 ;;      C-bindings - AF, BC, DE, HL
+                            249 ;;    ASM-bindings - AF, BC, DE, HL, IX, IY
+                            250 ;;
+                            251 ;; Required memory:
+                            252 ;;      C-bindings - 165 bytes (+48 bytes from <cpct_etm_setDrawTilemap4x8_ag>-cbindings which is required)
+                            253 ;;    ASM-bindings - 153 bytes (+44 bytes from <cpct_etm_setDrawTilemap4x8_ag>-asmbindings which is required)
+                            254 ;;
+                            255 ;; Time Measures: 
+                            256 ;; (start code)
+                            257 ;;    Case     |  microSecs (us)   |    CPU Cycles      |
+                            258 ;; ------------------------------------------------------
+                            259 ;;    Any      | 19 + (35 + 189W)H | 76 + (140 + 756W)H |
+                            260 ;; ------------------------------------------------------
+                            261 ;;  ASM saving |       -33         |      -132          |
+                            262 ;; ------------------------------------------------------
+                            263 ;;  W=20, H=10 |      38.169       |     152.676        | (1,91 VSync)
+                            264 ;; ------------------------------------------------------
+                            265 ;;  W=16, H=16 |      48.963       |     195.852        | (2,45 VSync)
+                            266 ;; ------------------------------------------------------
+                            267 ;;    ^
+                            268 ;;    \--- 16x16 Screen is used in most games like AMC or Target Renegade, for instance.
+                            269 ;; (end code)
+                            270 ;;    W - View Width in tiles
+                            271 ;;    H - View Height in tiles
+                            272 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                            273 
+                            274 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 24.
+Hexadecimal [16-Bits]
+
+
+
+                            275 ;; LOCAL MACRO: drawSpriteRow
+                            276 ;;    Copies 4 bytes from the Stack to (HL) using pop BC.
+                            277 ;; It can copy the sprite left-to-right or right-to-left. For left-to-right
+                            278 ;; use 'inc' as parameter (MOV=inc), and for right-to-left use 'dec' (MOV=dec).
+                            279 ;; The copy assumes that destination is 4-byte aligned (L + 2 < 0xFF)
+                            280 ;; Parameters:
+                            281 ;;    MOV = ( inc | dec )
+                            282 ;;
+                            283 .macro drawSpriteRow MOV
+                            284    pop   bc             ;; [3] Get next 2 sprite bytes
+                            285    ld  (hl), c          ;; [2] Copy byte 1
+                            286    MOV    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+                            287    ld  (hl), b          ;; [2] Copy byte 2
+                            288    MOV    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+                            289    pop   bc             ;; [3] Get next 2 sprite bytes
+                            290    ld  (hl), c          ;; [2] Copy byte 3
+                            291    MOV    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+                            292    ld  (hl), b          ;; [2] Copy byte 4
+                            293 .endm
+                            294 
+                            295 ;; LOCAL MACRO: drawTilemap4x8_ag_gen
+                            296 ;;    All code function is defined as a macro to prevent code duplication on reuse
+                            297 ;; between ASM/C bindings. As setDrawtilemap4x8_ag ASM/C bindings have to couple
+                            298 ;; each one with its correct version, different global labels can be generated
+                            299 ;; from the same source using different lblPrf parameters. 
+                            300 ;;    Therefore, ASM/C bindings include this file and use this macro to generate
+                            301 ;; specific source code that will be compiled, with the appropriate labels.
+                            302 ;;
+                            303 .macro drawTilemap4x8_ag_gen lblPrf
+                            304    ;; Set Height and Width of the View Window of the current 
+                            305    ;; tilemap to be drawn (This is set by setDrawTilemap4x8_agf)
+                            306 widthHeightSet = .+2
+                            307    ld iy, #0000         ;; [4] IYL=View Window Width, IYH=View Window Height
+                            308 
+                            309 nextRow:
+                            310    ;; Disable interrupts and save SP before starting
+                            311    di                   ;; [1] Disable interrupts before starting (we are using SP to read values)
+                            312    ld (restoreSP), sp   ;; [6] Save actual SP to restore it in the end
+                            313    ;; Start of the code that draws the next tile of the present row being drawn
+                            314    ;;
+                            315 nexttile:
+                            316    ;; Get next tile to be drawn from the tilemap, which is pointed by DE
+                            317    ld     a, (de)    ;; [2] A = present tile-ID of the tile to be drawn
+                            318    ld     b, a       ;; [1] B = A
+                            319 
+                            320    ;; From the tile-ID we hold in B, we need to calculate the Offset of the 
+                            321    ;; tile definition (its 32-bytes of screen pixel data). As each tile takes 32-bytes,
+                            322    ;; offsets are tile_0: 0-bytes, tile_1: 32-bytes, tile_2: 64-bytes... tile_N: N*32-bytes.
+                            323    ;; Therefore, we need to multiply 32*B (32*tile-ID). As this multiplication may result 
+                            324    ;; in a 16-bits value, we will perform BC = 32*B. Considering B=[abcdefgh], result 
+                            325    ;; has to be BC = [000abcde][fgh00000] (B shifted 5 times left = BC = 32*tile-ID).  
+                            326    xor    a       ;; [1] A = [00000000]
+                            327    srl    b       ;; [2] B = [0abcdefg] (Right shift, Carry = h)
+                            328    rra            ;; [1] A = [h0000000] (Rotate Right + Bit7 = h (Carry insertion))
+                            329    srl    b       ;; [2] B = [00abcdef] (Right shift, Carry = g)
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 25.
+Hexadecimal [16-Bits]
+
+
+
+                            330    rra            ;; [1] A = [gh000000] (Rotate Right + Bit7 = g (Carry insertion))
+                            331    srl    b       ;; [2] B = [000abcde] (Right shift, Carry = f). 
+                            332    rra            ;; [1] A = [fgh00000] (Rotate Right + Bit7 = f (Carry insertion)). 
+                            333    ld     c, a    ;; [1] C = A. BC = 32*tile-ID complete.
+                            334 
+                            335    ;; Make IX point to the 32-byte screen pixel definition of the selected tile.
+                            336    ;; For that, we need to add previous calculated tile Offset (BC) and the start location
+                            337    ;; of the tileset (IX). So operation is IX = tilesetPtr + Offset = IX + BC. 
+                            338 tilesetPtr = .+2
+                            339    ld    ix, #0000   ;; [4] IX = Pointer to start of tileset (0000 is placeholder set with tileset address)
+                            340    add   ix, bc      ;; [4] IX += Tile Offset  
+                            341    ld    sp, ix      ;; [3] Make SP Point to the start of the 32-byte screen pixel data
+                            342                      ;; ... definition of the current tile (IX is used to save and restore this pointer)
+                            343    ;;
+                            344    ;; This section of the code draws 1 8x8 pixels (4x8 bytes) tile
+                            345    ;; Uses:
+                            346    ;;    SP = Pointer to the start of the 32-bytes screen pixel definition of the tile
+                            347    ;;    HL = Video Memory Pointer (top-left-corner)
+                            348    ;; Modifies BC 
+                            349    ;;
+                            350 
+                            351    ;; Draw Sprite Lines using Gray-Code order and Zig-Zag movement
+                            352    ;; Gray Code scanline order: 0,1,3,2,6,7,5,4
+                            353    drawSpriteRow inc ;; [17] Copy tile line Left-to-Right [>>]
+                            354    set    3, h       ;; [ 2] --000---=>--001--- (Next sprite line: 1)
+                            355    drawSpriteRow dec ;; [17] Copy tile line Right-to-Left [<<]
+                            356    set    4, h       ;; [ 2] --001---=>--011--- (Next sprite line: 3)
+                            357    drawSpriteRow inc ;; [17] Copy tile line Left-to-Right [>>]
+                            358    res    3, h       ;; [ 2] --011---=>--010--- (Next sprite line: 2)
+                            359    drawSpriteRow dec ;; [17] Copy tile line Right-to-Left [<<]
+                            360    set    5, h       ;; [ 2] --010---=>--110--- (Next sprite line: 6)
+                            361    drawSpriteRow inc ;; [17] Copy tile line Left-to-Right [>>]
+                            362    set    3, h       ;; [ 2] --110---=>--111--- (Next sprite line: 7)
+                            363    drawSpriteRow dec ;; [17] Copy tile line Right-to-Left [<<] 
+                            364    res    4, h       ;; [ 2] --111---=>--101--- (Next sprite line: 5)
+                            365    drawSpriteRow inc ;; [17] Copy tile line Left-to-Right [>>]
+                            366    res    3, h       ;; [ 2] --101---=>--100--- (Next sprite line: 4)
+                            367    drawSpriteRow dec ;; [17] Copy tile line Right-to-Left [<<]
+                            368    res    5, h       ;; [ 2] --100---=>--000--- (Next sprite line: 0)
+                            369 
+                            370    ;; After drawing the tile, HL points to the same place in video memory
+                            371    ;; as it started. We need to move it to the right 4 bytes (the width of 1 tile)
+                            372    ;; to point to the place in video memory for the next tile. As this function
+                            373    ;; requires tilemap to be 4-bytes aligned in video memory, maximum value 
+                            374    ;; for L will be L=0xFC, so we can always safely add 3 to L with INC L, without 
+                            375    ;; modifying H. Then for safety reasons, last increment will be INC HL to 
+                            376    ;; ensure that H gets incremented when L=0xFF. This saves 1 microsecond
+                            377    ;; from LD BC, #4: ADD HL, BC.
+                            378    inc    l  ;; [1] /
+                            379    inc    l  ;; [1] | HL+=3 (Incrementing L only)  
+                            380    inc    l  ;; [1] \ 
+                            381    inc   hl  ;; [2] HL++ (HL += 4 in total)
+                            382 
+                            383    ;; We now test if we have finished drawing present row of tiles. If that is
+                            384    ;; the case, the Width counter will be 0 (IYL=0). 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 26.
+Hexadecimal [16-Bits]
+
+
+
+                            385    inc   de           ;; [2] ++DE (Make tilemapPtr point to next tile to be drawn)
+                            386    dec__iyl           ;; [2] --IYL (--Width, One less tile to be drawn in this row)
+                            387    jp    nz, nexttile ;; [3] if (IYL!=0), then more tiles are left to be drawn in this row,
+                            388                       ;; ... so continue with next tile.
+                            389 rowEnd:
+                            390    ;; We have finished drawing present row of tiles. We restore SP original value
+                            391    ;; and previous interrupt status. This will enable interrupts to occur in a
+                            392    ;; safe way, permitting the use of this function along with split rasters
+                            393    ;; and/or music played on interrupts
+                            394 restoreSP = .+1
+                            395    ld    sp, #0000      ;; [3] Restore SP (#0000 is a placeholder)
+                            396 restoreI = .
+                            397    ei                   ;; [1] Restore previous interrupt status (Enabled or disabled)
+                            398                         ;; ... EI gets modified by setDrawTilemap_agf and could by DI instead
+                            399 
+                            400    ;; Decrement the Height counter (IYH) as we have finished a complete row.
+                            401    ;; If the counter is 0, then we have finished drawing the whole tilemap.
+                            402    dec__iyh             ;; [3]   --IYH (--Height)
+                            403    jr     z, return     ;; [2/3] if (Height==0) then return
+                            404 
+                            405    ;;
+                            406    ;; As Height counter is not 0 (IYH > 0), there are more rows to draw.
+                            407    ;; Set up pointers before drawing next tile row.
+                            408    ;;
+                            409 
+                            410    ;; Video Memory Pointer (Currently HL) has to point to next row in the screen.
+                            411    ;; As each row takes 0x50 bytes (in standard modes) we need to add to HL
+                            412    ;; the difference between the bytes drawn in this row and 0x50 to ensure that
+                            413    ;; each loop makes HL increment exactly 0x50 bytes, so that it points to next line.
+                            414    ;; Also, as width is measured in tiles, and each tile is 4 bytes-wide, the 
+                            415    ;; final calculation will be HL += screenWidth - drawnWidth = 0x50 - 4*width
+                            416 incrementHL = .+1
+                            417    ld    bc, #0000      ;; [3] BC = (0x50 - 4*width) (#0000 is a placeholder that gets the value)
+                            418    add   hl, bc         ;; [3] HL += 0x50 - 4*width
+                            419 
+                            420    ;; As IYL has been used as width counter, it has been decremented to 0.
+                            421    ;; Restore it to the width value before using it again.
+                            422 restoreWidth = .+2
+                            423    ld__iyl  #00         ;; [2] IYL = Width (#00 is a placeholder)
+                            424 
+                            425    ;; Tilemap pointer (Currently at DE) has to point to the start of the next row 
+                            426    ;; of the tilemap to be drawn. Similarly to the Video Memory Pointer, if our tilemap
+                            427    ;; is wider than our view width, we need to increment the pointer with the 
+                            428    ;; difference between tilemapWidth and our view width to ensure that the pointer
+                            429    ;; gets incremented by exactly tilemapWidth at each loop (ensuring that we always
+                            430    ;; end up pointing to the first tile of the next row). As we have incremented
+                            431    ;; the tilemap pointer by (width), the operation will be 
+                            432    ;; TilemapPtr += tilemapWidth - width
+                            433    ex    de, hl         ;; [1] Temporarily exchange HL<=>DE to do 16-bit maths for updating DE
+                            434 updateWidth = .+1
+                            435    ld    bc, #0000      ;; [3] BC = tilemapWidth - width
+                            436    add   hl, bc         ;; [3] HL += tilemapWidth - width (TilemapPtr points to first tile of next row)
+                            437    ex    de, hl         ;; [1] Restore DE,HL into its proper registers, now with DE incremented
+                            438 
+                            439    jp    nextRow        ;; [3] Next Row
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 27.
+Hexadecimal [16-Bits]
+
+
+
+                            440 
+                            441    ;; When everything is finished, we safely return
+                            442    ;; 
+                            443 return:
+                            444 
+                            445 ;; Set up association of global symbols with locals
+                            446 lblPrf'tilesetPtr     == tilesetPtr
+                            447 lblPrf'widthHeightSet == widthHeightSet
+                            448 lblPrf'restoreWidth   == restoreWidth
+                            449 lblPrf'updateWidth    == updateWidth
+                            450 lblPrf'incrementHL    == incrementHL
+                            451 lblPrf'restoreI       == restoreI
+                            452 
+                            453 .endm
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 28.
+Hexadecimal [16-Bits]
+
+
+
+                             29 
+   0000                      30    drawTilemap4x8_ag_gen cpct_etm_dtm4x8_ag_asm_
+                              1    ;; Set Height and Width of the View Window of the current 
+                              2    ;; tilemap to be drawn (This is set by setDrawTilemap4x8_agf)
+                     0002     3 widthHeightSet = .+2
+   4586 FD 21 00 00   [14]    4    ld iy, #0000         ;; [4] IYL=View Window Width, IYH=View Window Height
+                              5 
+   458A                       6 nextRow:
+                              7    ;; Disable interrupts and save SP before starting
+   458A F3            [ 4]    8    di                   ;; [1] Disable interrupts before starting (we are using SP to read values)
+   458B ED 73 07 46   [20]    9    ld (restoreSP), sp   ;; [6] Save actual SP to restore it in the end
+                             10    ;; Start of the code that draws the next tile of the present row being drawn
+                             11    ;;
+   458F                      12 nexttile:
+                             13    ;; Get next tile to be drawn from the tilemap, which is pointed by DE
+   458F 1A            [ 7]   14    ld     a, (de)    ;; [2] A = present tile-ID of the tile to be drawn
+   4590 47            [ 4]   15    ld     b, a       ;; [1] B = A
+                             16 
+                             17    ;; From the tile-ID we hold in B, we need to calculate the Offset of the 
+                             18    ;; tile definition (its 32-bytes of screen pixel data). As each tile takes 32-bytes,
+                             19    ;; offsets are tile_0: 0-bytes, tile_1: 32-bytes, tile_2: 64-bytes... tile_N: N*32-bytes.
+                             20    ;; Therefore, we need to multiply 32*B (32*tile-ID). As this multiplication may result 
+                             21    ;; in a 16-bits value, we will perform BC = 32*B. Considering B=[abcdefgh], result 
+                             22    ;; has to be BC = [000abcde][fgh00000] (B shifted 5 times left = BC = 32*tile-ID).  
+   4591 AF            [ 4]   23    xor    a       ;; [1] A = [00000000]
+   4592 CB 38         [ 8]   24    srl    b       ;; [2] B = [0abcdefg] (Right shift, Carry = h)
+   4594 1F            [ 4]   25    rra            ;; [1] A = [h0000000] (Rotate Right + Bit7 = h (Carry insertion))
+   4595 CB 38         [ 8]   26    srl    b       ;; [2] B = [00abcdef] (Right shift, Carry = g)
+   4597 1F            [ 4]   27    rra            ;; [1] A = [gh000000] (Rotate Right + Bit7 = g (Carry insertion))
+   4598 CB 38         [ 8]   28    srl    b       ;; [2] B = [000abcde] (Right shift, Carry = f). 
+   459A 1F            [ 4]   29    rra            ;; [1] A = [fgh00000] (Rotate Right + Bit7 = f (Carry insertion)). 
+   459B 4F            [ 4]   30    ld     c, a    ;; [1] C = A. BC = 32*tile-ID complete.
+                             31 
+                             32    ;; Make IX point to the 32-byte screen pixel definition of the selected tile.
+                             33    ;; For that, we need to add previous calculated tile Offset (BC) and the start location
+                             34    ;; of the tileset (IX). So operation is IX = tilesetPtr + Offset = IX + BC. 
+                     0018    35 tilesetPtr = .+2
+   459C DD 21 00 00   [14]   36    ld    ix, #0000   ;; [4] IX = Pointer to start of tileset (0000 is placeholder set with tileset address)
+   45A0 DD 09         [15]   37    add   ix, bc      ;; [4] IX += Tile Offset  
+   45A2 DD F9         [10]   38    ld    sp, ix      ;; [3] Make SP Point to the start of the 32-byte screen pixel data
+                             39                      ;; ... definition of the current tile (IX is used to save and restore this pointer)
+                             40    ;;
+                             41    ;; This section of the code draws 1 8x8 pixels (4x8 bytes) tile
+                             42    ;; Uses:
+                             43    ;;    SP = Pointer to the start of the 32-bytes screen pixel definition of the tile
+                             44    ;;    HL = Video Memory Pointer (top-left-corner)
+                             45    ;; Modifies BC 
+                             46    ;;
+                             47 
+                             48    ;; Draw Sprite Lines using Gray-Code order and Zig-Zag movement
+                             49    ;; Gray Code scanline order: 0,1,3,2,6,7,5,4
+   001E                      50    drawSpriteRow inc ;; [17] Copy tile line Left-to-Right [>>]
+   45A4 C1            [10]    1    pop   bc             ;; [3] Get next 2 sprite bytes
+   45A5 71            [ 7]    2    ld  (hl), c          ;; [2] Copy byte 1
+   45A6 2C            [ 4]    3    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 29.
+Hexadecimal [16-Bits]
+
+
+
+   45A7 70            [ 7]    4    ld  (hl), b          ;; [2] Copy byte 2
+   45A8 2C            [ 4]    5    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   45A9 C1            [10]    6    pop   bc             ;; [3] Get next 2 sprite bytes
+   45AA 71            [ 7]    7    ld  (hl), c          ;; [2] Copy byte 3
+   45AB 2C            [ 4]    8    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   45AC 70            [ 7]    9    ld  (hl), b          ;; [2] Copy byte 4
+   45AD CB DC         [ 8]   51    set    3, h       ;; [ 2] --000---=>--001--- (Next sprite line: 1)
+   0029                      52    drawSpriteRow dec ;; [17] Copy tile line Right-to-Left [<<]
+   45AF C1            [10]    1    pop   bc             ;; [3] Get next 2 sprite bytes
+   45B0 71            [ 7]    2    ld  (hl), c          ;; [2] Copy byte 1
+   45B1 2D            [ 4]    3    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   45B2 70            [ 7]    4    ld  (hl), b          ;; [2] Copy byte 2
+   45B3 2D            [ 4]    5    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   45B4 C1            [10]    6    pop   bc             ;; [3] Get next 2 sprite bytes
+   45B5 71            [ 7]    7    ld  (hl), c          ;; [2] Copy byte 3
+   45B6 2D            [ 4]    8    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   45B7 70            [ 7]    9    ld  (hl), b          ;; [2] Copy byte 4
+   45B8 CB E4         [ 8]   53    set    4, h       ;; [ 2] --001---=>--011--- (Next sprite line: 3)
+   0034                      54    drawSpriteRow inc ;; [17] Copy tile line Left-to-Right [>>]
+   45BA C1            [10]    1    pop   bc             ;; [3] Get next 2 sprite bytes
+   45BB 71            [ 7]    2    ld  (hl), c          ;; [2] Copy byte 1
+   45BC 2C            [ 4]    3    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   45BD 70            [ 7]    4    ld  (hl), b          ;; [2] Copy byte 2
+   45BE 2C            [ 4]    5    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   45BF C1            [10]    6    pop   bc             ;; [3] Get next 2 sprite bytes
+   45C0 71            [ 7]    7    ld  (hl), c          ;; [2] Copy byte 3
+   45C1 2C            [ 4]    8    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   45C2 70            [ 7]    9    ld  (hl), b          ;; [2] Copy byte 4
+   45C3 CB 9C         [ 8]   55    res    3, h       ;; [ 2] --011---=>--010--- (Next sprite line: 2)
+   003F                      56    drawSpriteRow dec ;; [17] Copy tile line Right-to-Left [<<]
+   45C5 C1            [10]    1    pop   bc             ;; [3] Get next 2 sprite bytes
+   45C6 71            [ 7]    2    ld  (hl), c          ;; [2] Copy byte 1
+   45C7 2D            [ 4]    3    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   45C8 70            [ 7]    4    ld  (hl), b          ;; [2] Copy byte 2
+   45C9 2D            [ 4]    5    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   45CA C1            [10]    6    pop   bc             ;; [3] Get next 2 sprite bytes
+   45CB 71            [ 7]    7    ld  (hl), c          ;; [2] Copy byte 3
+   45CC 2D            [ 4]    8    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   45CD 70            [ 7]    9    ld  (hl), b          ;; [2] Copy byte 4
+   45CE CB EC         [ 8]   57    set    5, h       ;; [ 2] --010---=>--110--- (Next sprite line: 6)
+   004A                      58    drawSpriteRow inc ;; [17] Copy tile line Left-to-Right [>>]
+   45D0 C1            [10]    1    pop   bc             ;; [3] Get next 2 sprite bytes
+   45D1 71            [ 7]    2    ld  (hl), c          ;; [2] Copy byte 1
+   45D2 2C            [ 4]    3    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   45D3 70            [ 7]    4    ld  (hl), b          ;; [2] Copy byte 2
+   45D4 2C            [ 4]    5    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   45D5 C1            [10]    6    pop   bc             ;; [3] Get next 2 sprite bytes
+   45D6 71            [ 7]    7    ld  (hl), c          ;; [2] Copy byte 3
+   45D7 2C            [ 4]    8    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   45D8 70            [ 7]    9    ld  (hl), b          ;; [2] Copy byte 4
+   45D9 CB DC         [ 8]   59    set    3, h       ;; [ 2] --110---=>--111--- (Next sprite line: 7)
+   0055                      60    drawSpriteRow dec ;; [17] Copy tile line Right-to-Left [<<] 
+   45DB C1            [10]    1    pop   bc             ;; [3] Get next 2 sprite bytes
+   45DC 71            [ 7]    2    ld  (hl), c          ;; [2] Copy byte 1
+   45DD 2D            [ 4]    3    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 30.
+Hexadecimal [16-Bits]
+
+
+
+   45DE 70            [ 7]    4    ld  (hl), b          ;; [2] Copy byte 2
+   45DF 2D            [ 4]    5    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   45E0 C1            [10]    6    pop   bc             ;; [3] Get next 2 sprite bytes
+   45E1 71            [ 7]    7    ld  (hl), c          ;; [2] Copy byte 3
+   45E2 2D            [ 4]    8    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   45E3 70            [ 7]    9    ld  (hl), b          ;; [2] Copy byte 4
+   45E4 CB A4         [ 8]   61    res    4, h       ;; [ 2] --111---=>--101--- (Next sprite line: 5)
+   0060                      62    drawSpriteRow inc ;; [17] Copy tile line Left-to-Right [>>]
+   45E6 C1            [10]    1    pop   bc             ;; [3] Get next 2 sprite bytes
+   45E7 71            [ 7]    2    ld  (hl), c          ;; [2] Copy byte 1
+   45E8 2C            [ 4]    3    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   45E9 70            [ 7]    4    ld  (hl), b          ;; [2] Copy byte 2
+   45EA 2C            [ 4]    5    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   45EB C1            [10]    6    pop   bc             ;; [3] Get next 2 sprite bytes
+   45EC 71            [ 7]    7    ld  (hl), c          ;; [2] Copy byte 3
+   45ED 2C            [ 4]    8    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   45EE 70            [ 7]    9    ld  (hl), b          ;; [2] Copy byte 4
+   45EF CB 9C         [ 8]   63    res    3, h       ;; [ 2] --101---=>--100--- (Next sprite line: 4)
+   006B                      64    drawSpriteRow dec ;; [17] Copy tile line Right-to-Left [<<]
+   45F1 C1            [10]    1    pop   bc             ;; [3] Get next 2 sprite bytes
+   45F2 71            [ 7]    2    ld  (hl), c          ;; [2] Copy byte 1
+   45F3 2D            [ 4]    3    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   45F4 70            [ 7]    4    ld  (hl), b          ;; [2] Copy byte 2
+   45F5 2D            [ 4]    5    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   45F6 C1            [10]    6    pop   bc             ;; [3] Get next 2 sprite bytes
+   45F7 71            [ 7]    7    ld  (hl), c          ;; [2] Copy byte 3
+   45F8 2D            [ 4]    8    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   45F9 70            [ 7]    9    ld  (hl), b          ;; [2] Copy byte 4
+   45FA CB AC         [ 8]   65    res    5, h       ;; [ 2] --100---=>--000--- (Next sprite line: 0)
+                             66 
+                             67    ;; After drawing the tile, HL points to the same place in video memory
+                             68    ;; as it started. We need to move it to the right 4 bytes (the width of 1 tile)
+                             69    ;; to point to the place in video memory for the next tile. As this function
+                             70    ;; requires tilemap to be 4-bytes aligned in video memory, maximum value 
+                             71    ;; for L will be L=0xFC, so we can always safely add 3 to L with INC L, without 
+                             72    ;; modifying H. Then for safety reasons, last increment will be INC HL to 
+                             73    ;; ensure that H gets incremented when L=0xFF. This saves 1 microsecond
+                             74    ;; from LD BC, #4: ADD HL, BC.
+   45FC 2C            [ 4]   75    inc    l  ;; [1] /
+   45FD 2C            [ 4]   76    inc    l  ;; [1] | HL+=3 (Incrementing L only)  
+   45FE 2C            [ 4]   77    inc    l  ;; [1] \ 
+   45FF 23            [ 6]   78    inc   hl  ;; [2] HL++ (HL += 4 in total)
+                             79 
+                             80    ;; We now test if we have finished drawing present row of tiles. If that is
+                             81    ;; the case, the Width counter will be 0 (IYL=0). 
+   4600 13            [ 6]   82    inc   de           ;; [2] ++DE (Make tilemapPtr point to next tile to be drawn)
+   007B                      83    dec__iyl           ;; [2] --IYL (--Width, One less tile to be drawn in this row)
+   4601 FD 2D                 1    .dw #0x2DFD  ;; Opcode for dec iyl
+   4603 C2 8F 45      [10]   84    jp    nz, nexttile ;; [3] if (IYL!=0), then more tiles are left to be drawn in this row,
+                             85                       ;; ... so continue with next tile.
+   4606                      86 rowEnd:
+                             87    ;; We have finished drawing present row of tiles. We restore SP original value
+                             88    ;; and previous interrupt status. This will enable interrupts to occur in a
+                             89    ;; safe way, permitting the use of this function along with split rasters
+                             90    ;; and/or music played on interrupts
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 31.
+Hexadecimal [16-Bits]
+
+
+
+                     0081    91 restoreSP = .+1
+   4606 31 00 00      [10]   92    ld    sp, #0000      ;; [3] Restore SP (#0000 is a placeholder)
+                     0083    93 restoreI = .
+   4609 FB            [ 4]   94    ei                   ;; [1] Restore previous interrupt status (Enabled or disabled)
+                             95                         ;; ... EI gets modified by setDrawTilemap_agf and could by DI instead
+                             96 
+                             97    ;; Decrement the Height counter (IYH) as we have finished a complete row.
+                             98    ;; If the counter is 0, then we have finished drawing the whole tilemap.
+   0084                      99    dec__iyh             ;; [3]   --IYH (--Height)
+   460A FD 25                 1    .dw #0x25FD  ;; Opcode for dec iyh
+   460C 28 10         [12]  100    jr     z, return     ;; [2/3] if (Height==0) then return
+                            101 
+                            102    ;;
+                            103    ;; As Height counter is not 0 (IYH > 0), there are more rows to draw.
+                            104    ;; Set up pointers before drawing next tile row.
+                            105    ;;
+                            106 
+                            107    ;; Video Memory Pointer (Currently HL) has to point to next row in the screen.
+                            108    ;; As each row takes 0x50 bytes (in standard modes) we need to add to HL
+                            109    ;; the difference between the bytes drawn in this row and 0x50 to ensure that
+                            110    ;; each loop makes HL increment exactly 0x50 bytes, so that it points to next line.
+                            111    ;; Also, as width is measured in tiles, and each tile is 4 bytes-wide, the 
+                            112    ;; final calculation will be HL += screenWidth - drawnWidth = 0x50 - 4*width
+                     0089   113 incrementHL = .+1
+   460E 01 00 00      [10]  114    ld    bc, #0000      ;; [3] BC = (0x50 - 4*width) (#0000 is a placeholder that gets the value)
+   4611 09            [11]  115    add   hl, bc         ;; [3] HL += 0x50 - 4*width
+                            116 
+                            117    ;; As IYL has been used as width counter, it has been decremented to 0.
+                            118    ;; Restore it to the width value before using it again.
+                     008E   119 restoreWidth = .+2
+   008C                     120    ld__iyl  #00         ;; [2] IYL = Width (#00 is a placeholder)
+   4612 FD 2E 00              1    .db #0xFD, #0x2E, #00  ;; Opcode for ld iyl, Value
+                            121 
+                            122    ;; Tilemap pointer (Currently at DE) has to point to the start of the next row 
+                            123    ;; of the tilemap to be drawn. Similarly to the Video Memory Pointer, if our tilemap
+                            124    ;; is wider than our view width, we need to increment the pointer with the 
+                            125    ;; difference between tilemapWidth and our view width to ensure that the pointer
+                            126    ;; gets incremented by exactly tilemapWidth at each loop (ensuring that we always
+                            127    ;; end up pointing to the first tile of the next row). As we have incremented
+                            128    ;; the tilemap pointer by (width), the operation will be 
+                            129    ;; TilemapPtr += tilemapWidth - width
+   4615 EB            [ 4]  130    ex    de, hl         ;; [1] Temporarily exchange HL<=>DE to do 16-bit maths for updating DE
+                     0091   131 updateWidth = .+1
+   4616 01 00 00      [10]  132    ld    bc, #0000      ;; [3] BC = tilemapWidth - width
+   4619 09            [11]  133    add   hl, bc         ;; [3] HL += tilemapWidth - width (TilemapPtr points to first tile of next row)
+   461A EB            [ 4]  134    ex    de, hl         ;; [1] Restore DE,HL into its proper registers, now with DE incremented
+                            135 
+   461B C3 8A 45      [10]  136    jp    nextRow        ;; [3] Next Row
+                            137 
+                            138    ;; When everything is finished, we safely return
+                            139    ;; 
+   461E                     140 return:
+                            141 
+                            142 ;; Set up association of global symbols with locals
+                     0018   143 cpct_etm_dtm4x8_ag_asm_tilesetPtr     == tilesetPtr
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 32.
+Hexadecimal [16-Bits]
+
+
+
+                     0002   144 cpct_etm_dtm4x8_ag_asm_widthHeightSet == widthHeightSet
+                     008E   145 cpct_etm_dtm4x8_ag_asm_restoreWidth   == restoreWidth
+                     0091   146 cpct_etm_dtm4x8_ag_asm_updateWidth    == updateWidth
+                     0089   147 cpct_etm_dtm4x8_ag_asm_incrementHL    == incrementHL
+                     0083   148 cpct_etm_dtm4x8_ag_asm_restoreI       == restoreI
+                            149 
+                             31 
+   461E C9            [10]   32    ret               ;; [3] Return

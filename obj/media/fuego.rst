@@ -41,38 +41,38 @@
                              41 ;--------------------------------------------------------
                              42 	.area _CODE
                              43 	.area _CODE
-   48D8                      44 _fuego:
-   48D8 9C                   45 	.db #0x9c	; 156
-   48D9 3C                   46 	.db #0x3c	; 60
-   48DA 9C                   47 	.db #0x9c	; 156
-   48DB 3C                   48 	.db #0x3c	; 60
-   48DC 9C                   49 	.db #0x9c	; 156
-   48DD 3C                   50 	.db #0x3c	; 60
-   48DE 9C                   51 	.db #0x9c	; 156
-   48DF 6C                   52 	.db #0x6c	; 108	'l'
-   48E0 CC                   53 	.db #0xcc	; 204
-   48E1 6C                   54 	.db #0x6c	; 108	'l'
-   48E2 9C                   55 	.db #0x9c	; 156
-   48E3 CC                   56 	.db #0xcc	; 204
-   48E4 CC                   57 	.db #0xcc	; 204
-   48E5 CC                   58 	.db #0xcc	; 204
-   48E6 CC                   59 	.db #0xcc	; 204
-   48E7 CC                   60 	.db #0xcc	; 204
-   48E8 CC                   61 	.db #0xcc	; 204
-   48E9 C0                   62 	.db #0xc0	; 192
-   48EA C0                   63 	.db #0xc0	; 192
-   48EB C4                   64 	.db #0xc4	; 196
-   48EC CC                   65 	.db #0xcc	; 204
-   48ED C0                   66 	.db #0xc0	; 192
-   48EE C0                   67 	.db #0xc0	; 192
-   48EF CC                   68 	.db #0xcc	; 204
-   48F0 3C                   69 	.db #0x3c	; 60
-   48F1 C8                   70 	.db #0xc8	; 200
-   48F2 C4                   71 	.db #0xc4	; 196
-   48F3 9C                   72 	.db #0x9c	; 156
-   48F4 3C                   73 	.db #0x3c	; 60
-   48F5 CC                   74 	.db #0xcc	; 204
-   48F6 CC                   75 	.db #0xcc	; 204
-   48F7 3C                   76 	.db #0x3c	; 60
+   4234                      44 _fuego:
+   4234 9C                   45 	.db #0x9c	; 156
+   4235 3C                   46 	.db #0x3c	; 60
+   4236 9C                   47 	.db #0x9c	; 156
+   4237 3C                   48 	.db #0x3c	; 60
+   4238 9C                   49 	.db #0x9c	; 156
+   4239 3C                   50 	.db #0x3c	; 60
+   423A 9C                   51 	.db #0x9c	; 156
+   423B 6C                   52 	.db #0x6c	; 108	'l'
+   423C CC                   53 	.db #0xcc	; 204
+   423D 6C                   54 	.db #0x6c	; 108	'l'
+   423E 9C                   55 	.db #0x9c	; 156
+   423F CC                   56 	.db #0xcc	; 204
+   4240 CC                   57 	.db #0xcc	; 204
+   4241 CC                   58 	.db #0xcc	; 204
+   4242 CC                   59 	.db #0xcc	; 204
+   4243 CC                   60 	.db #0xcc	; 204
+   4244 CC                   61 	.db #0xcc	; 204
+   4245 C0                   62 	.db #0xc0	; 192
+   4246 C0                   63 	.db #0xc0	; 192
+   4247 C4                   64 	.db #0xc4	; 196
+   4248 CC                   65 	.db #0xcc	; 204
+   4249 C0                   66 	.db #0xc0	; 192
+   424A C0                   67 	.db #0xc0	; 192
+   424B CC                   68 	.db #0xcc	; 204
+   424C 3C                   69 	.db #0x3c	; 60
+   424D C8                   70 	.db #0xc8	; 200
+   424E C4                   71 	.db #0xc4	; 196
+   424F 9C                   72 	.db #0x9c	; 156
+   4250 3C                   73 	.db #0x3c	; 60
+   4251 CC                   74 	.db #0xcc	; 204
+   4252 CC                   75 	.db #0xcc	; 204
+   4253 3C                   76 	.db #0x3c	; 60
                              77 	.area _INITIALIZER
                              78 	.area _CABS (ABS)

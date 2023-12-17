@@ -8,20 +8,20 @@
 -l /home/raul/cpctelera/cpctelera/cpctelera.lib
 -l z80
 obj/mapas/max.rel
-obj/mapas/20x25.rel
-obj/mapas/32x25.rel
-obj/mapas/16x25.rel
 obj/media/uno.rel
 obj/media/fuego.rel
 obj/media/tiles_8x8_M0.rel
+obj/mapas.rel
 obj/media/tiles_16x8_M1.rel
-obj/mapas/60x25.rel
 obj/draw_tilemap.rel
 obj/main.rel
 obj/sistemas/my_draw_sprite.rel
 obj/sistemas/pinta_sprites.rel
+obj/sistemas/rutinas_espera_tecla.rel
 obj/sistemas/setreg.rel
 obj/rutinas/cls.rel
+obj/cpct_func/cpct_etm_drawTilemap4x8_ag_asmbindings.rel
+obj/cpct_func/my_cpct_etm_setDrawTilemap4x8_ag_asmbindings.rel
 obj/cpct_func/my_draw_sprite.rel
 
 -e

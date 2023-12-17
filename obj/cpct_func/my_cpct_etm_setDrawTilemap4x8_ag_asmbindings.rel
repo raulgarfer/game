@@ -1,0 +1,28 @@
+XL2
+H 1 areas 8 global symbols
+M cpct_easytilemaps
+S cpct_etm_dtm4x8_ag_asm_updateWidth Ref0000
+S cpct_etm_dtm4x8_ag_asm_restoreWidth Ref0000
+S cpct_etm_dtm4x8_ag_asm_restoreI Ref0000
+S cpct_etm_dtm4x8_ag_asm_incrementHL Ref0000
+S .__.ABS. Def0000
+S cpct_etm_dtm4x8_ag_asm_widthHeightSet Ref0000
+S cpct_etm_dtm4x8_ag_asm_tilesetPtr Ref0000
+A _CODE size 2C flags 0 addr 0
+S my_cpct_etm_setDrawTilemap4x8_ag_asm Def0000
+T 00 00
+R 00 00 00 00
+T 00 00 22 00 00 ED 43 00 00 79 32 00 00 3D 93 38
+R 00 00 00 00 02 03 06 00 02 07 05 00 02 0B 01 00
+T 0E 00 01 15
+R 00 00 00 00
+T 10 00
+R 00 00 00 00
+T 10 00 2F 5F ED 53 00 00 79 87 87 2F C6 51 32
+R 00 00 00 00 02 06 00 00
+T 1D 00 00 00 ED 57 3E FB EA 28 00 3E F3
+R 00 00 00 00 02 02 03 00 00 09 00 00
+T 28 00
+R 00 00 00 00
+T 28 00 32 00 00 C9
+R 00 00 00 00 02 03 02 00

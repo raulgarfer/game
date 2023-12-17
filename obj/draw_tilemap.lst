@@ -5011,19 +5011,23 @@ Hexadecimal [16-Bits]
 
 
 
-                              3 .globl cpct_etm_setDrawTilemap4x8_ag_asm
-                              4 .globl _tiles_8x8_0
-                              5 ;;(1B C) width	Width in tiles of the view window to be drawn
-                              6 ;;(1B B) height	Height in tiles of the view window to be drawn
-                              7 ;;(2B DE) tilemapWidth	Width in tiles of the complete tilemap
-                              8 ;;(2B HL) tileset	Pointer to the start of the tileset definition (list of 32-byte tiles).
-                              9 ;;
-                             10 ;;Note: it also uses current interrupt status (register I) as a value.  It should be considered as an additional parameter.
-                             11 ;;Assembly call (Input parameters on Registers)
-   0000                      12 set_tilemap::
-   0000 0E 14         [ 7]   13     ld c,#20
-   0002 06 19         [ 7]   14     ld b,#25
-   0004 11 14 00      [10]   15     ld de,#20
-   0007 21 00 00      [10]   16     ld hl,#_tiles_8x8_0
-   000A CD 00 00      [17]   17         call cpct_etm_setDrawTilemap4x8_ag_asm
-   000D C9            [10]   18 ret
+                              3 .globl my_cpct_etm_setDrawTilemap4x8_ag_asm
+                              4 .globl cpct_etm_drawTilemap4x8_ag_asm
+                              5 .globl _tiles_8x8_0
+                     0014     6 max_W=20
+                     0019     7 max_H =25
+                              8 .globl _max
+   0000                       9 set_tilemap::
+   0000 0E 14         [ 7]   10     ld c,#max_W     ;;ancho de pantalla en chars
+   0002 06 19         [ 7]   11     ld b,#max_H     ;;alto de pantalla en chars
+   0004 11 14 00      [10]   12     ld de,#max_W    ;;ancho total a mostrar en chars
+   0007 21 00 00      [10]   13     ld hl,#_tiles_8x8_0     ;;direccion de los tiles a usar
+   000A CD 00 00      [17]   14         call my_cpct_etm_setDrawTilemap4x8_ag_asm
+   000D C9            [10]   15 ret
+   000E                      16 draw_tilemap::
+                             17     ;;2B HL) memory	Video memory location where to draw the tilemap (character & 4-byte aligned)
+                             18 ;;(2B DE) tilemap	Pointer to the upper-left tile of the view to be drawn of the tilemap
+   000E 21 00 C0      [10]   19 ld hl,#0xc000
+   0011 11 00 00      [10]   20 ld de,#_max
+   0014 CD 00 00      [17]   21 call cpct_etm_drawTilemap4x8_ag_asm
+   0017 C9            [10]   22 ret

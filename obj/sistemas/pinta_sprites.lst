@@ -5016,17 +5016,17 @@ Hexadecimal [16-Bits]
                               5 .globl _uno
    0000                       6 pintar_sprites::
    0000 11 00 80      [10]    7  ld de,#0x8000
-   0003 CD 00 00      [17]    8       call cls 
-   0006 11 00 C0      [10]    9    ld de,#0xc000
-   0009 CD 00 00      [17]   10       call cls
-   000C 21 00 00      [10]   11    ld hl,#_uno
-   000F 0E 04         [ 7]   12    ld c,#4
-   0011 06 10         [ 7]   13    ld b,#16
-   0013 11 00 C0      [10]   14    ld de,#0xc000
-   0016 CD 00 00      [17]   15       call my_draw_sprite
-   0019 21 00 00      [10]   16       ld hl,#_uno
-   001C 0E 04         [ 7]   17    ld c,#4
-   001E 06 10         [ 7]   18    ld b,#16
-   0020 11 00 80      [10]   19    ld de,#0x8000
-   0023 CD 00 00      [17]   20       call my_draw_sprite
-   0026 C9            [10]   21 ret
+                              8    ;;   call cls 
+   0003 11 00 C0      [10]    9    ld de,#0xc000
+                             10   ;;    call cls
+   0006 21 00 00      [10]   11    ld hl,#_uno
+   0009 0E 04         [ 7]   12    ld c,#4
+   000B 06 10         [ 7]   13    ld b,#16
+   000D 11 00 C0      [10]   14    ld de,#0xc000
+   0010 CD 00 00      [17]   15       call my_draw_sprite
+   0013 21 00 00      [10]   16       ld hl,#_uno
+   0016 0E 04         [ 7]   17    ld c,#4
+   0018 06 10         [ 7]   18    ld b,#16
+   001A 11 00 80      [10]   19    ld de,#0x8000
+                             20     ;;  call my_draw_sprite
+   001D C9            [10]   21 ret

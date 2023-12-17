@@ -195,108 +195,108 @@ Hexadecimal [16-Bits]
                             175 ;; <video memory locations table at 
                             176 ;; http://www.cpcmania.com/Docs/Programming/Painting_pixels_introduction_to_video_memory.htm>.
                             177 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   5211                     178 my_draw_sprite::
+   464B                     178 my_draw_sprite::
                             179    ;; Modify code using width to jump in drawSpriteWidth
-   5211 3E 7E         [ 7]  180    ld    a, #126           ;; [2] We need to jump 126 bytes (63 LDIs*2 bytes) minus the width of the sprite * 2 (2B)
-   5213 91            [ 4]  181    sub   c                 ;; [1]    to do as much LDIs as bytes the Sprite is wide
-   5214 91            [ 4]  182    sub   c                 ;; [1]
-   5215 32 1F 52      [13]  183    ld (ds_drawSpriteWidth+#4), a ;; [4] Modify JR data to create the jump we need
+   464B 3E 7E         [ 7]  180    ld    a, #126           ;; [2] We need to jump 126 bytes (63 LDIs*2 bytes) minus the width of the sprite * 2 (2B)
+   464D 91            [ 4]  181    sub   c                 ;; [1]    to do as much LDIs as bytes the Sprite is wide
+   464E 91            [ 4]  182    sub   c                 ;; [1]
+   464F 32 59 46      [13]  183    ld (ds_drawSpriteWidth+#4), a ;; [4] Modify JR data to create the jump we need
                             184 
-   5218 78            [ 4]  185    ld    a, b              ;; [1] A = Height (used as counter for the number of lines we have to copy)
-   5219 EB            [ 4]  186    ex   de, hl             ;; [1] Instead of jumping over the next line, we do the inverse operation because 
+   4652 78            [ 4]  185    ld    a, b              ;; [1] A = Height (used as counter for the number of lines we have to copy)
+   4653 EB            [ 4]  186    ex   de, hl             ;; [1] Instead of jumping over the next line, we do the inverse operation because 
                             187                            ;; .... it is only 4 cycles and not 10, as a JP would be)
                             188 
-   521A                     189 ds_drawSpriteWidth_next:
+   4654                     189 ds_drawSpriteWidth_next:
                             190    ;; NEXT LINE
-   521A EB            [ 4]  191    ex   de, hl             ;; [1] HL and DE are exchanged every line to do 16bit maths with DE. 
+   4654 EB            [ 4]  191    ex   de, hl             ;; [1] HL and DE are exchanged every line to do 16bit maths with DE. 
                             192                            ;; .... This line reverses it before proceeding to copy the next line.
-   521B                     193 ds_drawSpriteWidth:
+   4655                     193 ds_drawSpriteWidth:
                             194    ;; Draw a sprite-line of n bytes
-   521B 01 00 08      [10]  195    ld   bc, #0x800  ;; [3] 0x800 bytes is the distance in memory from one pixel line to the next within every 8 pixel lines
+   4655 01 00 08      [10]  195    ld   bc, #0x800  ;; [3] 0x800 bytes is the distance in memory from one pixel line to the next within every 8 pixel lines
                             196                     ;; ... Each LDI performed will decrease this by 1, as we progress through memory copying the present line
-   521E 18 00               197    .DW #0x0018            ;; [3] Self modifying instruction: the '00' will be substituted by the required jump forward. 
+   4658 18 00               197    .DW #0x0018            ;; [3] Self modifying instruction: the '00' will be substituted by the required jump forward. 
                             198                     ;; ... (Note: Writting JR 0 compiles but later it gives odd linking errors)
-   5220 ED A0         [16]  199    ldi              ;; [5] <| 63 LDIs, which are able to copy up to 63 bytes each time.
-   5222 ED A0         [16]  200    ldi              ;; [5]  | That means that each Sprite line should be 63 bytes width at most.
-   5224 ED A0         [16]  201    ldi              ;; [5]  | The JR instruction at the start makes us ignore the LDIs we don't need 
-   5226 ED A0         [16]  202    ldi              ;; [5] <| (jumping over them) That ensures we will be doing only as much LDIs 
-   5228 ED A0         [16]  203    ldi              ;; [5] <| as bytes our sprite is wide.
-   522A ED A0         [16]  204    ldi              ;; [5]  |
-   522C ED A0         [16]  205    ldi              ;; [5]  |
-   522E ED A0         [16]  206    ldi              ;; [5] <|
-   5230 ED A0         [16]  207    ldi              ;; [5] <|
-   5232 ED A0         [16]  208    ldi              ;; [5]  |
-   5234 ED A0         [16]  209    ldi              ;; [5]  |
-   5236 ED A0         [16]  210    ldi              ;; [5] <|
-   5238 ED A0         [16]  211    ldi              ;; [5] <|
-   523A ED A0         [16]  212    ldi              ;; [5]  |
-   523C ED A0         [16]  213    ldi              ;; [5]  |
-   523E ED A0         [16]  214    ldi              ;; [5] <|
-   5240 ED A0         [16]  215    ldi              ;; [5] <|
-   5242 ED A0         [16]  216    ldi              ;; [5]  |
-   5244 ED A0         [16]  217    ldi              ;; [5]  |
-   5246 ED A0         [16]  218    ldi              ;; [5] <|
-   5248 ED A0         [16]  219    ldi              ;; [5]  |
-   524A ED A0         [16]  220    ldi              ;; [5] <|
+   465A ED A0         [16]  199    ldi              ;; [5] <| 63 LDIs, which are able to copy up to 63 bytes each time.
+   465C ED A0         [16]  200    ldi              ;; [5]  | That means that each Sprite line should be 63 bytes width at most.
+   465E ED A0         [16]  201    ldi              ;; [5]  | The JR instruction at the start makes us ignore the LDIs we don't need 
+   4660 ED A0         [16]  202    ldi              ;; [5] <| (jumping over them) That ensures we will be doing only as much LDIs 
+   4662 ED A0         [16]  203    ldi              ;; [5] <| as bytes our sprite is wide.
+   4664 ED A0         [16]  204    ldi              ;; [5]  |
+   4666 ED A0         [16]  205    ldi              ;; [5]  |
+   4668 ED A0         [16]  206    ldi              ;; [5] <|
+   466A ED A0         [16]  207    ldi              ;; [5] <|
+   466C ED A0         [16]  208    ldi              ;; [5]  |
+   466E ED A0         [16]  209    ldi              ;; [5]  |
+   4670 ED A0         [16]  210    ldi              ;; [5] <|
+   4672 ED A0         [16]  211    ldi              ;; [5] <|
+   4674 ED A0         [16]  212    ldi              ;; [5]  |
+   4676 ED A0         [16]  213    ldi              ;; [5]  |
+   4678 ED A0         [16]  214    ldi              ;; [5] <|
+   467A ED A0         [16]  215    ldi              ;; [5] <|
+   467C ED A0         [16]  216    ldi              ;; [5]  |
+   467E ED A0         [16]  217    ldi              ;; [5]  |
+   4680 ED A0         [16]  218    ldi              ;; [5] <|
+   4682 ED A0         [16]  219    ldi              ;; [5]  |
+   4684 ED A0         [16]  220    ldi              ;; [5] <|
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 5.
 Hexadecimal [16-Bits]
 
 
 
-   524C ED A0         [16]  221    ldi              ;; [5] <|
-   524E ED A0         [16]  222    ldi              ;; [5]  |
-   5250 ED A0         [16]  223    ldi              ;; [5]  |
-   5252 ED A0         [16]  224    ldi              ;; [5] <|
-   5254 ED A0         [16]  225    ldi              ;; [5] <|
-   5256 ED A0         [16]  226    ldi              ;; [5]  |
-   5258 ED A0         [16]  227    ldi              ;; [5]  |
-   525A ED A0         [16]  228    ldi              ;; [5] <|
-   525C ED A0         [16]  229    ldi              ;; [5]  |
-   525E ED A0         [16]  230    ldi              ;; [5] <|
-   5260 ED A0         [16]  231    ldi              ;; [5] <|
-   5262 ED A0         [16]  232    ldi              ;; [5]  |
-   5264 ED A0         [16]  233    ldi              ;; [5]  |
-   5266 ED A0         [16]  234    ldi              ;; [5] <|
-   5268 ED A0         [16]  235    ldi              ;; [5] <|
-   526A ED A0         [16]  236    ldi              ;; [5]  |
-   526C ED A0         [16]  237    ldi              ;; [5]  |
-   526E ED A0         [16]  238    ldi              ;; [5] <|
-   5270 ED A0         [16]  239    ldi              ;; [5]  |
-   5272 ED A0         [16]  240    ldi              ;; [5] <|
-   5274 ED A0         [16]  241    ldi              ;; [5] <|
-   5276 ED A0         [16]  242    ldi              ;; [5]  |
-   5278 ED A0         [16]  243    ldi              ;; [5]  |
-   527A ED A0         [16]  244    ldi              ;; [5] <|
-   527C ED A0         [16]  245    ldi              ;; [5] <|
-   527E ED A0         [16]  246    ldi              ;; [5]  |
-   5280 ED A0         [16]  247    ldi              ;; [5]  |
-   5282 ED A0         [16]  248    ldi              ;; [5] <|
-   5284 ED A0         [16]  249    ldi              ;; [5]  |
-   5286 ED A0         [16]  250    ldi              ;; [5] <|
-   5288 ED A0         [16]  251    ldi              ;; [5] <|
-   528A ED A0         [16]  252    ldi              ;; [5]  |
-   528C ED A0         [16]  253    ldi              ;; [5]  |
-   528E ED A0         [16]  254    ldi              ;; [5] <|
-   5290 ED A0         [16]  255    ldi              ;; [5] <|
-   5292 ED A0         [16]  256    ldi              ;; [5]  |
-   5294 ED A0         [16]  257    ldi              ;; [5]  |
-   5296 ED A0         [16]  258    ldi              ;; [5] <|
-   5298 ED A0         [16]  259    ldi              ;; [5] <|
-   529A ED A0         [16]  260    ldi              ;; [5]  |
-   529C ED A0         [16]  261    ldi              ;; [5]  |
+   4686 ED A0         [16]  221    ldi              ;; [5] <|
+   4688 ED A0         [16]  222    ldi              ;; [5]  |
+   468A ED A0         [16]  223    ldi              ;; [5]  |
+   468C ED A0         [16]  224    ldi              ;; [5] <|
+   468E ED A0         [16]  225    ldi              ;; [5] <|
+   4690 ED A0         [16]  226    ldi              ;; [5]  |
+   4692 ED A0         [16]  227    ldi              ;; [5]  |
+   4694 ED A0         [16]  228    ldi              ;; [5] <|
+   4696 ED A0         [16]  229    ldi              ;; [5]  |
+   4698 ED A0         [16]  230    ldi              ;; [5] <|
+   469A ED A0         [16]  231    ldi              ;; [5] <|
+   469C ED A0         [16]  232    ldi              ;; [5]  |
+   469E ED A0         [16]  233    ldi              ;; [5]  |
+   46A0 ED A0         [16]  234    ldi              ;; [5] <|
+   46A2 ED A0         [16]  235    ldi              ;; [5] <|
+   46A4 ED A0         [16]  236    ldi              ;; [5]  |
+   46A6 ED A0         [16]  237    ldi              ;; [5]  |
+   46A8 ED A0         [16]  238    ldi              ;; [5] <|
+   46AA ED A0         [16]  239    ldi              ;; [5]  |
+   46AC ED A0         [16]  240    ldi              ;; [5] <|
+   46AE ED A0         [16]  241    ldi              ;; [5] <|
+   46B0 ED A0         [16]  242    ldi              ;; [5]  |
+   46B2 ED A0         [16]  243    ldi              ;; [5]  |
+   46B4 ED A0         [16]  244    ldi              ;; [5] <|
+   46B6 ED A0         [16]  245    ldi              ;; [5] <|
+   46B8 ED A0         [16]  246    ldi              ;; [5]  |
+   46BA ED A0         [16]  247    ldi              ;; [5]  |
+   46BC ED A0         [16]  248    ldi              ;; [5] <|
+   46BE ED A0         [16]  249    ldi              ;; [5]  |
+   46C0 ED A0         [16]  250    ldi              ;; [5] <|
+   46C2 ED A0         [16]  251    ldi              ;; [5] <|
+   46C4 ED A0         [16]  252    ldi              ;; [5]  |
+   46C6 ED A0         [16]  253    ldi              ;; [5]  |
+   46C8 ED A0         [16]  254    ldi              ;; [5] <|
+   46CA ED A0         [16]  255    ldi              ;; [5] <|
+   46CC ED A0         [16]  256    ldi              ;; [5]  |
+   46CE ED A0         [16]  257    ldi              ;; [5]  |
+   46D0 ED A0         [16]  258    ldi              ;; [5] <|
+   46D2 ED A0         [16]  259    ldi              ;; [5] <|
+   46D4 ED A0         [16]  260    ldi              ;; [5]  |
+   46D6 ED A0         [16]  261    ldi              ;; [5]  |
                             262  
-   529E 3D            [ 4]  263    dec   a          ;; [1] Another line finished: we discount it from A
-   529F C8            [11]  264    ret   z          ;; [2/4] If that was the last line, we safely return
+   46D8 3D            [ 4]  263    dec   a          ;; [1] Another line finished: we discount it from A
+   46D9 C8            [11]  264    ret   z          ;; [2/4] If that was the last line, we safely return
                             265 
                             266    ;; Jump destination pointer to the start of the next line in video memory
-   52A0 EB            [ 4]  267    ex   de, hl      ;; [1] DE has destination, but we have to exchange it with HL to be able to do 16bit maths
-   52A1 09            [11]  268    add  hl, bc      ;; [3] We add 0x800 minus the width of the sprite (BC) to destination pointer 
-   52A2 47            [ 4]  269    ld    b, a       ;; [1] Save A into B (B = A)
-   52A3 7C            [ 4]  270    ld    a, h       ;; [1] We check if we have crossed video memory boundaries (which will happen every 8 lines). 
+   46DA EB            [ 4]  267    ex   de, hl      ;; [1] DE has destination, but we have to exchange it with HL to be able to do 16bit maths
+   46DB 09            [11]  268    add  hl, bc      ;; [3] We add 0x800 minus the width of the sprite (BC) to destination pointer 
+   46DC 47            [ 4]  269    ld    b, a       ;; [1] Save A into B (B = A)
+   46DD 7C            [ 4]  270    ld    a, h       ;; [1] We check if we have crossed video memory boundaries (which will happen every 8 lines). 
                             271                     ;; .... If that happens, bits 13,12 and 11 of destination pointer will be 0
-   52A4 E6 38         [ 7]  272    and   #0x38      ;; [2] leave out only bits 13,12 and 11 from new memory address (00xxx000 00000000)
-   52A6 78            [ 4]  273    ld    a, b       ;; [1] Restore A from B (A = B)
-   52A7 C2 1A 52      [10]  274    jp   nz, ds_drawSpriteWidth_next ;; [3] If any bit from {13,12,11} is not 0, we are still inside 
+   46DE E6 38         [ 7]  272    and   #0x38      ;; [2] leave out only bits 13,12 and 11 from new memory address (00xxx000 00000000)
+   46E0 78            [ 4]  273    ld    a, b       ;; [1] Restore A from B (A = B)
+   46E1 C2 54 46      [10]  274    jp   nz, ds_drawSpriteWidth_next ;; [3] If any bit from {13,12,11} is not 0, we are still inside 
                             275                                     ;; .... video memory boundaries, so proceed with next line
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 6.
 Hexadecimal [16-Bits]
@@ -312,6 +312,10 @@ Hexadecimal [16-Bits]
                             282    ;;aqui hay quew cambiar el bc para adpatarlo al ancho de pantalla
                             283    ;;
                             284    ;;ld   bc, #0xC050           ;; [3] We advance destination pointer to next line
-   52AA 01 60 C0      [10]  285    ld bc,#0xc060
-   52AD 09            [11]  286    add  hl, bc                ;; [3]  HL += 0xC050
-   52AE C3 1A 52      [10]  287    jp ds_drawSpriteWidth_next ;; [3] Continue copying
+   46E4 06 C0         [ 7]  285    ld b,#0xc0
+                            286    ;;cuatro tiles menos, son ahora 16 en vez de 20
+                            287    ;;le restamos 16,4 por cada tile de menos
+                            288    ;;imagino que al ensancharlo sera al contrario
+   46E6 0E 50         [ 7]  289    ld c,#0x50;;-16
+   46E8 09            [11]  290    add  hl, bc                ;; [3]  HL += 0xC050
+   46E9 C3 54 46      [10]  291    jp ds_drawSpriteWidth_next ;; [3] Continue copying

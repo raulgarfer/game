@@ -4,29 +4,31 @@ Hexadecimal [16-Bits]
 
 
                               1 .module setreg
-                              2 ;;preparamos el crt para pantall de 20*25 tiles
+                              2 ;;preparamos el crt para pantall de 48*34 tiles,mode 0
    0000                       3 setreg::
    0000 01 01 BC      [10]    4     ld    bc, #0xBC01  ;; [3] B=0xBC CRTC Select Register, C=register number to be selected
    0003 ED 49         [12]    5         out  (c), c             ;; [4] Select register
-   0005 01 30 BD      [10]    6     ld    bc, #0xBD30  ;; [3] B=0xBD CRTC Set Register, C=Value to be set
-   0008 ED 49         [12]    7         out  (c), c             ;; [4] Set the value
-   000A 06 BC         [ 7]    8     ld b,#0xbc              ;;pone los registros para usar la memoria desde
-   000C 0E 0C         [ 7]    9     ld c,#12                ;;8000 a ffff seguida.son unos 24kb de 32 usables
+   0005 06 BD         [ 7]    6     ld    b, #0xBD  ;; [3] B=0xBD CRTC Set Register, C=Value to be set
+   0007 0E 20         [ 7]    7     ld c,#32
+   0009 ED 49         [12]    8         out  (c), c             ;; [4] Set the value
+   000B 01 02 BC      [10]    9     ld bc,#0xbc02       ;;coloca el raster horizontal para cuadrarlo
    000E ED 49         [12]   10         out (c),c
-   0010 01 2C BD      [10]   11     ld bc,#0xbd2c
-   0013 ED 49         [12]   12         out (c),c
-   0015 01 02 BC      [10]   13     ld bc,#0xbc02       ;;coloca el raster horizontal para cuadrarlo
-   0018 ED 49         [12]   14     out (c),c
-   001A 06 BD         [ 7]   15     ld b,#0xbd
-   001C 0E 32         [ 7]   16     ld c,#0x32
-   001E ED 49         [12]   17         out (c),c
-   0020 01 06 BC      [10]   18     ld bc,#0xbc06       ;;pone al alto de chars en 34
-   0023 ED 49         [12]   19         out (c),c
-   0025 06 BD         [ 7]   20     ld b,#0xbd
-   0027 0E 22         [ 7]   21     ld c,#0x22
-   0029 ED 49         [12]   22         out (c),c
-   002B 01 07 BC      [10]   23     ld bc,#0xbc07       ;;centra el scan vertical
-   002E ED 49         [12]   24         out (c),c
-   0030 01 23 BD      [10]   25     ld bc,#0xbd23
-   0033 ED 49         [12]   26         out (c),c
-   0035 C9            [10]   27  ret
+   0010 06 BD         [ 7]   11     ld b,#0xbd
+   0012 0E 2A         [ 7]   12     ld c,#0x2a
+                             13     ;;    out (c),c
+                             14    ;; ld b,#0xbc              ;;pone los registros para usar la memoria desde
+                             15    ;; ld c,#12                ;;8000 a ffff seguida.son unos 24kb de 32 usables
+                             16    ;;     out (c),c
+                             17    ;; ld bc,#0xbd2c
+                             18    ;;     out (c),c
+                             19    
+                             20    ;; ld bc,#0xbc06       ;;pone al alto de chars en 34
+                             21    ;;  ;;   out (c),c
+                             22    ;; ld b,#0xbd
+                             23    ;; ld c,#0x22
+                             24    ;;  ;;   out (c),c
+                             25    ;; ld bc,#0xbc07       ;;centra el scan vertical
+                             26    ;;     out (c),c
+                             27    ;; ld bc,#0xbd23
+                             28    ;;    ;; out (c),c
+   0014 C9            [10]   29  ret

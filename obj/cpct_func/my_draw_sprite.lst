@@ -312,6 +312,10 @@ Hexadecimal [16-Bits]
                             282    ;;aqui hay quew cambiar el bc para adpatarlo al ancho de pantalla
                             283    ;;
                             284    ;;ld   bc, #0xC050           ;; [3] We advance destination pointer to next line
-   0099 01 60 C0      [10]  285    ld bc,#0xc060
-   009C 09            [11]  286    add  hl, bc                ;; [3]  HL += 0xC050
-   009D C3 09 00      [10]  287    jp ds_drawSpriteWidth_next ;; [3] Continue copying
+   0099 06 C0         [ 7]  285    ld b,#0xc0
+                            286    ;;cuatro tiles menos, son ahora 16 en vez de 20
+                            287    ;;le restamos 16,4 por cada tile de menos
+                            288    ;;imagino que al ensancharlo sera al contrario
+   009B 0E 50         [ 7]  289    ld c,#0x50;;-16
+   009D 09            [11]  290    add  hl, bc                ;; [3]  HL += 0xC050
+   009E C3 09 00      [10]  291    jp ds_drawSpriteWidth_next ;; [3] Continue copying

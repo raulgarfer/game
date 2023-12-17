@@ -25,7 +25,7 @@
 ;;
 cpct_etm_drawTilemap4x8_ag_asm::
 
-cpct_func/my_cpct_etm_drawTilemap4x8_ag.asm
+.include /cpct_etm_drawTilemap4x8_ag.asm/
 
    drawTilemap4x8_ag_gen cpct_etm_dtm4x8_ag_asm_
 

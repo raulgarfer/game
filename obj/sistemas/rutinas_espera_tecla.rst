@@ -3,13 +3,14 @@ Hexadecimal [16-Bits]
 
 
 
-                              1 .module pinta_sprites
+                              1 .module rutinas_espera_tecla.s
+                              2 .area _CODE
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]
 
 
 
-                              2 .include "cpctelera.h.s"
+                              3 .include "cpctelera.h.s"
                               1 ;;-----------------------------LICENSE NOTICE------------------------------------
                               2 ;;  This file is part of CPCtelera: An Amstrad CPC Game Engine
                               3 ;;  Copyright (C) 2017 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
@@ -5011,22 +5012,19 @@ Hexadecimal [16-Bits]
 
 
 
-                              3 .globl my_draw_sprite
-                              4 .globl cls
-                              5 .globl _uno
-   4536                       6 pintar_sprites::
-   4536 11 00 80      [10]    7  ld de,#0x8000
-                              8    ;;   call cls 
-   4539 11 00 C0      [10]    9    ld de,#0xc000
-                             10   ;;    call cls
-   453C 21 F4 41      [10]   11    ld hl,#_uno
-   453F 0E 04         [ 7]   12    ld c,#4
-   4541 06 10         [ 7]   13    ld b,#16
-   4543 11 00 C0      [10]   14    ld de,#0xc000
-   4546 CD 4B 46      [17]   15       call my_draw_sprite
-   4549 21 F4 41      [10]   16       ld hl,#_uno
-   454C 0E 04         [ 7]   17    ld c,#4
-   454E 06 10         [ 7]   18    ld b,#16
-   4550 11 00 80      [10]   19    ld de,#0x8000
-                             20     ;;  call my_draw_sprite
-   4553 C9            [10]   21 ret
+                              4 .globl cpct_scanKeyboard_f_asm
+                              5 .globl cpct_isAnyKeyPressed_f_asm
+                              6 ;;============================================================================================
+                              7 ;;espera que no haya ninguna tecla pulsada y seguidamente a que se pulse una
+                              8 ;;============================================================================================ 
+   4554                       9  _espera_pulsacion_alguna_tecla::
+   4554                      10     espera_que_no_se_pulse_tecla:
+   4554 CD EC 46      [17]   11     call  cpct_scanKeyboard_f_asm
+   4557 CD 7C 47      [17]   12     call cpct_isAnyKeyPressed_f_asm
+   455A 20 F8         [12]   13         jr nz,espera_que_no_se_pulse_tecla
+   455C                      14  espera_que_si_se_pulse:
+   455C CD EC 46      [17]   15    call  cpct_scanKeyboard_f_asm
+   455F CD 7C 47      [17]   16     call cpct_isAnyKeyPressed_f_asm
+   4562 28 F8         [12]   17         jr z,espera_que_si_se_pulse
+   4564 C9            [10]   18  ret 
+                             19 

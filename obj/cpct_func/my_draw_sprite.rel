@@ -2,7 +2,7 @@ XL2
 H 1 areas 2 global symbols
 M my_cpct_sprites
 S .__.ABS. Def0000
-A _CODE size A0 flags 0 addr 0
+A _CODE size A1 flags 0 addr 0
 S my_draw_sprite Def0000
 T 00 00
 R 00 00 00 00
@@ -34,5 +34,5 @@ T 7A 00 A0 ED A0 ED A0 ED A0 ED A0 ED A0 ED A0 ED
 R 00 00 00 00
 T 88 00 A0 ED A0 ED A0 3D C8 EB 09 47 7C E6 38 78
 R 00 00 00 00
-T 96 00 C2 09 00 01 60 C0 09 C3 09 00
-R 00 00 00 00 00 03 00 00 00 0A 00 00
+T 96 00 C2 09 00 06 C0 0E 50 09 C3 09 00
+R 00 00 00 00 00 03 00 00 00 0B 00 00

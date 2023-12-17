@@ -1,0 +1,21 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 1.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    .__.$$$.=  2710 L   |     .__.ABS.=  0000 G   |     .__.CPU.=  0000 L
+    .__.H$L.=  0000 L   |   0 cpct_etm   0000 GR  |   0 cpct_etm=  0089 GR
+  0 cpct_etm=  0083 GR  |   0 cpct_etm=  008E GR  |   0 cpct_etm=  0018 GR
+  0 cpct_etm=  0091 GR  |   0 cpct_etm=  0002 GR  |   0 incremen=  0089 R
+  0 nextRow    0004 R   |   0 nexttile   0009 R   |   0 restoreI=  0083 R
+  0 restoreS=  0081 R   |   0 restoreW=  008E R   |   0 return     0098 R
+  0 rowEnd     0080 R   |   0 tilesetP=  0018 R   |   0 updateWi=  0091 R
+  0 widthHei=  0002 R
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
+Hexadecimal [16-Bits]
+
+Area Table
+
+   0 _CODE      size   99   flags    0
+

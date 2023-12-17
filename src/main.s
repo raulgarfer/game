@@ -22,6 +22,7 @@
 .globl cpct_setVideoMode_asm
 .globl cpct_setVideoMemoryPage_asm
 .globl pintar_sprites
+.globl draw_tilemap
 ;;
 ;; MAIN function. This is the entry point of the application.
 ;;    _main:: global symbol is required for correctly compiling and linking
@@ -37,13 +38,14 @@ _main::
   push hl
   push de
   push bc
-  cpctm_setBorder_asm 0
-  ;;call set_tilemap
-  call setreg
+  cpctm_setBorder_asm HW_PINK
+  call set_tilemap
+  ;;call setreg
   ld l,#0x20
    ld c,#0
     call cpct_setVideoMode_asm
 ;;
+call draw_tilemap
   call pintar_sprites
    ;; Loop forever
 loop:

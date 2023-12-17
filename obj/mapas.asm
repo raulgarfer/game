@@ -9,7 +9,6 @@
 ; Public variables in this module
 ;--------------------------------------------------------
 	.globl _pinta_mapa
-	.globl _cpct_setPALColour
 ;--------------------------------------------------------
 ; special function registers
 ;--------------------------------------------------------
@@ -41,15 +40,12 @@
 ; code
 ;--------------------------------------------------------
 	.area _CODE
-;src/mapas.c:8: void pinta_mapa(){
+;src/mapas.c:9: void pinta_mapa(){
 ;	---------------------------------
 ; Function pinta_mapa
 ; ---------------------------------
 _pinta_mapa::
-;src/mapas.c:11: cpct_setBorder(HW_BLACK);
-	ld	hl, #0x1410
-	push	hl
-	call	_cpct_setPALColour
+;src/mapas.c:17: }
 	ret
 	.area _CODE
 	.area _INITIALIZER

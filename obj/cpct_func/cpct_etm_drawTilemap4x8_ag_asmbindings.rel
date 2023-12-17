@@ -1,0 +1,50 @@
+XL2
+H 1 areas 8 global symbols
+M cpct_easytilemaps
+S .__.ABS. Def0000
+A _CODE size 99 flags 0 addr 0
+S cpct_etm_dtm4x8_ag_asm_updateWidth Def0091
+S cpct_etm_dtm4x8_ag_asm_restoreWidth Def008E
+S cpct_etm_dtm4x8_ag_asm_restoreI Def0083
+S cpct_etm_drawTilemap4x8_ag_asm Def0000
+S cpct_etm_dtm4x8_ag_asm_incrementHL Def0089
+S cpct_etm_dtm4x8_ag_asm_widthHeightSet Def0002
+S cpct_etm_dtm4x8_ag_asm_tilesetPtr Def0018
+T 00 00
+R 00 00 00 00
+T 00 00 FD 21 00 00
+R 00 00 00 00
+T 04 00
+R 00 00 00 00
+T 04 00 F3 ED 73 81 00
+R 00 00 00 00 00 05 00 00
+T 09 00
+R 00 00 00 00
+T 09 00 1A 47 AF CB 38 1F CB 38 1F CB 38 1F 4F DD
+R 00 00 00 00
+T 17 00 21 00 00 DD 09 DD F9 C1 71 2C 70 2C C1 71
+R 00 00 00 00
+T 25 00 2C 70 CB DC C1 71 2D 70 2D C1 71 2D 70 CB
+R 00 00 00 00
+T 33 00 E4 C1 71 2C 70 2C C1 71 2C 70 CB 9C C1 71
+R 00 00 00 00
+T 41 00 2D 70 2D C1 71 2D 70 CB EC C1 71 2C 70 2C
+R 00 00 00 00
+T 4F 00 C1 71 2C 70 CB DC C1 71 2D 70 2D C1 71 2D
+R 00 00 00 00
+T 5D 00 70 CB A4 C1 71 2C 70 2C C1 71 2C 70 CB 9C
+R 00 00 00 00
+T 6B 00 C1 71 2D 70 2D C1 71 2D 70 CB AC 2C 2C 2C
+R 00 00 00 00
+T 79 00 23 13 FD 2D C2 09 00
+R 00 00 00 00 00 07 00 00
+T 80 00
+R 00 00 00 00
+T 80 00 31 00 00 FB FD 25 28 10 01 00 00 09 FD 2E
+R 00 00 00 00
+T 8E 00 00 EB 01 00 00 09 EB C3 04 00
+R 00 00 00 00 00 0A 00 00
+T 98 00
+R 00 00 00 00
+T 98 00 C9
+R 00 00 00 00

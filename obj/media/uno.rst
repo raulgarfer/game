@@ -41,70 +41,70 @@
                              41 ;--------------------------------------------------------
                              42 	.area _CODE
                              43 	.area _CODE
-   4898                      44 _uno:
-   4898 00                   45 	.db #0x00	; 0
-   4899 00                   46 	.db #0x00	; 0
-   489A 00                   47 	.db #0x00	; 0
-   489B 00                   48 	.db #0x00	; 0
-   489C 30                   49 	.db #0x30	; 48	'0'
-   489D 30                   50 	.db #0x30	; 48	'0'
-   489E 30                   51 	.db #0x30	; 48	'0'
-   489F 30                   52 	.db #0x30	; 48	'0'
-   48A0 CC                   53 	.db #0xcc	; 204
-   48A1 CC                   54 	.db #0xcc	; 204
-   48A2 CC                   55 	.db #0xcc	; 204
-   48A3 CC                   56 	.db #0xcc	; 204
-   48A4 FC                   57 	.db #0xfc	; 252
-   48A5 FC                   58 	.db #0xfc	; 252
-   48A6 FC                   59 	.db #0xfc	; 252
-   48A7 FC                   60 	.db #0xfc	; 252
-   48A8 00                   61 	.db #0x00	; 0
-   48A9 FC                   62 	.db #0xfc	; 252
-   48AA FC                   63 	.db #0xfc	; 252
-   48AB FC                   64 	.db #0xfc	; 252
-   48AC 00                   65 	.db #0x00	; 0
-   48AD 00                   66 	.db #0x00	; 0
-   48AE 00                   67 	.db #0x00	; 0
-   48AF 00                   68 	.db #0x00	; 0
-   48B0 CC                   69 	.db #0xcc	; 204
-   48B1 CC                   70 	.db #0xcc	; 204
-   48B2 CC                   71 	.db #0xcc	; 204
-   48B3 CC                   72 	.db #0xcc	; 204
-   48B4 CC                   73 	.db #0xcc	; 204
-   48B5 CC                   74 	.db #0xcc	; 204
-   48B6 CC                   75 	.db #0xcc	; 204
-   48B7 CC                   76 	.db #0xcc	; 204
-   48B8 CC                   77 	.db #0xcc	; 204
-   48B9 CC                   78 	.db #0xcc	; 204
-   48BA CC                   79 	.db #0xcc	; 204
-   48BB CC                   80 	.db #0xcc	; 204
-   48BC CC                   81 	.db #0xcc	; 204
-   48BD CC                   82 	.db #0xcc	; 204
-   48BE CC                   83 	.db #0xcc	; 204
-   48BF CC                   84 	.db #0xcc	; 204
-   48C0 CC                   85 	.db #0xcc	; 204
-   48C1 CC                   86 	.db #0xcc	; 204
-   48C2 CC                   87 	.db #0xcc	; 204
-   48C3 CC                   88 	.db #0xcc	; 204
-   48C4 C0                   89 	.db #0xc0	; 192
-   48C5 C0                   90 	.db #0xc0	; 192
-   48C6 C0                   91 	.db #0xc0	; 192
-   48C7 C0                   92 	.db #0xc0	; 192
-   48C8 C0                   93 	.db #0xc0	; 192
-   48C9 E8                   94 	.db #0xe8	; 232
-   48CA C0                   95 	.db #0xc0	; 192
-   48CB C0                   96 	.db #0xc0	; 192
-   48CC FC                   97 	.db #0xfc	; 252
-   48CD FC                   98 	.db #0xfc	; 252
-   48CE FC                   99 	.db #0xfc	; 252
-   48CF FC                  100 	.db #0xfc	; 252
-   48D0 C0                  101 	.db #0xc0	; 192
-   48D1 C0                  102 	.db #0xc0	; 192
-   48D2 C0                  103 	.db #0xc0	; 192
-   48D3 C0                  104 	.db #0xc0	; 192
-   48D4 30                  105 	.db #0x30	; 48	'0'
-   48D5 30                  106 	.db #0x30	; 48	'0'
-   48D6 30                  107 	.db #0x30	; 48	'0'
-   48D7 30                  108 	.db #0x30	; 48	'0'
+   41F4                      44 _uno:
+   41F4 00                   45 	.db #0x00	; 0
+   41F5 00                   46 	.db #0x00	; 0
+   41F6 00                   47 	.db #0x00	; 0
+   41F7 00                   48 	.db #0x00	; 0
+   41F8 30                   49 	.db #0x30	; 48	'0'
+   41F9 30                   50 	.db #0x30	; 48	'0'
+   41FA 30                   51 	.db #0x30	; 48	'0'
+   41FB 30                   52 	.db #0x30	; 48	'0'
+   41FC CC                   53 	.db #0xcc	; 204
+   41FD CC                   54 	.db #0xcc	; 204
+   41FE CC                   55 	.db #0xcc	; 204
+   41FF CC                   56 	.db #0xcc	; 204
+   4200 FC                   57 	.db #0xfc	; 252
+   4201 FC                   58 	.db #0xfc	; 252
+   4202 FC                   59 	.db #0xfc	; 252
+   4203 FC                   60 	.db #0xfc	; 252
+   4204 00                   61 	.db #0x00	; 0
+   4205 FC                   62 	.db #0xfc	; 252
+   4206 FC                   63 	.db #0xfc	; 252
+   4207 FC                   64 	.db #0xfc	; 252
+   4208 00                   65 	.db #0x00	; 0
+   4209 00                   66 	.db #0x00	; 0
+   420A 00                   67 	.db #0x00	; 0
+   420B 00                   68 	.db #0x00	; 0
+   420C CC                   69 	.db #0xcc	; 204
+   420D CC                   70 	.db #0xcc	; 204
+   420E CC                   71 	.db #0xcc	; 204
+   420F CC                   72 	.db #0xcc	; 204
+   4210 CC                   73 	.db #0xcc	; 204
+   4211 CC                   74 	.db #0xcc	; 204
+   4212 CC                   75 	.db #0xcc	; 204
+   4213 CC                   76 	.db #0xcc	; 204
+   4214 CC                   77 	.db #0xcc	; 204
+   4215 CC                   78 	.db #0xcc	; 204
+   4216 CC                   79 	.db #0xcc	; 204
+   4217 CC                   80 	.db #0xcc	; 204
+   4218 CC                   81 	.db #0xcc	; 204
+   4219 CC                   82 	.db #0xcc	; 204
+   421A CC                   83 	.db #0xcc	; 204
+   421B CC                   84 	.db #0xcc	; 204
+   421C CC                   85 	.db #0xcc	; 204
+   421D CC                   86 	.db #0xcc	; 204
+   421E CC                   87 	.db #0xcc	; 204
+   421F CC                   88 	.db #0xcc	; 204
+   4220 C0                   89 	.db #0xc0	; 192
+   4221 C0                   90 	.db #0xc0	; 192
+   4222 C0                   91 	.db #0xc0	; 192
+   4223 C0                   92 	.db #0xc0	; 192
+   4224 C0                   93 	.db #0xc0	; 192
+   4225 E8                   94 	.db #0xe8	; 232
+   4226 C0                   95 	.db #0xc0	; 192
+   4227 C0                   96 	.db #0xc0	; 192
+   4228 FC                   97 	.db #0xfc	; 252
+   4229 FC                   98 	.db #0xfc	; 252
+   422A FC                   99 	.db #0xfc	; 252
+   422B FC                  100 	.db #0xfc	; 252
+   422C C0                  101 	.db #0xc0	; 192
+   422D C0                  102 	.db #0xc0	; 192
+   422E C0                  103 	.db #0xc0	; 192
+   422F C0                  104 	.db #0xc0	; 192
+   4230 30                  105 	.db #0x30	; 48	'0'
+   4231 30                  106 	.db #0x30	; 48	'0'
+   4232 30                  107 	.db #0x30	; 48	'0'
+   4233 30                  108 	.db #0x30	; 48	'0'
                             109 	.area _INITIALIZER
                             110 	.area _CABS (ABS)
