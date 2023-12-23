@@ -15,10 +15,13 @@ obj/mapas.rel
 obj/media/tiles_16x8_M1.rel
 obj/draw_tilemap.rel
 obj/main.rel
+obj/manager/array_entidades.rel
+obj/manager/declaracion_entidades.rel
 obj/sistemas/my_draw_sprite.rel
 obj/sistemas/pinta_sprites.rel
 obj/sistemas/rutinas_espera_tecla.rel
 obj/sistemas/setreg.rel
+obj/sistemas/sys_prepara_array.rel
 obj/rutinas/cls.rel
 obj/cpct_func/cpct_etm_drawTilemap4x8_ag_asmbindings.rel
 obj/cpct_func/my_cpct_etm_setDrawTilemap4x8_ag_asmbindings.rel

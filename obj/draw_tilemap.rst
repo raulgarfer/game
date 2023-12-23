@@ -5022,12 +5022,12 @@ Hexadecimal [16-Bits]
    4457 06 19         [ 7]   11     ld b,#max_H     ;;alto de pantalla en chars
    4459 11 14 00      [10]   12     ld de,#max_W    ;;ancho total a mostrar en chars
    445C 21 54 42      [10]   13     ld hl,#_tiles_8x8_0     ;;direccion de los tiles a usar
-   445F CD 1F 46      [17]   14         call my_cpct_etm_setDrawTilemap4x8_ag_asm
+   445F CD 98 46      [17]   14         call my_cpct_etm_setDrawTilemap4x8_ag_asm
    4462 C9            [10]   15 ret
    4463                      16 draw_tilemap::
                              17     ;;2B HL) memory	Video memory location where to draw the tilemap (character & 4-byte aligned)
                              18 ;;(2B DE) tilemap	Pointer to the upper-left tile of the view to be drawn of the tilemap
    4463 21 00 C0      [10]   19 ld hl,#0xc000
    4466 11 00 40      [10]   20 ld de,#_max
-   4469 CD 86 45      [17]   21 call cpct_etm_drawTilemap4x8_ag_asm
+   4469 CD FF 45      [17]   21 call cpct_etm_drawTilemap4x8_ag_asm
    446C C9            [10]   22 ret

@@ -5016,15 +5016,16 @@ Hexadecimal [16-Bits]
                               5 .globl cpct_isAnyKeyPressed_f_asm
                               6 ;;============================================================================================
                               7 ;;espera que no haya ninguna tecla pulsada y seguidamente a que se pulse una
-                              8 ;;============================================================================================ 
-   0000                       9  _espera_pulsacion_alguna_tecla::
-   0000                      10     espera_que_no_se_pulse_tecla:
-   0000 CD 00 00      [17]   11     call  cpct_scanKeyboard_f_asm
-   0003 CD 00 00      [17]   12     call cpct_isAnyKeyPressed_f_asm
-   0006 20 F8         [12]   13         jr nz,espera_que_no_se_pulse_tecla
-   0008                      14  espera_que_si_se_pulse:
-   0008 CD 00 00      [17]   15    call  cpct_scanKeyboard_f_asm
-   000B CD 00 00      [17]   16     call cpct_isAnyKeyPressed_f_asm
-   000E 28 F8         [12]   17         jr z,espera_que_si_se_pulse
-   0010 C9            [10]   18  ret 
-                             19 
+                              8 ;;altera  AF,BC,DE,HL
+                              9 ;;============================================================================================ 
+   0000                      10 espera_pulsacion_alguna_tecla::
+   0000                      11  espera_que_no_se_pulse_tecla:
+   0000 CD 00 00      [17]   12     call  cpct_scanKeyboard_f_asm
+   0003 CD 00 00      [17]   13     call cpct_isAnyKeyPressed_f_asm
+   0006 20 F8         [12]   14         jr nz,espera_que_no_se_pulse_tecla
+   0008                      15  espera_que_si_se_pulse:
+   0008 CD 00 00      [17]   16     call  cpct_scanKeyboard_f_asm
+   000B CD 00 00      [17]   17     call cpct_isAnyKeyPressed_f_asm
+   000E 28 F8         [12]   18         jr z,espera_que_si_se_pulse
+   0010 C9            [10]   19  ret 
+                             20 

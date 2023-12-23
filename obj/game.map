@@ -18,21 +18,21 @@ Area                                    Addr        Size        Decimal Bytes (A
      00000000  l__INITIALIZER                  
      00000000  s__CABS                         
      00000000  s__DABS                         
-     000007DA  l__CODE                         
+     00000853  l__CODE                         
      00004000  s__CODE                         
-     000047DA  s__DATA                         
-     000047DA  s__GSFINAL                      
-     000047DA  s__GSINIT                       
-     000047DA  s__HOME                         
-     000047DA  s__INITIALIZED                  
-     000047DA  s__INITIALIZER                  
+     00004853  s__DATA                         
+     00004853  s__GSFINAL                      
+     00004853  s__GSINIT                       
+     00004853  s__HOME                         
+     00004853  s__INITIALIZED                  
+     00004853  s__INITIALIZER                  
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00004000    000007DA =        2010. bytes (REL,CON)
+_CODE                               00004000    00000853 =        2131. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -59,49 +59,55 @@ _CODE                               00004000    000007DA =        2010. bytes (R
      00004455  set_tilemap                        set_draw_tilemap_4x8.s
      00004463  draw_tilemap                       set_draw_tilemap_4x8.s
      0000446D  _main                              cpct_keyboard
-     00004536  pintar_sprites                     pinta_sprites
-     00004554  _espera_pulsacion_alguna_tecla     rutinas_espera_tecla.s
-     00004565  setreg                             setreg
-     0000457A  cls                                cls
-     00004586  cpct_etm_drawTilemap4x8_ag_asm     cpct_easytilemaps
-     00004588  cpct_etm_dtm4x8_ag_asm_widthHeig   cpct_easytilemaps
-     0000459E  cpct_etm_dtm4x8_ag_asm_tilesetPt   cpct_easytilemaps
-     00004609  cpct_etm_dtm4x8_ag_asm_restoreI    cpct_easytilemaps
-     0000460F  cpct_etm_dtm4x8_ag_asm_increment   cpct_easytilemaps
-     00004614  cpct_etm_dtm4x8_ag_asm_restoreWi   cpct_easytilemaps
-     00004617  cpct_etm_dtm4x8_ag_asm_updateWid   cpct_easytilemaps
-     0000461F  my_cpct_etm_setDrawTilemap4x8_ag   cpct_easytilemaps
-     0000464B  my_draw_sprite                     my_cpct_sprites
-     000046EC  _cpct_scanKeyboard_f               cpct_keyboard
-     000046EC  cpct_scanKeyboard_f_asm            cpct_keyboard
-     00004756  cpct_setPALColour_asm              cpct_video
-     00004760  _cpct_setVideoMemoryOffset         cpct_video
-     00004760  cpct_setVideoMemoryOffset_asm      cpct_video
-     00004769  _cpct_keyboardStatusBuffer         cpct_keyboard
-     00004773  _cpct_setVideoMemoryPage           cpct_video
-     00004773  cpct_setVideoMemoryPage_asm        cpct_video
-     0000477C  _cpct_isAnyKeyPressed_f            cpct_keyboard
-     0000477C  cpct_isAnyKeyPressed_f_asm         cpct_keyboard
-     00004797  _cpct_waitVSYNC                    cpct_video
-     00004797  cpct_waitVSYNC_asm                 cpct_video
-     0000479F  cpct_setVideoMode_asm              cpct_video
-     000047AC  _cpct_disableFirmware              cpct_firmware
+     00004489  array_entidades                    array_entidades.s
+     000044ED  byte_fin                           array_entidades.s
+     000044EE  primera_entidad_libre              array_entidades.s
+     000044F0  jugador                            declaracion_entidades.s
+     000044F9  enemigo                            declaracion_entidades.s
+     000045A7  pintar_sprites                     pinta_sprites
+     000045B8  espera_pulsacion_alguna_tecla      rutinas_espera_tecla.s
+     000045C9  setreg                             setreg
+     000045DE  copia_entidad_al_array             sys_prepara_array.s
+     000045EC  crea_entidad                       sys_prepara_array.s
+     000045F3  cls                                cls
+     000045FF  cpct_etm_drawTilemap4x8_ag_asm     cpct_easytilemaps
+     00004601  cpct_etm_dtm4x8_ag_asm_widthHeig   cpct_easytilemaps
+     00004617  cpct_etm_dtm4x8_ag_asm_tilesetPt   cpct_easytilemaps
+     00004682  cpct_etm_dtm4x8_ag_asm_restoreI    cpct_easytilemaps
+     00004688  cpct_etm_dtm4x8_ag_asm_increment   cpct_easytilemaps
+     0000468D  cpct_etm_dtm4x8_ag_asm_restoreWi   cpct_easytilemaps
+     00004690  cpct_etm_dtm4x8_ag_asm_updateWid   cpct_easytilemaps
+     00004698  my_cpct_etm_setDrawTilemap4x8_ag   cpct_easytilemaps
+     000046C4  my_draw_sprite                     my_cpct_sprites
+     00004765  _cpct_scanKeyboard_f               cpct_keyboard
+     00004765  cpct_scanKeyboard_f_asm            cpct_keyboard
+     000047CF  cpct_setPALColour_asm              cpct_video
+     000047D9  _cpct_setVideoMemoryOffset         cpct_video
+     000047D9  cpct_setVideoMemoryOffset_asm      cpct_video
+     000047E2  _cpct_keyboardStatusBuffer         cpct_keyboard
+     000047EC  _cpct_setVideoMemoryPage           cpct_video
 ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00004000    000007DA =        2010. bytes (REL,CON)
+_CODE                               00004000    00000853 =        2131. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     000047AC  _cpct_removeInterruptHandler       cpct_firmware
-     000047AC  cpct_disableFirmware_asm           cpct_firmware
-     000047AC  cpct_removeInterruptHandler_asm    cpct_firmware
-     000047BC  _cpct_mode_rom_status              cpct_firmware
-     000047BD  cpct_getScreenPtr_asm              cpct_video
-     000047CF  cpct_setCRTCReg_asm                cpct_video
-
+     000047EC  cpct_setVideoMemoryPage_asm        cpct_video
+     000047F5  _cpct_isAnyKeyPressed_f            cpct_keyboard
+     000047F5  cpct_isAnyKeyPressed_f_asm         cpct_keyboard
+     00004810  _cpct_waitVSYNC                    cpct_video
+     00004810  cpct_waitVSYNC_asm                 cpct_video
+     00004818  cpct_setVideoMode_asm              cpct_video
+     00004825  _cpct_disableFirmware              cpct_firmware
+     00004825  _cpct_removeInterruptHandler       cpct_firmware
+     00004825  cpct_disableFirmware_asm           cpct_firmware
+     00004825  cpct_removeInterruptHandler_asm    cpct_firmware
+     00004835  _cpct_mode_rom_status              cpct_firmware
+     00004836  cpct_getScreenPtr_asm              cpct_video
+     00004848  cpct_setCRTCReg_asm                cpct_video
 ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
 
 Files Linked                              [ module(s) ]
@@ -114,10 +120,13 @@ obj/mapas.rel                             [ mapas ]
 obj/media/tiles_16x8_M1.rel               [ tiles_16x8_M1 ]
 obj/draw_tilemap.rel                      [ set_draw_tilemap_4x8.s ]
 obj/main.rel                              [ cpct_keyboard ]
+obj/manager/array_entidades.rel           [ array_entidades.s ]
+obj/manager/declaracion_entidades.rel     [ declaracion_entidades.s ]
 obj/sistemas/my_draw_sprite.rel           [ cpct_sprites ]
 obj/sistemas/pinta_sprites.rel            [ pinta_sprites ]
 obj/sistemas/rutinas_espera_tecla.rel     [ rutinas_espera_tecla.s ]
 obj/sistemas/setreg.rel                   [ setreg ]
+obj/sistemas/sys_prepara_array.rel        [ sys_prepara_array.s ]
 obj/rutinas/cls.rel                       [ cls ]
 obj/cpct_func/cpct_etm_drawTilemap4x8_ag_asmbindings.rel
                                           [ cpct_easytilemaps ]

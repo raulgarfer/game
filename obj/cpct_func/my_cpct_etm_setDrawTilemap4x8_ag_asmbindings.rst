@@ -462,7 +462,7 @@ Hexadecimal [16-Bits]
                               8 ;;
                               9 ;; 0 microseconds, 0 bytes
                              10 ;;
-   461F                      11 my_cpct_etm_setDrawTilemap4x8_ag_asm::
+   4698                      11 my_cpct_etm_setDrawTilemap4x8_ag_asm::
                              12 
                              13 ;;.include /cpct_etm_setDrawTilemap4x8_ag.asm/
                              14 ;;.include src/cpct_func/my_cpct_etm_setDrawTilemap4x8_ag.asm
@@ -544,15 +544,15 @@ Hexadecimal [16-Bits]
                               8 .globl cpct_etm_dtm4x8_ag_asm_restoreI
                               9 
                              10    ;; Set (tilesetPtr) placeholder
-   461F 22 9E 45      [16]   11    ld (cpct_etm_dtm4x8_ag_asm_tilesetPtr), hl     ;; [5] Save HL into tilesetPtr placeholder
+   4698 22 17 46      [16]   11    ld (cpct_etm_dtm4x8_ag_asm_tilesetPtr), hl     ;; [5] Save HL into tilesetPtr placeholder
                              12 
                              13    ;; Set all Width values required by drawTileMap4x8_ag. First two values
                              14    ;; (heightSet, widthSet) are values used at the start of the function for
                              15    ;; initialization. The other one (restoreWidth) restores the value of the
                              16    ;; width after each loop, as it is used as counter and decremented to 0.
-   4622 ED 43 88 45   [20]   17    ld (cpct_etm_dtm4x8_ag_asm_widthHeightSet), bc ;; [6]
-   4626 79            [ 4]   18    ld     a, c                    ;; [1]
-   4627 32 14 46      [13]   19    ld (cpct_etm_dtm4x8_ag_asm_restoreWidth), a    ;; [4] Set restore width after each loop placeholder
+   469B ED 43 01 46   [20]   17    ld (cpct_etm_dtm4x8_ag_asm_widthHeightSet), bc ;; [6]
+   469F 79            [ 4]   18    ld     a, c                    ;; [1]
+   46A0 32 8D 46      [13]   19    ld (cpct_etm_dtm4x8_ag_asm_restoreWidth), a    ;; [4] Set restore width after each loop placeholder
                              20    
                              21    ;; In order to properly show a view of (Width x Height) tiles from within the
                              22    ;; tilemap, every time a row has been drawn, we need to move tilemap pointer
@@ -563,21 +563,21 @@ Hexadecimal [16-Bits]
    000B                       1    sub_REGPAIR_a  d, e
                               1    ;; First Perform A' = A - 1 - RL 
                               2    ;; (Inverse subtraction minus 1, used  to test for Carry, needed to know when to subtract 1 from RH)
-   462A 3D            [ 4]    3    dec    a          ;; [1] --A (In case A == RL, inverse subtraction should produce carry not to decrement RH)
-   462B 93            [ 4]    4    sub   e          ;; [1] A' = A - 1 - RL
-   462C 38 01         [12]    5    jr     c, 10000$  ;; [2/3] If A <= RL, Carry will be produced, and no decrement of RH is required, so jump over it
-   462E 15            [ 4]    6      dec   d        ;; [1] --RH (A > RL, so RH must be decremented)
-   462F                       7 10000$:   
+   46A3 3D            [ 4]    3    dec    a          ;; [1] --A (In case A == RL, inverse subtraction should produce carry not to decrement RH)
+   46A4 93            [ 4]    4    sub   e          ;; [1] A' = A - 1 - RL
+   46A5 38 01         [12]    5    jr     c, 10000$  ;; [2/3] If A <= RL, Carry will be produced, and no decrement of RH is required, so jump over it
+   46A7 15            [ 4]    6      dec   d        ;; [1] --RH (A > RL, so RH must be decremented)
+   46A8                       7 10000$:   
                               8    ;; Now invert A to get the subtraction we wanted 
                               9    ;; { RL' = -A' - 1 = -(A - 1 - RL) - 1 = RL - A }
-   462F 2F            [ 4]   10    cpl            ;; [1] A'' = RL - A (Original subtraction we wanted, calculated trough one's complement of A')
+   46A8 2F            [ 4]   10    cpl            ;; [1] A'' = RL - A (Original subtraction we wanted, calculated trough one's complement of A')
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 12.
 Hexadecimal [16-Bits]
 
 
 
-   4630 5F            [ 4]   11    ld    e, a    ;; [1] Save into RL (RL' = RL - A)
-   4631 ED 53 17 46   [20]   27    ld (cpct_etm_dtm4x8_ag_asm_updateWidth), de   ;; [6] set the difference in updateWidth placeholder
+   46A9 5F            [ 4]   11    ld    e, a    ;; [1] Save into RL (RL' = RL - A)
+   46AA ED 53 90 46   [20]   27    ld (cpct_etm_dtm4x8_ag_asm_updateWidth), de   ;; [6] set the difference in updateWidth placeholder
                              28 
                              29    ;; Calculate HL update that has to be performed for each new row loop.
                              30    ;; HL advances through video memory as tiles are being drawn. When a row
@@ -588,24 +588,24 @@ Hexadecimal [16-Bits]
                              35    ;; As each tile is 4-bytes wide, this amount is (0x50 - 4*Width). Also,
                              36    ;; taking into account that 4*Width cannot exceed 255 (1-byte), a maximum
                              37    ;; of 63 tiles can be considered as Width.
-   4635 79            [ 4]   38    ld     a, c                ;; [1] A = Width
-   4636 87            [ 4]   39    add    a                   ;; [1] A = 2*Width
-   4637 87            [ 4]   40    add    a                   ;; [1] A = 4*Width
-   4638 2F            [ 4]   41    cpl                        ;; [1] A = -4*Width - 1
-   4639 C6 51         [ 7]   42    add #0x50 + 1              ;; [2] A = -4*Width-1 + 0x50+1 = 0x50 - 4*Width
-   463B 32 0F 46      [13]   43    ld (cpct_etm_dtm4x8_ag_asm_incrementHL), a ;; [4] Set HL increment in its placeholder
+   46AE 79            [ 4]   38    ld     a, c                ;; [1] A = Width
+   46AF 87            [ 4]   39    add    a                   ;; [1] A = 2*Width
+   46B0 87            [ 4]   40    add    a                   ;; [1] A = 4*Width
+   46B1 2F            [ 4]   41    cpl                        ;; [1] A = -4*Width - 1
+   46B2 C6 51         [ 7]   42    add #0x50 + 1              ;; [2] A = -4*Width-1 + 0x50+1 = 0x50 - 4*Width
+   46B4 32 88 46      [13]   43    ld (cpct_etm_dtm4x8_ag_asm_incrementHL), a ;; [4] Set HL increment in its placeholder
                              44 
                              45    ;; Set the restoring of Interrupt Status. drawTileMap4x8_ag disables interrupts before
                              46    ;; drawing each tile row, and then it restores previous interrupt status after the row
                              47    ;; has been drawn. To do this, present interrupt status is considered. This code detects
                              48    ;; present interrupt status and sets a EI/DI instruction at the end of tile row drawing
                              49    ;; to either reactivate interrupts or preserve interrupts disabled.
-   463E ED 57         [ 9]   50    ld     a, i             ;; [3] P/V flag set to current interrupt status (IFF2 flip-flop)
-   4640 3E FB         [ 7]   51    ld     a, #opc_EI       ;; [2] A = Opcode for Enable Interrupts instruction (EI = 0xFB)
-   4642 EA 47 46      [10]   52    jp    pe, int_enabled   ;; [3] If interrupts are enabled, EI is the appropriate instruction
-   4645 3E F3         [ 7]   53      ld   a, #opc_DI       ;; [2] Otherwise, it is DI, so A = Opcode for Disable Interrupts instruction (DI = 0xF3)
-   4647                      54 int_enabled:
-   4647 32 09 46      [13]   55    ld (cpct_etm_dtm4x8_ag_asm_restoreI), a ;; [4] Set the Restore Interrupt status at the end with corresponding DI or EI
+   46B7 ED 57         [ 9]   50    ld     a, i             ;; [3] P/V flag set to current interrupt status (IFF2 flip-flop)
+   46B9 3E FB         [ 7]   51    ld     a, #opc_EI       ;; [2] A = Opcode for Enable Interrupts instruction (EI = 0xFB)
+   46BB EA C0 46      [10]   52    jp    pe, int_enabled   ;; [3] If interrupts are enabled, EI is the appropriate instruction
+   46BE 3E F3         [ 7]   53      ld   a, #opc_DI       ;; [2] Otherwise, it is DI, so A = Opcode for Disable Interrupts instruction (DI = 0xF3)
+   46C0                      54 int_enabled:
+   46C0 32 82 46      [13]   55    ld (cpct_etm_dtm4x8_ag_asm_restoreI), a ;; [4] Set the Restore Interrupt status at the end with corresponding DI or EI
                              56 
-   464A C9            [10]   57    ret                     ;; [3] Return to caller
+   46C3 C9            [10]   57    ret                     ;; [3] Return to caller
                              58 

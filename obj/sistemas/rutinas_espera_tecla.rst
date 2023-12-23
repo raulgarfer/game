@@ -5016,15 +5016,16 @@ Hexadecimal [16-Bits]
                               5 .globl cpct_isAnyKeyPressed_f_asm
                               6 ;;============================================================================================
                               7 ;;espera que no haya ninguna tecla pulsada y seguidamente a que se pulse una
-                              8 ;;============================================================================================ 
-   4554                       9  _espera_pulsacion_alguna_tecla::
-   4554                      10     espera_que_no_se_pulse_tecla:
-   4554 CD EC 46      [17]   11     call  cpct_scanKeyboard_f_asm
-   4557 CD 7C 47      [17]   12     call cpct_isAnyKeyPressed_f_asm
-   455A 20 F8         [12]   13         jr nz,espera_que_no_se_pulse_tecla
-   455C                      14  espera_que_si_se_pulse:
-   455C CD EC 46      [17]   15    call  cpct_scanKeyboard_f_asm
-   455F CD 7C 47      [17]   16     call cpct_isAnyKeyPressed_f_asm
-   4562 28 F8         [12]   17         jr z,espera_que_si_se_pulse
-   4564 C9            [10]   18  ret 
-                             19 
+                              8 ;;altera  AF,BC,DE,HL
+                              9 ;;============================================================================================ 
+   45B8                      10 espera_pulsacion_alguna_tecla::
+   45B8                      11  espera_que_no_se_pulse_tecla:
+   45B8 CD 65 47      [17]   12     call  cpct_scanKeyboard_f_asm
+   45BB CD F5 47      [17]   13     call cpct_isAnyKeyPressed_f_asm
+   45BE 20 F8         [12]   14         jr nz,espera_que_no_se_pulse_tecla
+   45C0                      15  espera_que_si_se_pulse:
+   45C0 CD 65 47      [17]   16     call  cpct_scanKeyboard_f_asm
+   45C3 CD F5 47      [17]   17     call cpct_isAnyKeyPressed_f_asm
+   45C6 28 F8         [12]   18         jr z,espera_que_si_se_pulse
+   45C8 C9            [10]   19  ret 
+                             20 

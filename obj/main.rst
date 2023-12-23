@@ -5034,42 +5034,29 @@ Hexadecimal [16-Bits]
                              23 .globl cpct_setVideoMemoryPage_asm
                              24 .globl pintar_sprites
                              25 .globl draw_tilemap
-                             26 ;;
-                             27 ;; MAIN function. This is the entry point of the application.
-                             28 ;;    _main:: global symbol is required for correctly compiling and linking
-                             29 ;;
-   446D                      30 _main::
-                             31    ;; Disable firmware to prevent it from interfering with string drawing
-   446D CD AC 47      [17]   32   call cpct_disableFirmware_asm
-                             33   ;;cambia la pila,salvando la memoria
-   4470 C1            [10]   34   pop bc
-   4471 D1            [10]   35   pop de
-   4472 E1            [10]   36   pop hl
-   4473 31 00 80      [10]   37   ld sp,#0x8000
-   4476 E5            [11]   38   push hl
-   4477 D5            [11]   39   push de
-   4478 C5            [11]   40   push bc
-   000C                      41   cpctm_setBorder_asm HW_PINK
+                             26 .globl crea_entidad
+                             27 ;;
+                             28 ;; MAIN function. This is the entry point of the application.
+                             29 ;;    _main:: global symbol is required for correctly compiling and linking
+                             30 ;;
+   446D                      31 _main::
+                             32    ;; Disable firmware to prevent it from interfering with string drawing
+   446D CD 25 48      [17]   33   call cpct_disableFirmware_asm
+   0003                      34   cpctm_setBorder_asm HW_PINK
                               1    .radix h
-   000C                       2    cpctm_setBorder_raw_asm \HW_PINK ;; [28] Macro that does the job, but requires a number value to be passed
+   0003                       2    cpctm_setBorder_raw_asm \HW_PINK ;; [28] Macro that does the job, but requires a number value to be passed
                               1    .globl cpct_setPALColour_asm
-   4479 21 10 07      [10]    2    ld   hl, #0x710         ;; [3]  H=Hardware value of desired colour, L=Border INK (16)
-   447C CD 56 47      [17]    3    call cpct_setPALColour_asm  ;; [25] Set Palette colour of the border
+   4470 21 10 07      [10]    2    ld   hl, #0x710         ;; [3]  H=Hardware value of desired colour, L=Border INK (16)
+   4473 CD CF 47      [17]    3    call cpct_setPALColour_asm  ;; [25] Set Palette colour of the border
                               3    .radix d
-   447F CD 55 44      [17]   42   call set_tilemap
-                             43   ;;call setreg
-   4482 2E 20         [ 7]   44   ld l,#0x20
-   4484 0E 00         [ 7]   45    ld c,#0
-   4486 CD 9F 47      [17]   46     call cpct_setVideoMode_asm
-                             47 ;;
-   4489 CD 63 44      [17]   48 call draw_tilemap
-   448C CD 36 45      [17]   49   call pintar_sprites
-                             50    ;; Loop forever
-   448F                      51 loop:
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 97.
-Hexadecimal [16-Bits]
-
-
-
-   448F 18 FE         [12]   52    jr    loop
-                             53 
+   4476 CD 55 44      [17]   35   call set_tilemap
+   4479 0E 00         [ 7]   36    ld c,#0
+   447B CD 18 48      [17]   37     call cpct_setVideoMode_asm
+                             38 ;;
+   447E CD 63 44      [17]   39 call draw_tilemap
+   4481 CD EC 45      [17]   40 call crea_entidad
+   4484 CD A7 45      [17]   41   call pintar_sprites
+                             42    ;; Loop forever
+   4487                      43 loop:
+   4487 18 FE         [12]   44    jr    loop
+                             45 

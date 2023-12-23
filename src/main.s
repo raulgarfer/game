@@ -23,6 +23,7 @@
 .globl cpct_setVideoMemoryPage_asm
 .globl pintar_sprites
 .globl draw_tilemap
+.globl crea_entidad
 ;;
 ;; MAIN function. This is the entry point of the application.
 ;;    _main:: global symbol is required for correctly compiling and linking
@@ -30,22 +31,13 @@
 _main::
    ;; Disable firmware to prevent it from interfering with string drawing
   call cpct_disableFirmware_asm
-  ;;cambia la pila,salvando la memoria
-  pop bc
-  pop de
-  pop hl
-  ld sp,#0x8000
-  push hl
-  push de
-  push bc
   cpctm_setBorder_asm HW_PINK
   call set_tilemap
-  ;;call setreg
-  ld l,#0x20
    ld c,#0
     call cpct_setVideoMode_asm
 ;;
 call draw_tilemap
+call crea_entidad
   call pintar_sprites
    ;; Loop forever
 loop:

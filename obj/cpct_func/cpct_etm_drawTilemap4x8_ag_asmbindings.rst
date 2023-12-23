@@ -956,7 +956,7 @@ Hexadecimal [16-Bits]
                              23 ;;
                              24 ;; 3 microseconds, 1 byte
                              25 ;;
-   4586                      26 cpct_etm_drawTilemap4x8_ag_asm::
+   45FF                      26 cpct_etm_drawTilemap4x8_ag_asm::
                              27 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 19.
 Hexadecimal [16-Bits]
@@ -1467,18 +1467,18 @@ Hexadecimal [16-Bits]
                               1    ;; Set Height and Width of the View Window of the current 
                               2    ;; tilemap to be drawn (This is set by setDrawTilemap4x8_agf)
                      0002     3 widthHeightSet = .+2
-   4586 FD 21 00 00   [14]    4    ld iy, #0000         ;; [4] IYL=View Window Width, IYH=View Window Height
+   45FF FD 21 00 00   [14]    4    ld iy, #0000         ;; [4] IYL=View Window Width, IYH=View Window Height
                               5 
-   458A                       6 nextRow:
+   4603                       6 nextRow:
                               7    ;; Disable interrupts and save SP before starting
-   458A F3            [ 4]    8    di                   ;; [1] Disable interrupts before starting (we are using SP to read values)
-   458B ED 73 07 46   [20]    9    ld (restoreSP), sp   ;; [6] Save actual SP to restore it in the end
+   4603 F3            [ 4]    8    di                   ;; [1] Disable interrupts before starting (we are using SP to read values)
+   4604 ED 73 80 46   [20]    9    ld (restoreSP), sp   ;; [6] Save actual SP to restore it in the end
                              10    ;; Start of the code that draws the next tile of the present row being drawn
                              11    ;;
-   458F                      12 nexttile:
+   4608                      12 nexttile:
                              13    ;; Get next tile to be drawn from the tilemap, which is pointed by DE
-   458F 1A            [ 7]   14    ld     a, (de)    ;; [2] A = present tile-ID of the tile to be drawn
-   4590 47            [ 4]   15    ld     b, a       ;; [1] B = A
+   4608 1A            [ 7]   14    ld     a, (de)    ;; [2] A = present tile-ID of the tile to be drawn
+   4609 47            [ 4]   15    ld     b, a       ;; [1] B = A
                              16 
                              17    ;; From the tile-ID we hold in B, we need to calculate the Offset of the 
                              18    ;; tile definition (its 32-bytes of screen pixel data). As each tile takes 32-bytes,
@@ -1486,22 +1486,22 @@ Hexadecimal [16-Bits]
                              20    ;; Therefore, we need to multiply 32*B (32*tile-ID). As this multiplication may result 
                              21    ;; in a 16-bits value, we will perform BC = 32*B. Considering B=[abcdefgh], result 
                              22    ;; has to be BC = [000abcde][fgh00000] (B shifted 5 times left = BC = 32*tile-ID).  
-   4591 AF            [ 4]   23    xor    a       ;; [1] A = [00000000]
-   4592 CB 38         [ 8]   24    srl    b       ;; [2] B = [0abcdefg] (Right shift, Carry = h)
-   4594 1F            [ 4]   25    rra            ;; [1] A = [h0000000] (Rotate Right + Bit7 = h (Carry insertion))
-   4595 CB 38         [ 8]   26    srl    b       ;; [2] B = [00abcdef] (Right shift, Carry = g)
-   4597 1F            [ 4]   27    rra            ;; [1] A = [gh000000] (Rotate Right + Bit7 = g (Carry insertion))
-   4598 CB 38         [ 8]   28    srl    b       ;; [2] B = [000abcde] (Right shift, Carry = f). 
-   459A 1F            [ 4]   29    rra            ;; [1] A = [fgh00000] (Rotate Right + Bit7 = f (Carry insertion)). 
-   459B 4F            [ 4]   30    ld     c, a    ;; [1] C = A. BC = 32*tile-ID complete.
+   460A AF            [ 4]   23    xor    a       ;; [1] A = [00000000]
+   460B CB 38         [ 8]   24    srl    b       ;; [2] B = [0abcdefg] (Right shift, Carry = h)
+   460D 1F            [ 4]   25    rra            ;; [1] A = [h0000000] (Rotate Right + Bit7 = h (Carry insertion))
+   460E CB 38         [ 8]   26    srl    b       ;; [2] B = [00abcdef] (Right shift, Carry = g)
+   4610 1F            [ 4]   27    rra            ;; [1] A = [gh000000] (Rotate Right + Bit7 = g (Carry insertion))
+   4611 CB 38         [ 8]   28    srl    b       ;; [2] B = [000abcde] (Right shift, Carry = f). 
+   4613 1F            [ 4]   29    rra            ;; [1] A = [fgh00000] (Rotate Right + Bit7 = f (Carry insertion)). 
+   4614 4F            [ 4]   30    ld     c, a    ;; [1] C = A. BC = 32*tile-ID complete.
                              31 
                              32    ;; Make IX point to the 32-byte screen pixel definition of the selected tile.
                              33    ;; For that, we need to add previous calculated tile Offset (BC) and the start location
                              34    ;; of the tileset (IX). So operation is IX = tilesetPtr + Offset = IX + BC. 
                      0018    35 tilesetPtr = .+2
-   459C DD 21 00 00   [14]   36    ld    ix, #0000   ;; [4] IX = Pointer to start of tileset (0000 is placeholder set with tileset address)
-   45A0 DD 09         [15]   37    add   ix, bc      ;; [4] IX += Tile Offset  
-   45A2 DD F9         [10]   38    ld    sp, ix      ;; [3] Make SP Point to the start of the 32-byte screen pixel data
+   4615 DD 21 00 00   [14]   36    ld    ix, #0000   ;; [4] IX = Pointer to start of tileset (0000 is placeholder set with tileset address)
+   4619 DD 09         [15]   37    add   ix, bc      ;; [4] IX += Tile Offset  
+   461B DD F9         [10]   38    ld    sp, ix      ;; [3] Make SP Point to the start of the 32-byte screen pixel data
                              39                      ;; ... definition of the current tile (IX is used to save and restore this pointer)
                              40    ;;
                              41    ;; This section of the code draws 1 8x8 pixels (4x8 bytes) tile
@@ -1514,103 +1514,103 @@ Hexadecimal [16-Bits]
                              48    ;; Draw Sprite Lines using Gray-Code order and Zig-Zag movement
                              49    ;; Gray Code scanline order: 0,1,3,2,6,7,5,4
    001E                      50    drawSpriteRow inc ;; [17] Copy tile line Left-to-Right [>>]
-   45A4 C1            [10]    1    pop   bc             ;; [3] Get next 2 sprite bytes
-   45A5 71            [ 7]    2    ld  (hl), c          ;; [2] Copy byte 1
-   45A6 2C            [ 4]    3    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   461D C1            [10]    1    pop   bc             ;; [3] Get next 2 sprite bytes
+   461E 71            [ 7]    2    ld  (hl), c          ;; [2] Copy byte 1
+   461F 2C            [ 4]    3    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 29.
 Hexadecimal [16-Bits]
 
 
 
-   45A7 70            [ 7]    4    ld  (hl), b          ;; [2] Copy byte 2
-   45A8 2C            [ 4]    5    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
-   45A9 C1            [10]    6    pop   bc             ;; [3] Get next 2 sprite bytes
-   45AA 71            [ 7]    7    ld  (hl), c          ;; [2] Copy byte 3
-   45AB 2C            [ 4]    8    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
-   45AC 70            [ 7]    9    ld  (hl), b          ;; [2] Copy byte 4
-   45AD CB DC         [ 8]   51    set    3, h       ;; [ 2] --000---=>--001--- (Next sprite line: 1)
+   4620 70            [ 7]    4    ld  (hl), b          ;; [2] Copy byte 2
+   4621 2C            [ 4]    5    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   4622 C1            [10]    6    pop   bc             ;; [3] Get next 2 sprite bytes
+   4623 71            [ 7]    7    ld  (hl), c          ;; [2] Copy byte 3
+   4624 2C            [ 4]    8    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   4625 70            [ 7]    9    ld  (hl), b          ;; [2] Copy byte 4
+   4626 CB DC         [ 8]   51    set    3, h       ;; [ 2] --000---=>--001--- (Next sprite line: 1)
    0029                      52    drawSpriteRow dec ;; [17] Copy tile line Right-to-Left [<<]
-   45AF C1            [10]    1    pop   bc             ;; [3] Get next 2 sprite bytes
-   45B0 71            [ 7]    2    ld  (hl), c          ;; [2] Copy byte 1
-   45B1 2D            [ 4]    3    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
-   45B2 70            [ 7]    4    ld  (hl), b          ;; [2] Copy byte 2
-   45B3 2D            [ 4]    5    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
-   45B4 C1            [10]    6    pop   bc             ;; [3] Get next 2 sprite bytes
-   45B5 71            [ 7]    7    ld  (hl), c          ;; [2] Copy byte 3
-   45B6 2D            [ 4]    8    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
-   45B7 70            [ 7]    9    ld  (hl), b          ;; [2] Copy byte 4
-   45B8 CB E4         [ 8]   53    set    4, h       ;; [ 2] --001---=>--011--- (Next sprite line: 3)
+   4628 C1            [10]    1    pop   bc             ;; [3] Get next 2 sprite bytes
+   4629 71            [ 7]    2    ld  (hl), c          ;; [2] Copy byte 1
+   462A 2D            [ 4]    3    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   462B 70            [ 7]    4    ld  (hl), b          ;; [2] Copy byte 2
+   462C 2D            [ 4]    5    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   462D C1            [10]    6    pop   bc             ;; [3] Get next 2 sprite bytes
+   462E 71            [ 7]    7    ld  (hl), c          ;; [2] Copy byte 3
+   462F 2D            [ 4]    8    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   4630 70            [ 7]    9    ld  (hl), b          ;; [2] Copy byte 4
+   4631 CB E4         [ 8]   53    set    4, h       ;; [ 2] --001---=>--011--- (Next sprite line: 3)
    0034                      54    drawSpriteRow inc ;; [17] Copy tile line Left-to-Right [>>]
-   45BA C1            [10]    1    pop   bc             ;; [3] Get next 2 sprite bytes
-   45BB 71            [ 7]    2    ld  (hl), c          ;; [2] Copy byte 1
-   45BC 2C            [ 4]    3    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
-   45BD 70            [ 7]    4    ld  (hl), b          ;; [2] Copy byte 2
-   45BE 2C            [ 4]    5    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
-   45BF C1            [10]    6    pop   bc             ;; [3] Get next 2 sprite bytes
-   45C0 71            [ 7]    7    ld  (hl), c          ;; [2] Copy byte 3
-   45C1 2C            [ 4]    8    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
-   45C2 70            [ 7]    9    ld  (hl), b          ;; [2] Copy byte 4
-   45C3 CB 9C         [ 8]   55    res    3, h       ;; [ 2] --011---=>--010--- (Next sprite line: 2)
+   4633 C1            [10]    1    pop   bc             ;; [3] Get next 2 sprite bytes
+   4634 71            [ 7]    2    ld  (hl), c          ;; [2] Copy byte 1
+   4635 2C            [ 4]    3    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   4636 70            [ 7]    4    ld  (hl), b          ;; [2] Copy byte 2
+   4637 2C            [ 4]    5    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   4638 C1            [10]    6    pop   bc             ;; [3] Get next 2 sprite bytes
+   4639 71            [ 7]    7    ld  (hl), c          ;; [2] Copy byte 3
+   463A 2C            [ 4]    8    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   463B 70            [ 7]    9    ld  (hl), b          ;; [2] Copy byte 4
+   463C CB 9C         [ 8]   55    res    3, h       ;; [ 2] --011---=>--010--- (Next sprite line: 2)
    003F                      56    drawSpriteRow dec ;; [17] Copy tile line Right-to-Left [<<]
-   45C5 C1            [10]    1    pop   bc             ;; [3] Get next 2 sprite bytes
-   45C6 71            [ 7]    2    ld  (hl), c          ;; [2] Copy byte 1
-   45C7 2D            [ 4]    3    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
-   45C8 70            [ 7]    4    ld  (hl), b          ;; [2] Copy byte 2
-   45C9 2D            [ 4]    5    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
-   45CA C1            [10]    6    pop   bc             ;; [3] Get next 2 sprite bytes
-   45CB 71            [ 7]    7    ld  (hl), c          ;; [2] Copy byte 3
-   45CC 2D            [ 4]    8    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
-   45CD 70            [ 7]    9    ld  (hl), b          ;; [2] Copy byte 4
-   45CE CB EC         [ 8]   57    set    5, h       ;; [ 2] --010---=>--110--- (Next sprite line: 6)
+   463E C1            [10]    1    pop   bc             ;; [3] Get next 2 sprite bytes
+   463F 71            [ 7]    2    ld  (hl), c          ;; [2] Copy byte 1
+   4640 2D            [ 4]    3    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   4641 70            [ 7]    4    ld  (hl), b          ;; [2] Copy byte 2
+   4642 2D            [ 4]    5    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   4643 C1            [10]    6    pop   bc             ;; [3] Get next 2 sprite bytes
+   4644 71            [ 7]    7    ld  (hl), c          ;; [2] Copy byte 3
+   4645 2D            [ 4]    8    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   4646 70            [ 7]    9    ld  (hl), b          ;; [2] Copy byte 4
+   4647 CB EC         [ 8]   57    set    5, h       ;; [ 2] --010---=>--110--- (Next sprite line: 6)
    004A                      58    drawSpriteRow inc ;; [17] Copy tile line Left-to-Right [>>]
-   45D0 C1            [10]    1    pop   bc             ;; [3] Get next 2 sprite bytes
-   45D1 71            [ 7]    2    ld  (hl), c          ;; [2] Copy byte 1
-   45D2 2C            [ 4]    3    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
-   45D3 70            [ 7]    4    ld  (hl), b          ;; [2] Copy byte 2
-   45D4 2C            [ 4]    5    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
-   45D5 C1            [10]    6    pop   bc             ;; [3] Get next 2 sprite bytes
-   45D6 71            [ 7]    7    ld  (hl), c          ;; [2] Copy byte 3
-   45D7 2C            [ 4]    8    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
-   45D8 70            [ 7]    9    ld  (hl), b          ;; [2] Copy byte 4
-   45D9 CB DC         [ 8]   59    set    3, h       ;; [ 2] --110---=>--111--- (Next sprite line: 7)
+   4649 C1            [10]    1    pop   bc             ;; [3] Get next 2 sprite bytes
+   464A 71            [ 7]    2    ld  (hl), c          ;; [2] Copy byte 1
+   464B 2C            [ 4]    3    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   464C 70            [ 7]    4    ld  (hl), b          ;; [2] Copy byte 2
+   464D 2C            [ 4]    5    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   464E C1            [10]    6    pop   bc             ;; [3] Get next 2 sprite bytes
+   464F 71            [ 7]    7    ld  (hl), c          ;; [2] Copy byte 3
+   4650 2C            [ 4]    8    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   4651 70            [ 7]    9    ld  (hl), b          ;; [2] Copy byte 4
+   4652 CB DC         [ 8]   59    set    3, h       ;; [ 2] --110---=>--111--- (Next sprite line: 7)
    0055                      60    drawSpriteRow dec ;; [17] Copy tile line Right-to-Left [<<] 
-   45DB C1            [10]    1    pop   bc             ;; [3] Get next 2 sprite bytes
-   45DC 71            [ 7]    2    ld  (hl), c          ;; [2] Copy byte 1
-   45DD 2D            [ 4]    3    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   4654 C1            [10]    1    pop   bc             ;; [3] Get next 2 sprite bytes
+   4655 71            [ 7]    2    ld  (hl), c          ;; [2] Copy byte 1
+   4656 2D            [ 4]    3    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 30.
 Hexadecimal [16-Bits]
 
 
 
-   45DE 70            [ 7]    4    ld  (hl), b          ;; [2] Copy byte 2
-   45DF 2D            [ 4]    5    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
-   45E0 C1            [10]    6    pop   bc             ;; [3] Get next 2 sprite bytes
-   45E1 71            [ 7]    7    ld  (hl), c          ;; [2] Copy byte 3
-   45E2 2D            [ 4]    8    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
-   45E3 70            [ 7]    9    ld  (hl), b          ;; [2] Copy byte 4
-   45E4 CB A4         [ 8]   61    res    4, h       ;; [ 2] --111---=>--101--- (Next sprite line: 5)
+   4657 70            [ 7]    4    ld  (hl), b          ;; [2] Copy byte 2
+   4658 2D            [ 4]    5    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   4659 C1            [10]    6    pop   bc             ;; [3] Get next 2 sprite bytes
+   465A 71            [ 7]    7    ld  (hl), c          ;; [2] Copy byte 3
+   465B 2D            [ 4]    8    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   465C 70            [ 7]    9    ld  (hl), b          ;; [2] Copy byte 4
+   465D CB A4         [ 8]   61    res    4, h       ;; [ 2] --111---=>--101--- (Next sprite line: 5)
    0060                      62    drawSpriteRow inc ;; [17] Copy tile line Left-to-Right [>>]
-   45E6 C1            [10]    1    pop   bc             ;; [3] Get next 2 sprite bytes
-   45E7 71            [ 7]    2    ld  (hl), c          ;; [2] Copy byte 1
-   45E8 2C            [ 4]    3    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
-   45E9 70            [ 7]    4    ld  (hl), b          ;; [2] Copy byte 2
-   45EA 2C            [ 4]    5    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
-   45EB C1            [10]    6    pop   bc             ;; [3] Get next 2 sprite bytes
-   45EC 71            [ 7]    7    ld  (hl), c          ;; [2] Copy byte 3
-   45ED 2C            [ 4]    8    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
-   45EE 70            [ 7]    9    ld  (hl), b          ;; [2] Copy byte 4
-   45EF CB 9C         [ 8]   63    res    3, h       ;; [ 2] --101---=>--100--- (Next sprite line: 4)
+   465F C1            [10]    1    pop   bc             ;; [3] Get next 2 sprite bytes
+   4660 71            [ 7]    2    ld  (hl), c          ;; [2] Copy byte 1
+   4661 2C            [ 4]    3    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   4662 70            [ 7]    4    ld  (hl), b          ;; [2] Copy byte 2
+   4663 2C            [ 4]    5    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   4664 C1            [10]    6    pop   bc             ;; [3] Get next 2 sprite bytes
+   4665 71            [ 7]    7    ld  (hl), c          ;; [2] Copy byte 3
+   4666 2C            [ 4]    8    inc    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   4667 70            [ 7]    9    ld  (hl), b          ;; [2] Copy byte 4
+   4668 CB 9C         [ 8]   63    res    3, h       ;; [ 2] --101---=>--100--- (Next sprite line: 4)
    006B                      64    drawSpriteRow dec ;; [17] Copy tile line Right-to-Left [<<]
-   45F1 C1            [10]    1    pop   bc             ;; [3] Get next 2 sprite bytes
-   45F2 71            [ 7]    2    ld  (hl), c          ;; [2] Copy byte 1
-   45F3 2D            [ 4]    3    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
-   45F4 70            [ 7]    4    ld  (hl), b          ;; [2] Copy byte 2
-   45F5 2D            [ 4]    5    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
-   45F6 C1            [10]    6    pop   bc             ;; [3] Get next 2 sprite bytes
-   45F7 71            [ 7]    7    ld  (hl), c          ;; [2] Copy byte 3
-   45F8 2D            [ 4]    8    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
-   45F9 70            [ 7]    9    ld  (hl), b          ;; [2] Copy byte 4
-   45FA CB AC         [ 8]   65    res    5, h       ;; [ 2] --100---=>--000--- (Next sprite line: 0)
+   466A C1            [10]    1    pop   bc             ;; [3] Get next 2 sprite bytes
+   466B 71            [ 7]    2    ld  (hl), c          ;; [2] Copy byte 1
+   466C 2D            [ 4]    3    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   466D 70            [ 7]    4    ld  (hl), b          ;; [2] Copy byte 2
+   466E 2D            [ 4]    5    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   466F C1            [10]    6    pop   bc             ;; [3] Get next 2 sprite bytes
+   4670 71            [ 7]    7    ld  (hl), c          ;; [2] Copy byte 3
+   4671 2D            [ 4]    8    dec    l             ;; [1] HL++ / HL-- (4-byte aligned) -> next video mem location
+   4672 70            [ 7]    9    ld  (hl), b          ;; [2] Copy byte 4
+   4673 CB AC         [ 8]   65    res    5, h       ;; [ 2] --100---=>--000--- (Next sprite line: 0)
                              66 
                              67    ;; After drawing the tile, HL points to the same place in video memory
                              68    ;; as it started. We need to move it to the right 4 bytes (the width of 1 tile)
@@ -1620,19 +1620,19 @@ Hexadecimal [16-Bits]
                              72    ;; modifying H. Then for safety reasons, last increment will be INC HL to 
                              73    ;; ensure that H gets incremented when L=0xFF. This saves 1 microsecond
                              74    ;; from LD BC, #4: ADD HL, BC.
-   45FC 2C            [ 4]   75    inc    l  ;; [1] /
-   45FD 2C            [ 4]   76    inc    l  ;; [1] | HL+=3 (Incrementing L only)  
-   45FE 2C            [ 4]   77    inc    l  ;; [1] \ 
-   45FF 23            [ 6]   78    inc   hl  ;; [2] HL++ (HL += 4 in total)
+   4675 2C            [ 4]   75    inc    l  ;; [1] /
+   4676 2C            [ 4]   76    inc    l  ;; [1] | HL+=3 (Incrementing L only)  
+   4677 2C            [ 4]   77    inc    l  ;; [1] \ 
+   4678 23            [ 6]   78    inc   hl  ;; [2] HL++ (HL += 4 in total)
                              79 
                              80    ;; We now test if we have finished drawing present row of tiles. If that is
                              81    ;; the case, the Width counter will be 0 (IYL=0). 
-   4600 13            [ 6]   82    inc   de           ;; [2] ++DE (Make tilemapPtr point to next tile to be drawn)
+   4679 13            [ 6]   82    inc   de           ;; [2] ++DE (Make tilemapPtr point to next tile to be drawn)
    007B                      83    dec__iyl           ;; [2] --IYL (--Width, One less tile to be drawn in this row)
-   4601 FD 2D                 1    .dw #0x2DFD  ;; Opcode for dec iyl
-   4603 C2 8F 45      [10]   84    jp    nz, nexttile ;; [3] if (IYL!=0), then more tiles are left to be drawn in this row,
+   467A FD 2D                 1    .dw #0x2DFD  ;; Opcode for dec iyl
+   467C C2 08 46      [10]   84    jp    nz, nexttile ;; [3] if (IYL!=0), then more tiles are left to be drawn in this row,
                              85                       ;; ... so continue with next tile.
-   4606                      86 rowEnd:
+   467F                      86 rowEnd:
                              87    ;; We have finished drawing present row of tiles. We restore SP original value
                              88    ;; and previous interrupt status. This will enable interrupts to occur in a
                              89    ;; safe way, permitting the use of this function along with split rasters
@@ -1643,16 +1643,16 @@ Hexadecimal [16-Bits]
 
 
                      0081    91 restoreSP = .+1
-   4606 31 00 00      [10]   92    ld    sp, #0000      ;; [3] Restore SP (#0000 is a placeholder)
+   467F 31 00 00      [10]   92    ld    sp, #0000      ;; [3] Restore SP (#0000 is a placeholder)
                      0083    93 restoreI = .
-   4609 FB            [ 4]   94    ei                   ;; [1] Restore previous interrupt status (Enabled or disabled)
+   4682 FB            [ 4]   94    ei                   ;; [1] Restore previous interrupt status (Enabled or disabled)
                              95                         ;; ... EI gets modified by setDrawTilemap_agf and could by DI instead
                              96 
                              97    ;; Decrement the Height counter (IYH) as we have finished a complete row.
                              98    ;; If the counter is 0, then we have finished drawing the whole tilemap.
    0084                      99    dec__iyh             ;; [3]   --IYH (--Height)
-   460A FD 25                 1    .dw #0x25FD  ;; Opcode for dec iyh
-   460C 28 10         [12]  100    jr     z, return     ;; [2/3] if (Height==0) then return
+   4683 FD 25                 1    .dw #0x25FD  ;; Opcode for dec iyh
+   4685 28 10         [12]  100    jr     z, return     ;; [2/3] if (Height==0) then return
                             101 
                             102    ;;
                             103    ;; As Height counter is not 0 (IYH > 0), there are more rows to draw.
@@ -1666,14 +1666,14 @@ Hexadecimal [16-Bits]
                             111    ;; Also, as width is measured in tiles, and each tile is 4 bytes-wide, the 
                             112    ;; final calculation will be HL += screenWidth - drawnWidth = 0x50 - 4*width
                      0089   113 incrementHL = .+1
-   460E 01 00 00      [10]  114    ld    bc, #0000      ;; [3] BC = (0x50 - 4*width) (#0000 is a placeholder that gets the value)
-   4611 09            [11]  115    add   hl, bc         ;; [3] HL += 0x50 - 4*width
+   4687 01 00 00      [10]  114    ld    bc, #0000      ;; [3] BC = (0x50 - 4*width) (#0000 is a placeholder that gets the value)
+   468A 09            [11]  115    add   hl, bc         ;; [3] HL += 0x50 - 4*width
                             116 
                             117    ;; As IYL has been used as width counter, it has been decremented to 0.
                             118    ;; Restore it to the width value before using it again.
                      008E   119 restoreWidth = .+2
    008C                     120    ld__iyl  #00         ;; [2] IYL = Width (#00 is a placeholder)
-   4612 FD 2E 00              1    .db #0xFD, #0x2E, #00  ;; Opcode for ld iyl, Value
+   468B FD 2E 00              1    .db #0xFD, #0x2E, #00  ;; Opcode for ld iyl, Value
                             121 
                             122    ;; Tilemap pointer (Currently at DE) has to point to the start of the next row 
                             123    ;; of the tilemap to be drawn. Similarly to the Video Memory Pointer, if our tilemap
@@ -1683,17 +1683,17 @@ Hexadecimal [16-Bits]
                             127    ;; end up pointing to the first tile of the next row). As we have incremented
                             128    ;; the tilemap pointer by (width), the operation will be 
                             129    ;; TilemapPtr += tilemapWidth - width
-   4615 EB            [ 4]  130    ex    de, hl         ;; [1] Temporarily exchange HL<=>DE to do 16-bit maths for updating DE
+   468E EB            [ 4]  130    ex    de, hl         ;; [1] Temporarily exchange HL<=>DE to do 16-bit maths for updating DE
                      0091   131 updateWidth = .+1
-   4616 01 00 00      [10]  132    ld    bc, #0000      ;; [3] BC = tilemapWidth - width
-   4619 09            [11]  133    add   hl, bc         ;; [3] HL += tilemapWidth - width (TilemapPtr points to first tile of next row)
-   461A EB            [ 4]  134    ex    de, hl         ;; [1] Restore DE,HL into its proper registers, now with DE incremented
+   468F 01 00 00      [10]  132    ld    bc, #0000      ;; [3] BC = tilemapWidth - width
+   4692 09            [11]  133    add   hl, bc         ;; [3] HL += tilemapWidth - width (TilemapPtr points to first tile of next row)
+   4693 EB            [ 4]  134    ex    de, hl         ;; [1] Restore DE,HL into its proper registers, now with DE incremented
                             135 
-   461B C3 8A 45      [10]  136    jp    nextRow        ;; [3] Next Row
+   4694 C3 03 46      [10]  136    jp    nextRow        ;; [3] Next Row
                             137 
                             138    ;; When everything is finished, we safely return
                             139    ;; 
-   461E                     140 return:
+   4697                     140 return:
                             141 
                             142 ;; Set up association of global symbols with locals
                      0018   143 cpct_etm_dtm4x8_ag_asm_tilesetPtr     == tilesetPtr
@@ -1709,4 +1709,4 @@ Hexadecimal [16-Bits]
                      0083   148 cpct_etm_dtm4x8_ag_asm_restoreI       == restoreI
                             149 
                              31 
-   461E C9            [10]   32    ret               ;; [3] Return
+   4697 C9            [10]   32    ret               ;; [3] Return

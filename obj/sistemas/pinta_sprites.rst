@@ -5014,19 +5014,11 @@ Hexadecimal [16-Bits]
                               3 .globl my_draw_sprite
                               4 .globl cls
                               5 .globl _uno
-   4536                       6 pintar_sprites::
-   4536 11 00 80      [10]    7  ld de,#0x8000
-                              8    ;;   call cls 
-   4539 11 00 C0      [10]    9    ld de,#0xc000
-                             10   ;;    call cls
-   453C 21 F4 41      [10]   11    ld hl,#_uno
-   453F 0E 04         [ 7]   12    ld c,#4
-   4541 06 10         [ 7]   13    ld b,#16
-   4543 11 00 C0      [10]   14    ld de,#0xc000
-   4546 CD 4B 46      [17]   15       call my_draw_sprite
-   4549 21 F4 41      [10]   16       ld hl,#_uno
-   454C 0E 04         [ 7]   17    ld c,#4
-   454E 06 10         [ 7]   18    ld b,#16
-   4550 11 00 80      [10]   19    ld de,#0x8000
-                             20     ;;  call my_draw_sprite
-   4553 C9            [10]   21 ret
+   45A7                       6 pintar_sprites::
+   45A7 11 00 C0      [10]    7    ld de,#0xc000
+   45AA 21 F4 41      [10]    8    ld hl,#_uno
+   45AD 0E 04         [ 7]    9    ld c,#4
+   45AF 06 10         [ 7]   10    ld b,#16
+   45B1 11 00 C0      [10]   11    ld de,#0xc000
+   45B4 CD C4 46      [17]   12       call my_draw_sprite
+   45B7 C9            [10]   13 ret

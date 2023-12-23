@@ -1,0 +1,20 @@
+XL2
+H 1 areas 4 global symbols
+M array_entidades.s
+S .__.ABS. Def0000
+A _CODE size 67 flags 0 addr 0
+S byte_fin Def0064
+S primera_entidad_libre Def0065
+S array_entidades Def0000
+T 00 00
+R 00 00 00 00
+T 00 00
+R 00 00 00 00
+T 64 00
+R 00 00 00 00
+T 64 00 00
+R 00 00 00 00
+T 65 00
+R 00 00 00 00
+T 65 00 00 00
+R 00 00 00 00 00 02 00 00

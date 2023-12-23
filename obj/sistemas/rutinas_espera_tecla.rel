@@ -5,7 +5,7 @@ S cpct_scanKeyboard_f_asm Ref0000
 S .__.ABS. Def0000
 S cpct_isAnyKeyPressed_f_asm Ref0000
 A _CODE size 11 flags 0 addr 0
-S _espera_pulsacion_alguna_tecla Def0000
+S espera_pulsacion_alguna_tecla Def0000
 T 00 00
 R 00 00 00 00
 T 00 00
